@@ -1,578 +1,457 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/consultas/supervisor.css" />
-    <title>PZMWEB Enterprise :: Controle de Impostos</title>
-  </head>
 
-  <body>
-    <header class="header-container">
-      <div class="header-left">
-        <h2>
-          <a href="/consultas/operativo.html" class="mainmenu">
-            PZMWEB Enterprise :: Controle de Impostos
-          </a>
-        </h2>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/consultas/supervisor.css" />
+  <title>PZMWEB Enterprise :: Controle de Impostos</title>
+</head>
 
-      <div class="header-right">
-        <img src="/grupopzm.png" alt="logo" class="logo" />
-      </div>
-    </header>
+<body>
+  <header class="header-container">
+    <div class="header-left">
+      <h2>
+        <a href="/consultas/operativo.html" class="mainmenu">
+          PZMWEB Enterprise :: Controle de Impostos
+        </a>
+      </h2>
+    </div>
+    <div class="header-right">
+      <img src="/grupopzm.png" alt="logo" class="logo" />
+    </div>
+  </header>
 
-    <nav class="nav-container">
-      <div class="nav-left">
-        <div>Controles</div>
-        <div>Cadastros</div>
-
-        <div class="menu-item">
-          Operações
-          <div class="submenu">
-            <a href="/consultas/operativo.html"
-              >Checklist de Apurações de Impostos Operativo</a
-            >
-            <a href="/consultas/supervisor.html"
-              >Checklist de Apurações de Impostos Supervisor</a
-            >
-            <a href="/capaprocesso/capa-de-processo.html"
-              >Controle de Aprovação da Capa de Processo</a
-            >
-          </div>
-        </div>
-
-        <div>Processos</div>
-        <div>Relatórios</div>
-        <div>Gráficos</div>
-        <div>Configurações</div>
-        <div>Ajuda</div>
-        <div>Sair</div>
-      </div>
-
-      <div class="nav-right">
-        <div class="toggle-switch">
-          <label class="switch-label">
-            <input type="checkbox" class="checkbox" />
-            <span class="slider"></span>
-          </label>
-        </div>
-
-        <div class="flags">
-          <img
-            src="https://flagcdn.com/16x12/br.png"
-            alt="Português"
-            title="Português"
-          />
-          <img
-            src="https://flagcdn.com/16x12/es.png"
-            alt="Español"
-            title="Español"
-          />
-          <img
-            src="https://flagcdn.com/16x12/gb.png"
-            alt="English"
-            title="English"
-          />
+  <nav class="nav-container">
+    <div class="nav-left">
+      <span>Controles</span>
+      <span>Cadastros</span>
+      <div class="menu-item">
+        Operações
+        <div class="submenu">
+          <a href="/consultas/operativo.html">Checklist de Apurações de Impostos Operativo</a>
+          <a href="/consultas/supervisor.html">Checklist de Apurações de Impostos Supervisor</a>
+          <a href="/capaprocesso/capa-de-processo.html">Controle de Aprovação da Capa de Processo</a>
         </div>
       </div>
-    </nav>
-
-    <div class="container">
-      <div class="form-header">
-        <h3>Consulta Controle de Apuração de Impostos - Supervisor</h3>
+      <span>Processos</span>
+      <span>Relatórios</span>
+      <span>Gráficos</span>
+      <span>Configurações</span>
+      <span>Ajuda</span>
+      <span><a class="sair" href="/login/login.html">Sair</a></span>
+    </div>
+    <div class="nav-right">
+      <div class="toggle-switch">
+        <label class="switch-label">
+          <input type="checkbox" class="checkbox" />
+          <span class="slider"></span>
+        </label>
       </div>
-
-      <div class="fitros-consulta" style="margin-bottom: 20px">
-        <label>ID da Operação:</label>
-        <div>
-          <input type="text" placeholder="Digite o ID da operação" />
-          <button class="consulta">Consultar</button>
-        </div>
-      </div>
-
-      <div class="filtros-e-grafico">
-        <div class="consulta-geral">
-          <div class="fitros-consulta">
-            <label>Data Inicial:</label>
-            <input type="date" value="2025-06-01" />
-          </div>
-          <div class="fitros-consulta">
-            <label>Data Final:</label>
-            <input type="date" value="2025-06-30" />
-          </div>
-          <div class="fitros-consulta">
-            <label>Data Base:</label>
-            <div class="grupo-opcoes">
-              <label><input type="radio" name="data-base" /> Vencimento</label>
-              <label
-                ><input type="radio" name="data-base" /> Data Prevista</label
-              >
-              <label
-                ><input type="radio" name="data-base" /> Data Realizada</label
-              >
-            </div>
-          </div>
-          <div class="fitros-consulta">
-            <label>Empresa:</label>
-            <select>
-              <option>Todos os itens</option>
-            </select>
-            <label><input type="checkbox" /> Filtrar Empresas Inativas</label>
-          </div>
-          <div class="fitros-consulta">
-            <label>Estabelecimento:</label>
-            <select>
-              <option>Todos os itens</option>
-            </select>
-            <label
-              ><input type="checkbox" /> Filtrar Estabelecimentos
-              Inativos</label
-            >
-          </div>
-          <div class="fitros-consulta">
-            <label>Classificação:</label>
-            <select>
-              <option>Todos os itens</option>
-            </select>
-          </div>
-          <div class="fitros-consulta">
-            <label>Esfera:</label>
-            <select>
-              <option>Todos os itens</option>
-            </select>
-          </div>
-          <div class="fitros-consulta">
-            <label>Responsável:</label>
-            <select>
-              <option>Usuário PZM</option>
-            </select>
-            <label
-              ><input type="checkbox" /> Filtrar todos os registros sem
-              responsável</label
-            >
-          </div>
-          <div class="fitros-consulta">
-            <label>Imposto:</label>
-            <select>
-              <option>Todos os itens</option>
-            </select>
-          </div>
-          <div class="fitros-consulta">
-            <label>Estágios:</label>
-            <select>
-              <option>Todos os itens</option>
-            </select>
-          </div>
-          <div class="fitros-consulta">
-            <label>Status:</label>
-            <select>
-              <option>Todos os itens</option>
-            </select>
-          </div>
-
-          <div class="analiticos">
-            <label><input type="checkbox" checked />Analítico </label>
-            <label><input type="checkbox" />Filtrar meus registros</label>
-          </div>
-        </div>
-
-        <div class="grafico-area">
-          <canvas id="graficoFarol" width="300px" height="300px"></canvas>
-        </div>
-      </div>
-
-      <div class="associar-responsavel">
-        <label class="associar">Associar Responsável:</label>
-        <select>
-          <option>Todos os itens</option>
-          <option>USUÁRIO PZM</option>
-          <option>Igor Castro</option>
-        </select>
-        <button>Associar</button>
-      </div>
-
-      <div class="paginacao-e-botoes">
-        <div class="paginacao-container">
-          <div class="paginacao-esquerda">
-            <label>
-              Exibir:
-              <select class="select-registros">
-                <option>10</option>
-                <option>20</option>
-                <option>50</option>
-                <option>100</option>
-              </select>
-              registros por página
-            </label>
-          </div>
-
-          <div class="paginacao-direita">
-            <button>&laquo;</button>
-            <span>Página</span>
-            <input type="number" value="1" min="1" class="input-pagina" />
-            <span>de 5</span>
-            <button>&raquo;</button>
-          </div>
-        </div>
-
-        <div class="carregar-arquivos">
-          <button class="archives">Carregar Arquivos</button>
-          <button class="eventual">Criar Controle Eventual</button>
-        </div>
-      </div>
-
-      <div class="container-button">
-        <div class="legenda">
-          <span class="retificacao">Retificação</span>
-          <span class="dentro-prazo">Dentro do Prazo</span>
-          <span class="no-limite">Prazo no Limite</span>
-          <span class="vencido">Atenção: Prazo Vencido</span>
-          <span class="finalizado">Processo Finalizado</span>
-          <span class="fora-prazo">Finalizado [Fora do Prazo]</span>
-        </div>
+      <div class="flags">
+        <img src="https://flagcdn.com/16x12/br.png" alt="Português" title="Português" />
+        <img src="https://flagcdn.com/16x12/es.png" alt="Español" title="Español" />
+        <img src="https://flagcdn.com/16x12/gb.png" alt="English" title="English" />
       </div>
     </div>
+  </nav>
 
-    <div class="imp-info">
-      <table>
-        <thead>
-          <tr class="header-table">
-            <th>Prazo</th>
-            <th>Estágio</th>
-            <th>Responsável</th>
-            <th>CNPJ</th>
-            <th>Local</th>
-            <th>Imposto</th>
-            <th>Status</th>
-            <th>Data Prevista</th>
-            <th>Data Realizada</th>
-            <th>Valor</th>
-            <th>Forma Quitação</th>
-            <th>Competência</th>
-            <th>Anexos</th>
-          </tr>
-        </thead>
 
-        <div class="totalizadores">
-          <span>Total de Registros: 8</span>
-          <span>Total de Itens: 16</span>
-          <span>Total de Anexos: 14</span>
-        </div>
-
-        <tbody>
-          <tr class="header-atv">
-            <!-- colspan serve para unir as colunas do cabeçalho, mostrando quantas colunas deve conter -->
-            <td colspan="13">
-              <img
-                src="/ChatGPT Image 3 de jul. de 2025, 20_13_58.png"
-                alt="parameter"
-                class="parameter"
-              />Operação 57069
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol dentro-prazo"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-
-            <td><span>Apuração</span></td>
-            <td>Damares Oliveira dos Santos</td>
-            <td>444.000.000/0004-04</td>
-            <td>BELO HORIZONTE</td>
-            <td>ICMS PZM 3030</td>
-            <td>Pendente</td>
-            <td>04/07/2025</td>
-            <td></td>
-            <td>5,00</td>
-            <td>Imposto com vencimento dia 05 - Antecipa</td>
-            <td>5 / 2025</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol finalizado"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-            <td><span>Pagamento</span></td>
-            <td>Damares Oliveira dos Santos</td>
-            <td>444.000.000/0004-04</td>
-            <td>BELO HORIZONTE</td>
-            <td>ICMS PZM 3030</td>
-            <td>Concluído</td>
-            <td>10/07/2025</td>
-            <td>08/07/2025</td>
-            <td>5,00</td>
-            <td>Imposto com vencimento dia 10 - Antecipa</td>
-            <td>5 / 2025</td>
-            <td>0</td>
-          </tr>
-
-          <tr class="header-atv">
-            <td colspan="13">
-              <img
-                src="/ChatGPT Image 3 de jul. de 2025, 20_13_58.png"
-                alt="parameter"
-                class="parameter"
-              />Operação 66666
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol finalizado"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-            <td><span>Apuração</span></td>
-            <td>João Pereira</td>
-            <td>555.000.000/0001-99</td>
-            <td>SÃO PAULO</td>
-            <td>ISS SP</td>
-            <td>Pendente</td>
-            <td>05/06/2025</td>
-            <td></td>
-            <td>10,00</td>
-            <td>Imposto com vencimento dia 05 - Normal</td>
-            <td>6 / 2025</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol finalizado"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-            <td><span>Pagamento</span></td>
-            <td>João Pereira</td>
-            <td>555.000.000/0001-99</td>
-            <td>SÃO PAULO</td>
-            <td>ISS SP</td>
-            <td>Pendente</td>
-            <td>10/06/2025</td>
-            <td></td>
-            <td>10,00</td>
-            <td>Quitado em dia</td>
-            <td>6 / 2025</td>
-            <td>1</td>
-          </tr>
-
-          <tr class="header-atv">
-            <td colspan="13">
-              <img
-                src="/ChatGPT Image 3 de jul. de 2025, 20_13_58.png"
-                alt="parameter"
-                class="parameter"
-              />Operação 34234
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol finalizado"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-            <td><span>Apuração</span></td>
-            <td>João Pereira</td>
-            <td>555.000.000/0001-99</td>
-            <td>SÃO PAULO</td>
-            <td>ISS SP</td>
-            <td>Pendente</td>
-            <td>05/06/2025</td>
-            <td></td>
-            <td>10,00</td>
-            <td>Imposto com vencimento dia 05 - Normal</td>
-            <td>6 / 2025</td>
-            <td>1</td>
-          </tr>
-
-          <tr class="header-atv">
-            <td colspan="13">
-              <img
-                src="/ChatGPT Image 3 de jul. de 2025, 20_13_58.png"
-                alt="parameter"
-                class="parameter"
-              />Operação 45656
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol finalizado"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-            <td><span>Apuração</span></td>
-            <td>João Pereira</td>
-            <td>555.000.000/0001-99</td>
-            <td>SÃO PAULO</td>
-            <td>ISS SP</td>
-            <td>Pendente</td>
-            <td>05/06/2025</td>
-            <td></td>
-            <td>10,00</td>
-            <td>Imposto com vencimento dia 05 - Normal</td>
-            <td>6 / 2025</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol finalizado"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-            <td><span>Pagamento</span></td>
-            <td>João Pereira</td>
-            <td>555.000.000/0001-99</td>
-            <td>SÃO PAULO</td>
-            <td>ISS SP</td>
-            <td>Pendente</td>
-            <td>10/06/2025</td>
-            <td></td>
-            <td>10,00</td>
-            <td>Quitado em dia</td>
-            <td>6 / 2025</td>
-            <td>1</td>
-          </tr>
-
-          <tr class="header-atv">
-            <td colspan="13">
-              <img
-                src="/ChatGPT Image 3 de jul. de 2025, 20_13_58.png"
-                alt="parameter"
-                class="parameter"
-              />Operação 45644
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol finalizado"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-            <td><span>Apuração</span></td>
-            <td>João Pereira</td>
-            <td>555.000.000/0001-99</td>
-            <td>SÃO PAULO</td>
-            <td>ISS SP</td>
-            <td>Pendente</td>
-            <td>05/06/2025</td>
-            <td></td>
-            <td>10,00</td>
-            <td>Imposto com vencimento dia 05 - Normal</td>
-            <td>6 / 2025</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol finalizado"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-            <td><span>Pagamento</span></td>
-            <td>João Pereira</td>
-            <td>555.000.000/0001-99</td>
-            <td>SÃO PAULO</td>
-            <td>ISS SP</td>
-            <td>Pendente</td>
-            <td>10/06/2025</td>
-            <td></td>
-            <td>10,00</td>
-            <td>Quitado em dia</td>
-            <td>6 / 2025</td>
-            <td>1</td>
-          </tr>
-
-          <tr class="header-atv">
-            <td colspan="13">
-              <img
-                src="/ChatGPT Image 3 de jul. de 2025, 20_13_58.png"
-                alt="parameter"
-                class="parameter"
-              />Operação 23432
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol finalizado"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-            <td><span>Apuração</span></td>
-            <td>João Pereira</td>
-            <td>555.000.000/0001-99</td>
-            <td>SÃO PAULO</td>
-            <td>ISS SP</td>
-            <td>Pendente</td>
-            <td>05/06/2025</td>
-            <td></td>
-            <td>10,00</td>
-            <td>Imposto com vencimento dia 05 - Normal</td>
-            <td>6 / 2025</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="status-etapa">
-                <input type="checkbox" name="checkbox" id="checkbox" /><span
-                  class="farol finalizado"
-                  id="modalOpenButton"
-                ></span>
-              </div>
-            </td>
-            <td><span>Pagamento</span></td>
-            <td>João Pereira</td>
-            <td>555.000.000/0001-99</td>
-            <td>SÃO PAULO</td>
-            <td>ISS SP</td>
-            <td>Pendente</td>
-            <td>10/06/2025</td>
-            <td></td>
-            <td>10,00</td>
-            <td>Quitado em dia</td>
-            <td>6 / 2025</td>
-            <td>1</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </body>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <div class="grafico-area">
-    <canvas id="graficoFarol" width="200" height="200"></canvas>
+  <div class="form-header">
+    <h3>Consulta Controle de Apuração de Impostos - Supervisor</h3>
   </div>
 
+  <div class="painel-geral">
+    <div class="card-filtros">
+      <!-- Linha de ID e Botão Consultar -->
+      <div class="linha-id-consulta" style="grid-column: 1 / -1; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 0;">
+        <div class="fitros-consulta" style="margin: 0;">
+          <label>ID da Operação:</label>
+          <div>
+            <input type="text" placeholder="Digite o ID da operação" style="width: 300px;" />
+          </div>
+        </div>
+        <button class="consulta">Consultar</button>
+      </div>
+      <!-- Linha de Filtros -->
+      <div class="fitros-consulta">
+        <label>Data Inicial:</label>
+        <input type="date" value="2025-06-01" />
+        <label style="margin-bottom:0;">
+          <input type="checkbox" checked />
+          Listar Pendências dos últimos 5 dias
+        </label>
+      </div>
+      <div class="fitros-consulta">
+        <label>Data Final:</label>
+        <input type="date" value="2025-06-30" />
+      </div>
+      <div class="fitros-consulta">
+        <label style="margin-bottom: 2px;">Data Base:</label>
+        <div class="grupo-opcoes" style="gap: 4px;">
+          <label><input type="radio" name="data-base" />Vencimento</label>
+          <label><input type="radio" name="data-base" />Data Prevista</label>
+          <label><input type="radio" name="data-base" />Data Realizada</label>
+        </div>
+      </div>
+      <div class="fitros-consulta">
+        <label>Empresa:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+        <label style="margin-bottom:0;"><input type="checkbox" /> Filtrar Empresas Inativas</label>
+      </div>
+      <div class="fitros-consulta">
+        <label>Estabelecimento:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+        <label style="margin-bottom:0;"><input type="checkbox" /> Filtrar Estabelecimentos Inativos</label>
+      </div>
+      <div class="fitros-consulta">
+        <label>Esfera:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+      </div>
+      <div class="fitros-consulta">
+        <label>Imposto:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+      </div>
+      <div class="fitros-consulta">
+        <label>Estágios:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+      </div>
+      <div class="fitros-consulta">
+        <label>Classificação:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+      </div>
+      <div class="fitros-consulta">
+        <label>Responsável:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+        <label style="margin-bottom:0;"><input type="checkbox" /> Filtrar todos os registros sem responsável</label>
+      </div>
+      <div class="fitros-consulta">
+        <label>Status:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+        <div class="analiticos">
+          <label style="margin-bottom:0;"><input type="checkbox" checked /> Analítico</label>
+        </div>
+      </div>
+      <div class="fitros-consulta associar-responsavel">
+        <label>Associar Responsável:</label>
+        <div class="associar" style="display: flex; gap: 8px;">
+          <select>
+            <option>Todos os itens</option>
+          </select>
+          <button class="associar-botao">Associar</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-grafico">
+      <div class="grafico-item">
+        <span class="titulo-grafico">Controle de Status</span>
+        <canvas id="graficoFarol" width="300" height="300"></canvas>
+      </div>
+      <div class="grafico-item">
+        <span class="titulo-grafico">Por Esfera</span>
+        <canvas id="graficoEsferas" width="330" height="300"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="linha-legenda-botoes">
+    <div class="legenda">
+      <span class="complementar">Complementar</span>
+      <span class="retificacao">Retificação</span>
+      <span class="dentro-prazo">Dentro do Prazo</span>
+      <span class="no-limite">Prazo no Limite</span>
+      <span class="vencido">Atenção: Prazo Vencido</span>
+      <span class="finalizado">Processo Finalizado</span>
+      <span class="fora-prazo">Finalizado [Fora do Prazo]</span>
+      <span class="todos-os-status">Todos os Status</span>
+    </div>
+    <div class="carregar-arquivos">
+      <button class="archives">Carregar Arquivos</button>
+      <button class="eventual">Criar Controle Eventual</button>
+    </div>
+  </div>
+
+
+  <div class="imp-info">
+    <div class="linha-total-paginacao">
+      <div class="totalizadores">
+        <span>Total de Registros: 8</span>
+        <span>Total de Itens: 16</span>
+        <span><a class="baixar-anexos" href="/anexos">Total de Anexos: 14</a></span>
+      </div>
+      <nav class="pagination-nav">
+        <label class="pagination-select">
+          <span>Exibir</span>
+          <select>
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
+          <span>por página</span>
+        </label>
+        <button class="pagination-btn" title="Primeira página">&laquo;</button>
+        <button class="pagination-btn" title="Página anterior">&lsaquo;</button>
+        <input type="number" value="1" min="1" class="pagination-input" />
+        <span class="pagination-total">de 5</span>
+        <button class="pagination-btn" title="Próxima página">&rsaquo;</button>
+        <button class="pagination-btn" title="Última página">&raquo;</button>
+      </nav>
+    </div>
+
+
+    <table>
+      <thead>
+        <tr class="header-table">
+          <th></th>
+          <th>CNPJ</th>
+          <th>Local</th>
+          <th>Empresa</th>
+          <th>Estabelecimento</th>
+          <th>Categória</th>
+          <th>Imposto</th>
+          <th>Esfera</th>
+          <th>Vencimento</th>
+          <th>Mês</th>
+          <th>Ano</th>
+          <th>Descrição de Vencimento</th>
+          <th>Mês de competência</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="header-table2">
+          <th>Número da Operação</th>
+          <th>Estágio</th>
+          <th>Responsável</th>
+          <th>Status</th>
+          <th>Retificação</th>
+          <th>Data Prevista</th>
+          <th>Data Realizada</th>
+          <th>Valor</th>
+          <th>Resultado da Operação</th>
+          <th>Local de Pagamento</th>
+          <th>Forma de Quitação</th>
+          <th>Contabilização Automática</th>
+          <th>Anexos</th>
+        </tr>
+
+        <tr class="header-atv">
+          <td colspan="1">
+            <img src="/ChatGPT Image 3 de jul. de 2025, 20_13_58.png" alt="parameter" class="parameter" />
+          <td><span>444.000.000/0004-04</span></td>
+          <td>Belo Horizonte</td>
+          <td>Grupo PZM Matriz</td>
+          <td>Filial PZM - SP</td>
+          <td>Comercial</td>
+          <td>ICMS</td>
+          <td>Estadual</td>
+          <td>10</td>
+          <td>07</td>
+          <td>2025</td>
+          <td>Imposto com vencimento todo dia 10</td>
+          <td>06/2025</td>
+          </td>
+        </tr>
+        <td>
+          <div class="status-etapa">
+            <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol dentro-prazo" id="modalOpenButton"></span>
+            <span>12222</span>
+          </div>
+        </td>
+        <td><span>Apuração</span></td>
+        <td>Damares Oliveira</td>
+        <td>Pendente</td>
+        <td>Original</td>
+        <td>ICMS PZM 3030</td>
+        <td>15/07/2025</td>
+        <td>250,00</td>
+        <td>Devedora</td>
+        <td>Contas a Pagar</td>
+        <td>Compensação</td>
+        <td>Sim</td>
+        <td>1</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="status-etapa">
+              <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol finalizado" id="modalOpenButton"></span>
+              <span>12222</span>
+            </div>
+          </td>
+          <td><span>Pagamento</span></td>
+          <td>Damares Oliveira</td>
+          <td>Concluído</td>
+          <td>Original</td>
+          <td>ICMS PZM 3030</td>
+          <td>15/07/2025</td>
+          <td>250,00</td>
+          <td>Devedora</td>
+          <td>Contas a Pagar</td>
+          <td>Compensação</td>
+          <td>Sim</td>
+          <td>1</td>
+        </tr>
+
+        <tr class="guia-eventual">
+          <td>
+            <div class="status-etapa">
+              <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol finalizado" id="modalOpenButton"></span>
+              <span>12222</span>
+            </div>
+          </td>
+          <td><span>Pagamento</span></td>
+          <td>Damares Oliveira</td>
+          <td>Concluído</td>
+          <td>Original</td>
+          <td>ICMS PZM 3030</td>
+          <td>15/07/2025</td>
+          <td>250,00</td>
+          <td>Devedora</td>
+          <td>Contas a Pagar</td>
+          <td>Compensação</td>
+          <td>Sim</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr class="header-table">
+          <th></th>
+          <th>CNPJ</th>
+          <th>Local</th>
+          <th>Empresa</th>
+          <th>Estabelecimento</th>
+          <th>Categória</th>
+          <th>Imposto</th>
+          <th>Esfera</th>
+          <th>Vencimento</th>
+          <th>Mês</th>
+          <th>Ano</th>
+          <th>Descrição de Vencimento</th>
+          <th>Mês de competência</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="header-table2">
+          <th>Número da Operação</th>
+          <th>Estágio</th>
+          <th>Responsável</th>
+          <th>Status</th>
+          <th>Retificação</th>
+          <th>Data Prevista</th>
+          <th>Data Realizada</th>
+          <th>Valor</th>
+          <th>Resultado da Operação</th>
+          <th>Local de Pagamento</th>
+          <th>Forma de Quitação</th>
+          <th>Contabilização Automática</th>
+          <th>Anexos</th>
+        </tr>
+
+        <tr class="header-atv">
+          <td colspan="1">
+            <img src="/ChatGPT Image 3 de jul. de 2025, 20_13_58.png" alt="parameter" class="parameter" />
+          <td><span>444.000.000/0004-04</span></td>
+          <td>Belo Horizonte</td>
+          <td>Grupo PZM Matriz</td>
+          <td>Filial PZM - SP</td>
+          <td>Comercial</td>
+          <td>ICMS</td>
+          <td>Estadual</td>
+          <td>10</td>
+          <td>07</td>
+          <td>2025</td>
+          <td>Imposto com vencimento todo dia 10</td>
+          <td>06/2025</td>
+          </td>
+        </tr>
+
+
+        <td>
+          <div class="status-etapa">
+            <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol dentro-prazo" id="modalOpenButton"></span>
+            <span>12222</span>
+          </div>
+        </td>
+        <td><span>Apuração</span></td>
+        <td>Damares Oliveira</td>
+        <td>Pendente</td>
+        <td>Original</td>
+        <td>ICMS PZM 3030</td>
+        <td>15/07/2025</td>
+        <td>2500,00</td>
+        <td>Devedora</td>
+        <td>Contas a Pagar</td>
+        <td>Compensação</td>
+        <td>Sim</td>
+        <td>1</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="status-etapa">
+              <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol finalizado" id="modalOpenButton"></span>
+              <span>12222</span>
+            </div>
+          </td>
+          <td><span>Pagamento</span></td>
+          <td>Damares Oliveira</td>
+          <td>Pendente</td>
+          <td>Original</td>
+          <td>ICMS PZM 3030</td>
+          <td>15/07/2025</td>
+          <td>2500,00</td>
+          <td>Devedora</td>
+          <td>Contas a Pagar</td>
+          <td>Compensação</td>
+          <td>Sim</td>
+          <td>1</td>
+        </tr>
+
+        <tr class="complementar">
+          <td>
+            <div class="status-etapa">
+              <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol finalizado" id="modalOpenButton"></span>
+              <span>12222</span>
+            </div>
+          </td>
+          <td><span>Pagamento</span></td>
+          <td>Damares Oliveira</td>
+          <td>Concluído</td>
+          <td>Original</td>
+          <td>ICMS PZM 3030</td>
+          <td>15/07/2025</td>
+          <td>250,00</td>
+          <td>Devedora</td>
+          <td>Contas a Pagar</td>
+          <td>Compensação</td>
+          <td>Sim</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const darkToggle = document.querySelector(".checkbox");
@@ -580,9 +459,8 @@
 
       if (localStorage.getItem("dark-mode") === "enabled") {
         body.classList.add("dark-mode");
-        darkToggle.checked = true;
+        if (darkToggle) darkToggle.checked = true;
       }
-
       const centerTextPlugin = {
         id: "centerText",
         afterDraw(chart) {
@@ -596,14 +474,14 @@
           const x = left + width / 2;
           const y = top + height / 2;
           ctx.save();
-          ctx.font = "bold 24px Arial";
+          ctx.font = "bold 22px Arial";
           ctx.fillStyle = isDark ? "#fff" : "#000";
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
-          ctx.fillText(total, x, y - 10);
+          ctx.fillText(total, x, y - 8);
           ctx.font = "12px Arial";
           ctx.fillStyle = isDark ? "#fff" : "#000";
-          ctx.fillText("Total de tickets", x, y + 12);
+          ctx.fillText("Total de tickets", x, y + 15);
           ctx.restore();
         },
       };
@@ -618,7 +496,7 @@
             const value = data.datasets[0].data[i];
             ctx.save();
             ctx.fillStyle = "#333";
-            ctx.font = "bold 12px Arial";
+            ctx.font = "bold 11px Arial";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillText(value, x, y);
@@ -644,11 +522,13 @@
         },
       };
 
+      // Gráfico Donut
       const ctx = document.getElementById("graficoFarol").getContext("2d");
       const graficoFarol = new Chart(ctx, {
         type: "doughnut",
         data: {
           labels: [
+            "Complementar",
             "Retificação",
             "Dentro do Prazo",
             "Prazo no Limite",
@@ -658,30 +538,19 @@
           ],
           datasets: [
             {
-              data: [2, 5, 3, 1, 4, 1],
+              data: [1, 2, 5, 3, 1, 4, 1],
               backgroundColor: [
-                "#f3007e",
-                "#00e1ff",
-                "orange",
-                "red",
-                "green",
-                "purple",
+                "#002fff6b", "#f3007e", "#00e1ff", "orange", "red", "green", "purple"
               ],
-              borderWidth: 0,
+              borderWidth: 3,
             },
           ],
         },
         options: {
           responsive: false,
           maintainAspectRatio: false,
-          layout: {
-            padding: 15,
-          },
-          elements: {
-            arc: {
-              hoverOffset: 15,
-            },
-          },
+          layout: { padding: 15 },
+          elements: { arc: { hoverOffset: 15 } },
           plugins: {
             legend: { display: false },
             tooltip: {
@@ -702,16 +571,77 @@
         plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
       });
 
-      darkToggle.addEventListener("change", function () {
-        if (darkToggle.checked) {
-          body.classList.add("dark-mode");
-          localStorage.setItem("dark-mode", "enabled");
-        } else {
-          body.classList.remove("dark-mode");
-          localStorage.setItem("dark-mode", "disabled");
+      // ====== Gráfico de Esferas (Colunas) ======
+      // Quantidade de itens:
+      const quantidades = [60, 33, 14]; // Federal, Estadual, Municipal (Eixo Y e label nas barras)
+      // Valores em reais:
+      const valoresReais = [60000, 20000, 15000]; // Federal, Estadual, Municipal (tooltip)
+
+      const esferasCtx = document.getElementById("graficoEsferas").getContext("2d");
+      const graficoEsferas = new Chart(esferasCtx, {
+        type: "bar",
+        data: {
+          labels: ["Federal", "Estadual", "Municipal"],
+          datasets: [
+            {
+              label: "Quantidade",
+              data: quantidades, // Mostra só a quantidade visualmente
+              backgroundColor: ["#002fff6b", "#00e1ff", "#f3007e"],
+              borderRadius: 12,
+              borderWidth: 1,
+              borderSkipped: false
+            }
+          ]
+        },
+        options: {
+          responsive: false,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const label = context.label || "";
+                  const valor = valoresReais[context.dataIndex] || 0;
+                  const valorFormatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                  return `${label}: ${valorFormatado}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false, drawBorder: false },
+              ticks: { color: body.classList.contains("dark-mode") ? "#fff" : "#222", font: { size: 13 } }
+            },
+            y: {
+              grid: { display: false, drawBorder: false },
+              beginAtZero: true,
+              ticks: { color: body.classList.contains("dark-mode") ? "#fff" : "#222", font: { size: 13 } },
+              suggestedMax: 80 // Ajuste conforme suas quantidades
+            }
+          }
         }
-        graficoFarol.update();
       });
+
+      // Dark mode update para o gráfico de esferas
+      if (darkToggle) {
+        darkToggle.addEventListener("change", function () {
+          if (darkToggle.checked) {
+            body.classList.add("dark-mode");
+            localStorage.setItem("dark-mode", "enabled");
+          } else {
+            body.classList.remove("dark-mode");
+            localStorage.setItem("dark-mode", "disabled");
+          }
+          graficoFarol.update();
+          graficoEsferas.options.scales.x.ticks.color = body.classList.contains("dark-mode") ? "#fff" : "#222";
+          graficoEsferas.options.scales.y.ticks.color = body.classList.contains("dark-mode") ? "#fff" : "#222";
+          graficoEsferas.update();
+        });
+      }
     });
   </script>
+</body>
+
 </html>

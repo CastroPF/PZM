@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Sistema PZM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/login/login.css" />
+</head>
+
+<body>
+  <div class="login-split">
+    <div class="login-left">
+      <div class="mensagem-institucional">
+        <h2>Conheça o Grupo PZM</h2>
+        <p>Inovação, tecnologia e pessoas. Explore nossas soluções inteligentes e descubra como podemos transformar a gestão do seu negócio.</p>
+        <a href="https://www.grupopzm.com.br/wp/" class="botao-institucional">Visite nosso site</a>
+      </div>
+      <img src="/grupopzm.png" alt="Logo PZM" />
+    </div>
+    <div class="login-right">
+      <form class="login-box" autocomplete="off" onsubmit="return fakeLogin(event)">
+        <h2 style="font-family: Arial, Helvetica, sans-serif;">Bem Vindo ao Sistema PZM</h2>
+        <label for="user">Username</label>
+        <input id="user" name="user" type="text" required autocomplete="off" placeholder="Login" maxlength="60" />
+        <label for="pass">Password</label>
+        <input id="pass" name="pass" type="password" required autocomplete="off" placeholder="Senha" maxlength="60" />
+        <div class="login-row">
+          <label>
+            <input type="checkbox" id="lembrar" checked style="margin-right:5px;" /> Lembrar senha
+          </label>
+          <a href="#" class="forgot">Esqueceu a Senha?</a>
+        </div>
+        <button type="submit" class="login-btn">Entrar</button>
+        <div class="no-account">
+          Não Tem Uma Conta? <a href="#">Entre em contato com o suporte.</a>
+        </div>
+      </form>
+    </div>
+    <script>
+      function fakeLogin(e) {
+        e.preventDefault();
+        const btn = document.querySelector('.login-btn');
+        btn.textContent = "Entrando...";
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = "Entrar";
+          btn.disabled = false;
+          alert("Login simulado. Integre seu backend aqui.");
+        }, 1200);
+        return false;
+      }
+    </script>
+</body>
+
+</html>
