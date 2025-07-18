@@ -3,54 +3,98 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Login - Sistema PZM</title>
+  <title>Login - Grupo PZM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/login/login.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/login/login.css">
 </head>
 
 <body>
-  <div class="login-split">
-    <div class="login-left">
-      <div class="mensagem-institucional">
-        <h2>Conheça o Grupo PZM</h2>
-        <p>Inovação, tecnologia e pessoas. Explore nossas soluções inteligentes e descubra como podemos transformar a gestão do seu negócio.</p>
-        <a href="https://www.grupopzm.com.br/wp/" class="botao-institucional">Visite nosso site</a>
-      </div>
-      <img src="/grupopzm.png" alt="Logo PZM" />
-    </div>
-    <div class="login-right">
-      <form class="login-box" autocomplete="off" onsubmit="return fakeLogin(event)">
-        <h2 style="font-family: Arial, Helvetica, sans-serif;">Bem Vindo ao Sistema PZM</h2>
-        <label for="user">Username</label>
-        <input id="user" name="user" type="text" required autocomplete="off" placeholder="Login" maxlength="60" />
-        <label for="pass">Password</label>
-        <input id="pass" name="pass" type="password" required autocomplete="off" placeholder="Senha" maxlength="60" />
-        <div class="login-row">
-          <label>
-            <input type="checkbox" id="lembrar" checked style="margin-right:5px;" /> Lembrar senha
-          </label>
-          <a href="#" class="forgot">Esqueceu a Senha?</a>
+  <div class="main-bg">
+    <div class="login-form">
+      <img src="/pzm_enterprise_logo_transparente.png" alt="" class="logo1">
+      <button class="btn-saml" type="button" onclick="window.location='/saml-login';">
+        Entrar via SAML
+      </button>
+      <div class="divisor">ou</div>
+      <h2>Faça seu login</h2>
+      <form>
+        <div class="input-group">
+          <svg width="20" height="15" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+          </svg>
+          <input type="text" placeholder="Digite seu usuário" required>
         </div>
-        <button type="submit" class="login-btn">Entrar</button>
-        <div class="no-account">
-          Não Tem Uma Conta? <a href="#">Entre em contato com o suporte.</a>
+        <div class="input-group">
+          <svg width="20" height="15" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 1a4 4 0 0 0-4 4v2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2h-1V5a4 4 0 0 0-4-4zm0 2a2 2 0 0 1 2 2v2H6V5a2 2 0 0 1 2-2z" />
+          </svg>
+          <input type="password" placeholder="Digite sua senha" required>
         </div>
+        <div class="esqueceu-senha">
+          <a href="#">Esqueceu a senha?</a>
+        </div>
+        <button type="submit" class="btn-login">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M2 8a.5.5 0 0 1 .5-.5h7.793l-3.147-3.146a.5.5 0 1 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L10.293 8.5H2.5A.5.5 0 0 1 2 8z" />
+          </svg>
+          Entrar
+        </button>
       </form>
     </div>
-    <script>
-      function fakeLogin(e) {
-        e.preventDefault();
-        const btn = document.querySelector('.login-btn');
-        btn.textContent = "Entrando...";
-        btn.disabled = true;
-        setTimeout(() => {
-          btn.textContent = "Entrar";
-          btn.disabled = false;
-          alert("Login simulado. Integre seu backend aqui.");
-        }, 1200);
-        return false;
+    <div class="welcome-panel">
+      <h1>SEJA BEM-VINDO!</h1>
+      <p>
+        Conheça mais sobre o <span>Grupo PZM</span>, nossas soluções inovadoras e tudo que podemos oferecer ao seu negócio.
+      </p>
+      <button class="btn-know"><a href="https://www.grupopzm.com.br/wp/">Visite o site</a></button>
+    </div>
+  </div>
+
+  <div class="helpFab" id="helpFab">
+    <span>?</span>
+  </div>
+
+  <div class="chat-popup" id="chat-popup">
+    <div class="chat-header">
+      <span>Dúvidas?</span>
+      <button class="close-chat" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body">
+      <p>Não consegue acessar o sistema?</p>
+      <a href="https://pzmweb.zendesk.com//hc/pt-br/requests/new" class="btn-zendesk" target="_blank">
+        <img src="https://cdn.worldvectorlogo.com/logos/zendesk-1.svg" alt="" style="width:20px;vertical-align:middle;margin-right:8px;">
+        Contate o suporte
+      </a>
+      <a href="https://wa.me/5531994450394?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20o%20sistema%20PZM." class="btn-whatsapp" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="" style="width:20px;vertical-align:middle;margin-right:8px;">
+        Fale com um agente
+      </a>
+
+    </div>
+  </div>
+
+  <script>
+    const helpFab = document.getElementById('helpFab');
+    const chatPopup = document.getElementById('chat-popup');
+
+    helpFab.onclick = function () {
+      chatPopup.style.display = 'block';
+    };
+
+    function toggleChat() {
+      chatPopup.style.display = 'none';
+    }
+
+    window.addEventListener('mousedown', function (e) {
+      if (chatPopup.style.display === 'block' && !chatPopup.contains(e.target) && e.target !== helpFab) {
+        toggleChat();
       }
-    </script>
+    });
+
+  </script>
 </body>
 
 </html>

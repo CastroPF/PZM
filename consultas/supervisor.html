@@ -64,8 +64,8 @@
   <div class="painel-geral">
     <div class="card-filtros">
       <!-- Linha de ID e Botão Consultar -->
-      <div class="linha-id-consulta" style="grid-column: 1 / -1; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 0;">
-        <div class="fitros-consulta" style="margin: 0;">
+      <div class="linha-id-consulta" style="grid-column: 1 / -1; display: flex; align-items: flex-end; justify-content: space-between;">
+        <div class="fitros-consulta">
           <label>ID da Operação:</label>
           <div>
             <input type="text" placeholder="Digite o ID da operação" style="width: 300px;" />
@@ -159,13 +159,16 @@
       </div>
     </div>
     <div class="card-grafico">
-      <div class="grafico-item">
-        <span class="titulo-grafico">Controle de Status</span>
-        <canvas id="graficoFarol" width="300" height="300"></canvas>
+      <div class="barra-de-progresso-container">
+        <div class="barra-de-progresso-bar"></div>
       </div>
-      <div class="grafico-item">
+      <div class="grafico-item" id="containerFarol">
+        <span class="titulo-grafico">Controle de Status</span>
+        <canvas id="graficoFarol" width="280" height="240"></canvas>
+      </div>
+      <div class="grafico-item" id="containerEsferas" style="display: none;">
         <span class="titulo-grafico">Por Esfera</span>
-        <canvas id="graficoEsferas" width="330" height="300"></canvas>
+        <canvas id="graficoEsferas" width="280" height="240"></canvas>
       </div>
     </div>
   </div>
@@ -430,8 +433,8 @@
         <tr class="complementar">
           <td>
             <div class="status-etapa">
-              <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol finalizado" id="modalOpenButton"></span>
-              <span>12222</span>
+              <input type="checkbox" name="checkbox" id="checkbox" />
+              <span>12232</span>
             </div>
           </td>
           <td><span>Pagamento</span></td>
@@ -450,17 +453,59 @@
       </tbody>
     </table>
   </div>
+  <div class="helpFab" id="helpFab">
+    <span>?</span>
+  </div>
+
+  <div class="chat-popup" id="chat-popup">
+    <div class="chat-header">
+      <span>Dúvidas?</span>
+      <button class="close-chat" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body">
+      <p>Olá! Precisa de ajuda no login?<br>
+        Entre em contato com os nossos consultores no e-mail: <strong>suporte@pzmweb.com</strong></p>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const darkToggle = document.querySelector(".checkbox");
-      const body = document.body;
+    const helpFab = document.getElementById('helpFab');
+    const chatPopup = document.getElementById('chat-popup');
 
+    helpFab.onclick = function () {
+      chatPopup.style.display = 'block';
+    };
+
+    function toggleChat() {
+      chatPopup.style.display = 'none';
+    }
+
+    window.addEventListener('mousedown', function (e) {
+      if (chatPopup.style.display === 'block' && !chatPopup.contains(e.target) && e.target !== helpFab) {
+        toggleChat();
+      }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+      const body = document.body;
+      const darkToggle = document.querySelector(".checkbox");
       if (localStorage.getItem("dark-mode") === "enabled") {
         body.classList.add("dark-mode");
         if (darkToggle) darkToggle.checked = true;
       }
+      const farolContainer = document.getElementById("containerFarol");
+      const esferasContainer = document.getElementById("containerEsferas");
+      function trocaGraficos() {
+        const mostrandoFarol = farolContainer.style.display !== "none";
+        if (mostrandoFarol) {
+          farolContainer.style.display = "none";
+          esferasContainer.style.display = "";
+        } else {
+          farolContainer.style.display = "";
+          esferasContainer.style.display = "none";
+        }
+      }
+      setInterval(trocaGraficos, 10000);
       const centerTextPlugin = {
         id: "centerText",
         afterDraw(chart) {
@@ -522,29 +567,17 @@
         },
       };
 
-      // Gráfico Donut
-      const ctx = document.getElementById("graficoFarol").getContext("2d");
-      const graficoFarol = new Chart(ctx, {
+      // Gráfico em ciculo
+      const ctxFarol = document.getElementById("graficoFarol").getContext("2d");
+      const graficoFarol = new Chart(ctxFarol, {
         type: "doughnut",
         data: {
-          labels: [
-            "Complementar",
-            "Retificação",
-            "Dentro do Prazo",
-            "Prazo no Limite",
-            "Atenção: Prazo Vencido",
-            "Processo Finalizado",
-            "Finalizado [Fora do Prazo]",
-          ],
-          datasets: [
-            {
-              data: [1, 2, 5, 3, 1, 4, 1],
-              backgroundColor: [
-                "#002fff6b", "#f3007e", "#00e1ff", "orange", "red", "green", "purple"
-              ],
-              borderWidth: 3,
-            },
-          ],
+          labels: ["Complementar", "Retificação", "Dentro do Prazo", "Prazo no Limite", "Atenção: Prazo Vencido", "Processo Finalizado", "Finalizado [Fora do Prazo]"],
+          datasets: [{
+            data: [1, 2, 5, 3, 1, 4, 1],
+            backgroundColor: ["#002fff6b", "#f3007e", "#00e1ff", "orange", "red", "green", "purple"],
+            borderWidth: 3
+          }]
         },
         options: {
           responsive: false,
@@ -554,44 +587,37 @@
           plugins: {
             legend: { display: false },
             tooltip: {
-              enabled: true,
               callbacks: {
-                label(context) {
-                  const label = context.label || "";
-                  const value = context.parsed;
-                  const dataArr = context.chart.data.datasets[0].data;
-                  const total = dataArr.reduce((sum, v) => sum + v, 0);
-                  const pct = ((value / total) * 100).toFixed(2);
-                  return `${label}: ${pct}%`;
-                },
-              },
-            },
-          },
+                label(ctx) {
+                  const label = ctx.label || "";
+                  const val = ctx.parsed;
+                  const arr = ctx.chart.data.datasets[0].data;
+                  const total = arr.reduce((s, v) => s + v, 0);
+                  return `${label}: ${((val / total) * 100).toFixed(2)}%`;
+                }
+              }
+            }
+          }
         },
         plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
       });
 
-      // ====== Gráfico de Esferas (Colunas) ======
-      // Quantidade de itens:
-      const quantidades = [60, 33, 14]; // Federal, Estadual, Municipal (Eixo Y e label nas barras)
-      // Valores em reais:
-      const valoresReais = [60000, 20000, 15000]; // Federal, Estadual, Municipal (tooltip)
-
-      const esferasCtx = document.getElementById("graficoEsferas").getContext("2d");
-      const graficoEsferas = new Chart(esferasCtx, {
+      // Gráfico de esferas (colunas)
+      const quantidades = [60, 33, 14];
+      const valoresReais = [60000, 20000, 15000];
+      const ctxEsferas = document.getElementById("graficoEsferas").getContext("2d");
+      const graficoEsferas = new Chart(ctxEsferas, {
         type: "bar",
         data: {
           labels: ["Federal", "Estadual", "Municipal"],
-          datasets: [
-            {
-              label: "Quantidade",
-              data: quantidades, // Mostra só a quantidade visualmente
-              backgroundColor: ["#002fff6b", "#00e1ff", "#f3007e"],
-              borderRadius: 12,
-              borderWidth: 1,
-              borderSkipped: false
-            }
-          ]
+          datasets: [{
+            label: "Quantidade",
+            data: quantidades,
+            backgroundColor: ["#002fff6b", "#00e1ff", "#f3007e"],
+            borderRadius: 12,
+            borderWidth: 1,
+            borderSkipped: false
+          }]
         },
         options: {
           responsive: false,
@@ -600,11 +626,10 @@
             legend: { display: false },
             tooltip: {
               callbacks: {
-                label: function (context) {
-                  const label = context.label || "";
-                  const valor = valoresReais[context.dataIndex] || 0;
-                  const valorFormatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-                  return `${label}: ${valorFormatado}`;
+                label(ctx) {
+                  const lbl = ctx.label || "";
+                  const valor = valoresReais[ctx.dataIndex] || 0;
+                  return `${lbl}: ${valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
                 }
               }
             }
@@ -618,22 +643,17 @@
               grid: { display: false, drawBorder: false },
               beginAtZero: true,
               ticks: { color: body.classList.contains("dark-mode") ? "#fff" : "#222", font: { size: 13 } },
-              suggestedMax: 80 // Ajuste conforme suas quantidades
+              suggestedMax: 80
             }
           }
         }
       });
 
-      // Dark mode update para o gráfico de esferas
+
       if (darkToggle) {
-        darkToggle.addEventListener("change", function () {
-          if (darkToggle.checked) {
-            body.classList.add("dark-mode");
-            localStorage.setItem("dark-mode", "enabled");
-          } else {
-            body.classList.remove("dark-mode");
-            localStorage.setItem("dark-mode", "disabled");
-          }
+        darkToggle.addEventListener("change", () => {
+          body.classList.toggle("dark-mode", darkToggle.checked);
+          localStorage.setItem("dark-mode", darkToggle.checked ? "enabled" : "disabled");
           graficoFarol.update();
           graficoEsferas.options.scales.x.ticks.color = body.classList.contains("dark-mode") ? "#fff" : "#222";
           graficoEsferas.options.scales.y.ticks.color = body.classList.contains("dark-mode") ? "#fff" : "#222";

@@ -148,7 +148,7 @@
 
     <div class="card-grafico">
       <span class="titulo-grafico">Controle de Status</span>
-      <canvas id="graficoFarol" width="300" height="300"></canvas>
+      <canvas id="graficoFarol" width="300" height="260"></canvas>
     </div>
   </div>
 
@@ -412,11 +412,11 @@
         <tr class="complementar">
           <td>
             <div class="status-etapa">
-              <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol finalizado" id="modalOpenButton"></span>
+              <input type="checkbox" name="checkbox" id="checkbox" />
               <span>12222</span>
             </div>
           </td>
-          <td><span>Pagamento</span></td>
+          <td><span>Complementar</span></td>
           <td>Damares Oliveira</td>
           <td>Concluído</td>
           <td>Original</td>
@@ -510,19 +510,19 @@
         type: "doughnut",
         data: {
           labels: [
-            "Complementar",
-            "Retificação",
-            "Dentro do Prazo",
-            "Prazo no Limite",
-            "Atenção: Prazo Vencido",
-            "Processo Finalizado",
-            "Finalizado [Fora do Prazo]",
+            " Complementar",
+            " Retificação",
+            " Dentro do Prazo",
+            " Prazo no Limite",
+            " Atenção: Prazo Vencido",
+            " Processo Finalizado",
+            " Finalizado [Fora do Prazo]",
           ],
           datasets: [
             {
               data: [1, 2, 5, 3, 1, 4, 1], // ajuste os valores conforme sua necessidade!
               backgroundColor: [
-                "#002fff6b",  // Complementar
+                "#002fff",  // Complementar
                 "#f3007e",    // Retificação
                 "#00e1ff",    // Dentro do Prazo
                 "orange",     // Prazo no Limite

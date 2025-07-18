@@ -1,12 +1,13 @@
 /* ---------- RESET E BASE ---------- */
 * {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 body {
   margin: 0;
   background-color: #f7f7f7;
   color: #333;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* ---------- HEADER ---------- */
@@ -20,6 +21,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 3px solid #767a7e;
   padding: 8px 16px;
 }
 .header-left h2 {
@@ -51,7 +53,7 @@ header {
 
 .farol.complementar,
 .complementar::before {
-  background-color: #002fff6b;
+  background-color: #002fff;
   cursor: pointer;
 }
 
@@ -102,7 +104,7 @@ nav {
   font-weight: bold;
   border-bottom: 1px solid #ccc;
   position: relative;
-  font-size: 20px;
+  font-size: 18px;
 }
 .nav-container {
   display: flex;
@@ -234,7 +236,10 @@ nav {
   display: flex;
   gap: 10px;
   width: 100%;
-  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   align-items: stretch;
 }
 
@@ -319,14 +324,14 @@ nav {
 /* ---------- FORM HEADER ---------- */
 .form-header {
   display: flex;
-  justify-content: space-between; /* Agora o h3 vai à esquerda e o botão à direita */
-  align-items: center; /* Centraliza verticalmente */
-  padding-right: 20px; /* Mesmo recuo do título */
-  padding-top: 5px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 .form-header h3 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   border-radius: 10px;
   padding-top: 5px;
@@ -417,18 +422,17 @@ nav {
 .totalizadores {
   display: flex;
   gap: 16px;
-  font-weight: bold;
 }
 
 .totalizadores span {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .baixar-anexos {
   color: #007bff;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .paginacao {
@@ -473,23 +477,23 @@ nav {
   align-items: center;
   gap: 12px;
   background: #f0f0f0;
-  border-radius: 18px;
+  border-radius: 14px;
   box-shadow: 0 1px 8px rgba(30, 40, 60, 0.07);
-  padding: 7px 16px;
+  padding: 2px 14px;
 }
 
 .pagination-select {
   display: flex;
   align-items: center;
   gap: 3px;
-  font-size: 16px;
+  font-size: 14px;
   color: #555;
 }
 .pagination-select select {
   border: 1px solid #d2dbe8;
   border-radius: 4px;
   padding: 3px 8px;
-  font-size: 16px;
+  font-size: 14px;
   background: #f9fafc;
   color: #333;
   margin: 0 4px;
@@ -499,7 +503,7 @@ nav {
   background: none;
   border: none;
   color: #347ad8;
-  font-size: 20px;
+  font-size: 14px;
   padding: 4px 7px;
   border-radius: 4px;
   cursor: pointer;
@@ -520,15 +524,15 @@ nav {
   text-align: center;
   border: 1px solid #d2dbe8;
   border-radius: 4px;
-  padding: 4px 2px;
-  font-size: 20px;
+  padding: 2px 2px;
+  font-size: 14px;
   color: #333;
   background: #f9fafc;
 }
 
 .pagination-total {
   color: #666;
-  font-size: 18px;
+  font-size: 14px;
   margin-left: 2px;
 }
 
@@ -617,8 +621,8 @@ nav {
   margin-top: 10px;
   display: flex;
   gap: 10px;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 500;
   align-items: center;
 }
 
@@ -630,8 +634,8 @@ nav {
 .legenda span::before {
   content: "";
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   transition: transform 0.2s cubic-bezier(0.4, 1.2, 0.4, 1), box-shadow 0.2s;
 }
@@ -642,7 +646,7 @@ nav {
 }
 
 .complementar::before {
-  background-color: #002fff6b;
+  background-color: #002fff;
   cursor: pointer;
 }
 .todos-os-status::before {
@@ -702,12 +706,9 @@ th {
   text-align: left;
 }
 .header-table th {
-  background-color: #5b7fa9;
-  color: #fff;
-}
-.header-table2 th {
-  background-color: #7298c9;
-  color: white;
+  background-color: #dbe8f8;
+  color: black;
+  font-size: 13px;
 }
 
 .header-atv {
@@ -725,7 +726,7 @@ th {
 }
 
 .complementar td {
-  background-color: #002fff6b;
+  background-color: #002fff;
 }
 
 /* ---------- MENU SUSPENSO ---------- */
@@ -790,6 +791,10 @@ body.dark-mode .mainmenu {
 body.dark-mode .submenu {
   background-color: #444;
   border-color: #666;
+}
+body.dark-mode .sair {
+  text-decoration: none;
+  color: #dfe0e0;
 }
 
 body.dark-mode .submenu a {
