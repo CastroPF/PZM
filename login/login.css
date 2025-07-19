@@ -10,7 +10,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #c9c9c9;
+  background: #e2e2e2;
   font-family: "Open Sans", sans-serif;
   min-height: 100vh;
   display: flex;
@@ -26,7 +26,6 @@ body {
   align-items: center;
   justify-content: flex-start;
 }
-
 .login-form {
   position: absolute;
   left: 0;
@@ -34,7 +33,7 @@ body {
   transform: translateY(-50%);
   width: 340px;
   min-height: 350px;
-  background: #e0e0e0;
+  background: #ffffff;
   border-radius: 5px;
   z-index: 2;
   box-shadow: var(--shadow);
@@ -104,6 +103,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.btn-saml a {
+  text-decoration: none;
+  color: black;
 }
 
 .btn-saml:hover {
@@ -202,6 +206,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 7px;
+}
+
+.btn-login a {
+  text-decoration: none;
+  color: white;
 }
 
 .btn-login:hover {

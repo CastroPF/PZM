@@ -12,21 +12,51 @@
 </head>
 
 <body>
-  <div class="user-info">
-    <div class="avatar">IC</div>
-    <span>Igor Castro Pinheiro Fernandes</span>
+  <div class="pagina-selecao">
+    <header class="cabecalho-selecao">
+      <div class="usuario-logado">
+        <span class="avatar">IC</span>
+        <span class="nome-usuario">Igor Castro Pinheiro Fernandes</span>
+      </div>
+      <img src="/grupopzm.png" alt="Grupo PZM" class="logo-pzm" />
+    </header>
+
+    <main class="conteudo-selecao">
+      <div class="bloco-titulo">
+        <div class="titulo-box">
+          <h1 class="titulo-principal">Seleção de Divisão</h1>
+        </div>
+      </div>
+
+      <div class="container-modulos">
+        <ul class="lista-modulos">
+          <li><a href="/tela-inicial.html">Implantação</a></li>
+          <li><a href="/tela-inicial.html">Implantação/Suporte</a></li>
+        </ul>
+      </div>
+
+    </main>
   </div>
 
-  <div class="selecao-container">
-    <img src="/pzm_enterprise_logo_transparente.png" alt="Ícone" class="icon-topo" />
-    <h2>Seleção de Ambiente</h2>
-    <p>Escolha uma Divisão</p>
-    <ul class="lista-modulos">
-      <li><a href="/tela-inicial.html">Implantação</a></li>
-      <li><a href="/tela-inicial.html">Implantação/Suporte</a></li>
-    </ul>
-  </div>
-  <img src="/grupopzm.png" alt="" class="logo2">
+  <script>
+    // Menu do usuário (submenu)
+    document.querySelectorAll('.user-trigger').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelectorAll('.user-menu.open').forEach(function (openMenu) {
+          if (openMenu !== btn.parentElement) openMenu.classList.remove('open');
+        });
+        btn.parentElement.classList.toggle('open');
+        btn.setAttribute('aria-expanded', btn.parentElement.classList.contains('open'));
+      });
+    });
+    document.addEventListener('click', function (e) {
+      document.querySelectorAll('.user-menu.open').forEach(function (menu) {
+        if (!menu.contains(e.target)) {
+          menu.classList.remove('open');
+          menu.querySelector('.user-trigger').setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
 </body>
-
-</html>

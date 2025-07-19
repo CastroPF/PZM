@@ -306,7 +306,7 @@
               <span>12222</span>
             </div>
           </td>
-          <td><span>Pagamento</span></td>
+          <td><span>Eventual</span></td>
           <td>Damares Oliveira</td>
           <td>Concluído</td>
           <td>Original</td>
@@ -399,7 +399,7 @@
           <td>
             <div class="status-etapa">
               <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol finalizado" id="modalOpenButton"></span>
-              <span>12222</span>
+              <span>12222</span> +
             </div>
           </td>
           <td><span>Pagamento</span></td>
@@ -440,17 +440,59 @@
     </table>
   </div>
 
+  <div class="helpFab" id="helpFab">
+    <span>?</span>
+  </div>
+
+  <div class="chat-popup" id="chat-popup">
+    <div class="chat-header">
+      <span>Dúvidas?</span>
+      <button class="close-chat" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body">
+      <p>Olá! Precisa de ajuda no login?<br>
+        Entre em contato com os nossos consultores no e-mail: <strong>suporte@pzmweb.com</strong></p>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const darkToggle = document.querySelector(".checkbox");
-      const body = document.body;
+    const helpFab = document.getElementById('helpFab');
+    const chatPopup = document.getElementById('chat-popup');
 
+    helpFab.onclick = function () {
+      chatPopup.style.display = 'block';
+    };
+
+    function toggleChat() {
+      chatPopup.style.display = 'none';
+    }
+
+    window.addEventListener('mousedown', function (e) {
+      if (chatPopup.style.display === 'block' && !chatPopup.contains(e.target) && e.target !== helpFab) {
+        toggleChat();
+      }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+      const body = document.body;
+      const darkToggle = document.querySelector(".checkbox");
       if (localStorage.getItem("dark-mode") === "enabled") {
         body.classList.add("dark-mode");
-        darkToggle.checked = true;
+        if (darkToggle) darkToggle.checked = true;
       }
-
+      const farolContainer = document.getElementById("containerFarol");
+      const esferasContainer = document.getElementById("containerEsferas");
+      function trocaGraficos() {
+        const mostrandoFarol = farolContainer.style.display !== "none";
+        if (mostrandoFarol) {
+          farolContainer.style.display = "none";
+          esferasContainer.style.display = "";
+        } else {
+          farolContainer.style.display = "";
+          esferasContainer.style.display = "none";
+        }
+      }
+      setInterval(trocaGraficos, 10000);
       const centerTextPlugin = {
         id: "centerText",
         afterDraw(chart) {
@@ -464,14 +506,14 @@
           const x = left + width / 2;
           const y = top + height / 2;
           ctx.save();
-          ctx.font = "bold 24px Arial";
+          ctx.font = "bold 22px Arial";
           ctx.fillStyle = isDark ? "#fff" : "#000";
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
-          ctx.fillText(total, x, y - 10);
+          ctx.fillText(total, x, y - 8);
           ctx.font = "12px Arial";
           ctx.fillStyle = isDark ? "#fff" : "#000";
-          ctx.fillText("Total de tickets", x, y + 12);
+          ctx.fillText("Total de tickets", x, y + 15);
           ctx.restore();
         },
       };
@@ -486,7 +528,7 @@
             const value = data.datasets[0].data[i];
             ctx.save();
             ctx.fillStyle = "#333";
-            ctx.font = "bold 12px Arial";
+            ctx.font = "bold 11px Arial";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillText(value, x, y);
@@ -512,77 +554,42 @@
         },
       };
 
-      const ctx = document.getElementById("graficoFarol").getContext("2d");
-      const graficoFarol = new Chart(ctx, {
+      // Gráfico em ciculo
+      const ctxFarol = document.getElementById("graficoFarol").getContext("2d");
+      const graficoFarol = new Chart(ctxFarol, {
         type: "doughnut",
         data: {
-          labels: [
-            " Complementar",
-            " Retificação",
-            " Dentro do Prazo",
-            " Prazo no Limite",
-            " Atenção: Prazo Vencido",
-            " Processo Finalizado",
-            " Finalizado [Fora do Prazo]",
-          ],
-          datasets: [
-            {
-              data: [1, 2, 5, 3, 1, 4, 1], // ajuste os valores conforme sua necessidade!
-              backgroundColor: [
-                "#002fff",  // Complementar
-                "#f3007e",    // Retificação
-                "#00e1ff",    // Dentro do Prazo
-                "orange",     // Prazo no Limite
-                "red",        // Atenção: Prazo Vencido
-                "green",      // Processo Finalizado
-                "purple",     // Finalizado Fora do Prazo
-              ],
-              borderWidth: 3,
-            },
-          ],
+          labels: [" Complementar", " Retificação", " Dentro do Prazo", " Prazo no Limite", " Atenção: Prazo Vencido", " Processo Finalizado", " Finalizado [Fora do Prazo]"],
+          datasets: [{
+            data: [1, 2, 5, 3, 1, 4, 1],
+            backgroundColor: ["#002fff6b", "#f3007e", "#00e1ff", "orange", "red", "green", "purple"],
+            borderWidth: 3
+          }]
         },
         options: {
           responsive: false,
           maintainAspectRatio: false,
-          layout: {
-            padding: 15,
-          },
-          elements: {
-            arc: {
-              hoverOffset: 15,
-            },
-          },
+          layout: { padding: 15 },
+          elements: { arc: { hoverOffset: 15 } },
           plugins: {
             legend: { display: false },
             tooltip: {
-              enabled: true,
               callbacks: {
-                label(context) {
-                  const label = context.label || "";
-                  const value = context.parsed;
-                  const dataArr = context.chart.data.datasets[0].data;
-                  const total = dataArr.reduce((sum, v) => sum + v, 0);
-                  const pct = ((value / total) * 100).toFixed(2);
-                  return `${label}: ${pct}%`;
-                },
-              },
-            },
-          },
+                label(ctx) {
+                  const label = ctx.label || "";
+                  const val = ctx.parsed;
+                  const arr = ctx.chart.data.datasets[0].data;
+                  const total = arr.reduce((s, v) => s + v, 0);
+                  return `${label}: ${((val / total) * 100).toFixed(2)}%`;
+                }
+              }
+            }
+          }
         },
         plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
       });
-
-      darkToggle.addEventListener("change", function () {
-        if (darkToggle.checked) {
-          body.classList.add("dark-mode");
-          localStorage.setItem("dark-mode", "enabled");
-        } else {
-          body.classList.remove("dark-mode");
-          localStorage.setItem("dark-mode", "disabled");
-        }
-        graficoFarol.update();
-      });
-    });
+    }
+    );
   </script>
 
 </body>

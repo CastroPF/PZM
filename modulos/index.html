@@ -12,38 +12,68 @@
 </head>
 
 <body>
-  <div class="user-info">
-    <div class="avatar">IC</div>
-    <span>Igor Castro Pinheiro Fernandes</span>
+  <div class="pagina-selecao">
+    <header class="cabecalho-selecao">
+      <div class="usuario-logado">
+        <span class="avatar">IC</span>
+        <span class="nome-usuario">Igor Castro Pinheiro Fernandes</span>
+      </div>
+      <img src="/grupopzm.png" alt="Grupo PZM" class="logo-pzm" />
+    </header>
+
+    <main class="conteudo-selecao">
+      <div class="bloco-titulo">
+        <div class="titulo-box">
+          <h1 class="titulo-principal">Seleção de Ambiente</h1>
+        </div>
+      </div>
+
+      <div class="container-modulos">
+        <ul class="lista-modulos">
+          <li>Administração - CCF</li>
+          <li>Auditoria - Interna</li>
+          <li>Auditoria - SOD</li>
+          <li>Automação - Lançamento Manual</li>
+          <li>Contábil - Conciliação</li>
+          <li>Contábil - Manual de Fluxo</li>
+          <li>Contábil - Plano de Contas</li>
+          <li>Controle - Projetos</li>
+          <li>Controle - Cronograma</li>
+          <li>Controle - Documentos</li>
+          <li>Fiscal - Certidões Negativas</li>
+          <li>Fiscal - Compensação</li>
+          <li><a href="/modulos/divisão.html">Fiscal - Controle de Impostos</a></li>
+          <li>Fiscal - Intimações</li>
+          <li>Fiscal - Legislação</li>
+          <li>Fiscal - Pagamentos</li>
+          <li>Fiscal - Obrigações Acessórias</li>
+          <li>Fiscal - Regimes Especiais</li>
+          <li>Frotas - Controle</li>
+        </ul>
+      </div>
+
+    </main>
   </div>
 
-  <div class="selecao-container">
-    <img src="/pzm_enterprise_logo_transparente.png" alt="Ícone" class="icon-topo" />
-    <h2>Seleção de Ambiente</h2>
-    <p>Escolha um Módulo</p>
-    <ul class="lista-modulos">
-      <li>Administração - CCF - Módulo de Administração</li>
-      <li>Auditoria - Auditoria Interna</li>
-      <li>Auditoria - SOD - Segregation of Duties Control</li>
-      <li>Automação - Automação Lançamento Manual</li>
-      <li>Contábil - Conciliação Contábil</li>
-      <li>Contábil - Manual de Fluxo Contábil</li>
-      <li>Contábil - Plano de Contas</li>
-      <li>Controle - Controle de Projetos</li>
-      <li>Controle - Cronograma e Projetos</li>
-      <li>Controle - Módulo de Documentos</li>
-      <li>Fiscal - Certidões Negativas</li>
-      <li>Fiscal - Compensação de Impostos</li>
-      <li><a href="/consultas/operativo.html">Fiscal - Controle de Impostos</a></li>
-      <li>Fiscal - Intimações Fiscais</li>
-      <li>Fiscal - Legislações Fiscais</li>
-      <li>Fiscal - Módulo de Pagamentos</li>
-      <li>Fiscal - Obrigações Acessórias</li>
-      <li>Fiscal - Regimes Especiais</li>
-      <li>Frotas - Controle de Frotas</li>
-    </ul>
-  </div>
-  <img src="/grupopzm.png" alt="" class="logo2">
+  <script>
+    // Menu do usuário (submenu)
+    document.querySelectorAll('.user-trigger').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelectorAll('.user-menu.open').forEach(function (openMenu) {
+          if (openMenu !== btn.parentElement) openMenu.classList.remove('open');
+        });
+        btn.parentElement.classList.toggle('open');
+        btn.setAttribute('aria-expanded', btn.parentElement.classList.contains('open'));
+      });
+    });
+    document.addEventListener('click', function (e) {
+      document.querySelectorAll('.user-menu.open').forEach(function (menu) {
+        if (!menu.contains(e.target)) {
+          menu.classList.remove('open');
+          menu.querySelector('.user-trigger').setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
 </body>
-
-</html>
