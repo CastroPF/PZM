@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/capaprocesso/capa-de-processo.css" />
+  <title>PZMWEB Enterprise :: Controle de Obrigações Acessórias</title>
+</head>
+
+<body>
+  <header class="header-container">
+    <div class="header-left">
+      <h2>
+        <a href="/obrigacoes/obr-operativo.html" class="mainmenu">
+          PZMWEB Enterprise :: Controle de Obrigações Acessórias
+        </a>
+      </h2>
+    </div>
+    <div class="header-right">
+      <img src="/grupopzm.png" alt="logo" class="logo" />
+    </div>
+  </header>
+
+  <nav class="nav-container">
+    <div class="nav-left">
+      <div class="menu-item">
+        Controles
+        <div class="submenu">
+          <a href="/modulos/index.html">Alterar Aplicativo</a>
+          <a href="/modulos/divisão.html">Alterar Divisão</a>
+        </div>
+      </div>
+      <span>Cadastros</span>
+      <div class="menu-item">
+        Operações
+        <div class="submenu">
+          <a href="/obrigacoes/obr-operativo.html">Checklist de Obrigações Acessórias Operativo</a>
+          <a href="/obrigacoes/obr-supervisor.html">Checklist de Obrigações Acessórias Supervisor</a>
+          <a href="/obrigacoes/obr-processo.html">Controle de Aprovação da Capa de Processo</a>
+        </div>
+      </div>
+      <span>Processos</span>
+      <span>Relatórios</span>
+      <span>Gráficos</span>
+      <span>Configurações</span>
+      <span>Ajuda</span>
+      <span><a class="sair" href="/login/login.html">Sair</a></span>
+    </div>
+    <div class="nav-right">
+      <div class="toggle-switch">
+        <label class="switch-label">
+          <input type="checkbox" class="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="flags">
+        <img src="https://flagcdn.com/16x12/br.png" alt="Português" title="Português" />
+        <img src="https://flagcdn.com/16x12/es.png" alt="Español" title="Español" />
+        <img src="https://flagcdn.com/16x12/gb.png" alt="English" title="English" />
+      </div>
+    </div>
+  </nav>
+
+
+
+  <div class="form-header">
+    <h3>Consulta Controle de Aprovação da Capa de Processo</h3>
+  </div>
+
+  <div class="painel-geral">
+    <div class="card-filtros">
+      <div class="linha-id-consulta" style="grid-column: 1 / -1; display: flex; align-items: flex-end; justify-content: space-between;">
+        <div class="fitros-consulta" style="margin: 0;">
+          <label>ID da Operação:</label>
+          <div>
+            <input type="text" placeholder="Digite o ID da operação" style="width: 380px;" />
+          </div>
+        </div>
+        <button class="consulta">Consultar</button>
+      </div>
+      <div class="fitros-consulta">
+        <label>Data Inicial:</label>
+        <input type="date" value="2025-06-01" />
+      </div>
+      <div class="fitros-consulta">
+        <label>Data Final:</label>
+        <input type="date" value="2025-06-30" />
+      </div>
+
+      <div class="fitros-consulta">
+        <label>Classificação:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+      </div>
+
+      <div class="fitros-consulta">
+        <label>Empresa:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+        <label><input type="checkbox" /> Filtrar Empresas Inativas</label>
+      </div>
+      <div class="fitros-consulta">
+        <label>Estabelecimento:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+        <label><input type="checkbox" /> Filtrar Estabelecimentos Inativos</label>
+      </div>
+
+      <div class="fitros-consulta">
+        <label>Obrigação Acessória:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+      </div>
+
+      <div class="fitros-consulta">
+        <label>Esfera:</label>
+        <select>
+          <option>Todos os itens</option>
+        </select>
+      </div>
+
+      <div class="fitros-consulta">
+        <label>Responsável:</label>
+        <select>
+          <option>USUÁRIO PZM</option>
+        </select>
+      </div>
+
+      <div class="fitros-consulta">
+        <label>Status da Capa:</label>
+        <select>
+          <option>Todos os itens</option>
+          <option>Pendente</option>
+          <option>Agaurdando Aprovação - Conferente</option>
+          <option>Agaurdando Aprovação - Supervisor</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card-grafico">
+      <div class="grafico-item">
+        <span class="titulo-grafico">Controle de Status</span>
+        <canvas id="graficoFarol" width="300" height="260"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="linha-legenda-botoes">
+    <div class="legenda">
+      <span class="complementar">Complementar</span>
+      <span class="retificacao">Retificação</span>
+      <span class="dentro-prazo">Dentro do Prazo</span>
+      <span class="no-limite">Prazo no Limite</span>
+      <span class="vencido">Atenção: Prazo Vencido</span>
+      <span class="finalizado">Processo Finalizado</span>
+      <span class="fora-prazo">Finalizado [Fora do Prazo]</span>
+      <span class="todos-os-status">Todos os Status</span>
+    </div>
+  </div>
+
+
+  <div class="imp-info">
+    <div class="linha-total-paginacao">
+      <div class="totalizadores">
+        <span>Total de Registros: 8</span>
+        <span>Total de Itens: 16</span>
+        <span><a class="baixar-anexos" href="/anexos">Total de Anexos: 14</a></span>
+      </div>
+      <nav class="pagination-nav">
+        <label class="pagination-select">
+          <span>Exibir</span>
+          <select>
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
+          <span>por página</span>
+        </label>
+        <button class="pagination-btn" title="Primeira página">&laquo;</button>
+        <button class="pagination-btn" title="Página anterior">&lsaquo;</button>
+        <input type="number" value="1" min="1" class="pagination-input" />
+        <span class="pagination-total">de 5</span>
+        <button class="pagination-btn" title="Próxima página">&rsaquo;</button>
+        <button class="pagination-btn" title="Última página">&raquo;</button>
+      </nav>
+    </div>
+
+
+    <table>
+      <thead>
+        <tr class="header-table">
+          <th></th>
+          <th>Estabelecimento</th>
+          <th>Número da operação</th>
+          <th>Obrigação</th>
+          <th>Estágio</th>
+          <th>Competência</th>
+          <th>Data Prevista</th>
+          <th>Data Realizada</th>
+          <th>Elaborador</th>
+          <th>Conferente</th>
+          <th>Supervisor</th>
+          <th>Status</th>
+          <th>Anexos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="status-etapa">
+              <input type="checkbox" name="checkbox1" id="checkbox1" /><span class="farol dentro-prazo" id="modalOpenButton"></span>
+            </div>
+          </td>
+          <td><span>Grupo PZM Filial - SP</span></td>
+          <td>12222</td>
+          <td>ICMS</td>
+          <td>Apuração</td>
+          <td>06/2025</td>
+          <td>15/07/2025</td>
+          <td>15/07/2025</td>
+          <td>Igor Castro</td>
+          <td>Igor Castro</td>
+          <td>Igor Castro</td>
+          <td>Pendente</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="status-etapa">
+              <input type="checkbox" name="checkbox2" id="checkbox2" /><span class="farol finalizado" id="modalOpenButton"></span>
+            </div>
+          </td>
+          <td><span>Grupo PZM Filial - SP</span></td>
+          <td>12333</td>
+          <td>ICMS</td>
+          <td>Apuração</td>
+          <td>06/2025</td>
+          <td>15/07/2025</td>
+          <td>15/07/2025</td>
+          <td>Igor Castro</td>
+          <td>Igor Castro</td>
+          <td>Igor Castro</td>
+          <td>Concluído</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="helpFab" id="helpFab">
+      <span>?</span>
+    </div>
+
+    <div class="chat-popup" id="chat-popup">
+      <div class="chat-header">
+        <span>Dúvidas?</span>
+        <button class="close-chat" onclick="toggleChat()">×</button>
+      </div>
+      <div class="chat-body">
+        <p>Olá! Precisa de ajuda no login?<br>
+          Entre em contato com os nossos consultores no e-mail: <strong>suporte@pzmweb.com</strong></p>
+      </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const helpFab = document.getElementById('helpFab');
+      const chatPopup = document.getElementById('chat-popup');
+
+      helpFab.onclick = function () {
+        chatPopup.style.display = 'block';
+      };
+
+      function toggleChat() {
+        chatPopup.style.display = 'none';
+      }
+
+      window.addEventListener('mousedown', function (e) {
+        if (chatPopup.style.display === 'block' && !chatPopup.contains(e.target) && e.target !== helpFab) {
+          toggleChat();
+        }
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const darkToggle = document.querySelector(".checkbox");
+        const body = document.body;
+
+        if (localStorage.getItem("dark-mode") === "enabled") {
+          body.classList.add("dark-mode");
+          darkToggle.checked = true;
+        }
+
+        const centerTextPlugin = {
+          id: "centerText",
+          afterDraw(chart) {
+            const {
+              ctx,
+              chartArea: { left, top, width, height },
+              data,
+            } = chart;
+            const total = data.datasets[0].data.reduce((sum, v) => sum + v, 0);
+            const isDark = body.classList.contains("dark-mode");
+            const x = left + width / 2;
+            const y = top + height / 2;
+            ctx.save();
+            ctx.font = "bold 24px Arial";
+            ctx.fillStyle = isDark ? "#fff" : "#000";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(total, x, y - 10);
+            ctx.font = "12px Arial";
+            ctx.fillStyle = isDark ? "#fff" : "#000";
+            ctx.fillText("Total de tickets", x, y + 12);
+            ctx.restore();
+          },
+        };
+
+        const dataLabelPlugin = {
+          id: "dataLabel",
+          afterDatasetsDraw(chart) {
+            const { ctx, data } = chart;
+            const meta = chart.getDatasetMeta(0);
+            meta.data.forEach((arc, i) => {
+              const { x, y } = arc.getCenterPoint();
+              const value = data.datasets[0].data[i];
+              ctx.save();
+              ctx.fillStyle = "#333";
+              ctx.font = "bold 12px Arial";
+              ctx.textAlign = "center";
+              ctx.textBaseline = "middle";
+              ctx.fillText(value, x, y);
+              ctx.restore();
+            });
+          },
+        };
+
+        const shadowPlugin = {
+          id: "shadow",
+          beforeDraw(chart) {
+            const ctx = chart.ctx;
+            ctx.save();
+            ctx.shadowColor = body.classList.contains("dark-mode")
+              ? "#ffffff40"
+              : "#b9b9b9";
+            ctx.shadowBlur = 12;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+          },
+          afterDraw(chart) {
+            chart.ctx.restore();
+          },
+        };
+
+        const ctx = document.getElementById("graficoFarol").getContext("2d");
+        const graficoFarol = new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            labels: [
+              " Complementar",
+              " Retificação",
+              " Dentro do Prazo",
+              " Prazo no Limite",
+              " Atenção: Prazo Vencido",
+              " Processo Finalizado",
+              " Finalizado [Fora do Prazo]",
+            ],
+            datasets: [
+              {
+                data: [1, 2, 5, 3, 1, 4, 1], // ajuste os valores conforme sua necessidade!
+                backgroundColor: [
+                  "#002fff",  // Complementar
+                  "#f3007e",    // Retificação
+                  "#00e1ff",    // Dentro do Prazo
+                  "orange",     // Prazo no Limite
+                  "red",        // Atenção: Prazo Vencido
+                  "green",      // Processo Finalizado
+                  "purple",     // Finalizado Fora do Prazo
+                ],
+                borderWidth: 3,
+              },
+            ],
+          },
+          options: {
+            responsive: false,
+            maintainAspectRatio: false,
+            layout: {
+              padding: 15,
+            },
+            elements: {
+              arc: {
+                hoverOffset: 15,
+              },
+            },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                enabled: true,
+                callbacks: {
+                  label(context) {
+                    const label = context.label || "";
+                    const value = context.parsed;
+                    const dataArr = context.chart.data.datasets[0].data;
+                    const total = dataArr.reduce((sum, v) => sum + v, 0);
+                    const pct = ((value / total) * 100).toFixed(2);
+                    return `${label}: ${pct}%`;
+                  },
+                },
+              },
+            },
+          },
+          plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
+        });
+
+        darkToggle.addEventListener("change", function () {
+          if (darkToggle.checked) {
+            body.classList.add("dark-mode");
+            localStorage.setItem("dark-mode", "enabled");
+          } else {
+            body.classList.remove("dark-mode");
+            localStorage.setItem("dark-mode", "disabled");
+          }
+          graficoFarol.update();
+        });
+      });
+    </script>
+
+
+</body>
+
+</html>

@@ -4,16 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/consultas/operativo.css" />
-  <title>PZMWEB Enterprise :: Controle de Impostos</title>
+  <link rel="stylesheet" href="/consultas/supervisor.css" />
+  <title>PZMWEB Enterprise :: Controle de Obrigações Acessórias</title>
 </head>
 
 <body>
   <header class="header-container">
     <div class="header-left">
       <h2>
-        <a href="/consultas/operativo.html" class="mainmenu">
-          PZMWEB Enterprise :: Controle de Impostos
+        <a href="/obrigacoes/obr-operativo.html" class="mainmenu">
+          PZMWEB Enterprise :: Controle de Obrigações Acessórias
         </a>
       </h2>
     </div>
@@ -35,9 +35,9 @@
       <div class="menu-item">
         Operações
         <div class="submenu">
-          <a href="/consultas/operativo.html">Checklist de Apurações de Impostos Operativo</a>
-          <a href="/consultas/supervisor.html">Checklist de Apurações de Impostos Supervisor</a>
-          <a href="/capaprocesso/capa-de-processo.html">Controle de Aprovação da Capa de Processo</a>
+          <a href="/obrigacoes/obr-operativo.html">Checklist de Obrigações Acessórias Operativo</a>
+          <a href="/obrigacoes/obr-supervisor.html">Checklist de Obrigações Acessórias Supervisor</a>
+          <a href="/obrigacoes/obr-processo.html">Controle de Aprovação da Capa de Processo</a>
         </div>
       </div>
       <span>Processos</span>
@@ -65,34 +65,39 @@
 
 
   <div class="form-header">
-    <h3>Consulta Controle de Apuração de Impostos - Operativo</h3>
+    <h3>Consulta Controle de Obrigações Acessórias - Supervisor</h3>
   </div>
 
   <div class="painel-geral">
     <div class="card-filtros">
+      <!-- Linha de ID e Botão Consultar -->
       <div class="linha-id-consulta" style="grid-column: 1 / -1; display: flex; align-items: flex-end; justify-content: space-between;">
-        <div class="fitros-consulta" style="margin: 0;">
+        <div class="fitros-consulta">
           <label>ID da Operação:</label>
           <div>
-            <input type="text" placeholder="Digite o ID da operação" style="width: 380px;" />
+            <input type="text" placeholder="Digite o ID da operação" style="width: 300px;" />
           </div>
         </div>
         <button class="consulta">Consultar</button>
       </div>
+      <!-- Linha de Filtros -->
       <div class="fitros-consulta">
         <label>Data Inicial:</label>
         <input type="date" value="2025-06-01" />
-        <label><input type="checkbox" checked /> Listar Pendências dos últimos 5 dias</label>
+        <label style="margin-bottom:0;">
+          <input type="checkbox" checked />
+          Listar Pendências dos últimos 5 dias
+        </label>
       </div>
       <div class="fitros-consulta">
         <label>Data Final:</label>
         <input type="date" value="2025-06-30" />
       </div>
       <div class="fitros-consulta">
-        <label style="margin-bottom: 10px;">Data Base:</label>
-        <div class="grupo-opcoes">
-          <label><input type="radio" name="data-base" />Vencimento</label><br>
-          <label><input type="radio" name="data-base" />Data Prevista</label><br>
+        <label style="margin-bottom: 2px;">Data Base:</label>
+        <div class="grupo-opcoes" style="gap: 4px;">
+          <label><input type="radio" name="data-base" />Vencimento</label>
+          <label><input type="radio" name="data-base" />Data Prevista</label>
           <label><input type="radio" name="data-base" />Data Realizada</label>
         </div>
       </div>
@@ -101,14 +106,14 @@
         <select>
           <option>Todos os itens</option>
         </select>
-        <label><input type="checkbox" /> Filtrar Empresas Inativas</label>
+        <label style="margin-bottom:0;"><input type="checkbox" /> Filtrar Empresas Inativas</label>
       </div>
       <div class="fitros-consulta">
         <label>Estabelecimento:</label>
         <select>
           <option>Todos os itens</option>
         </select>
-        <label><input type="checkbox" /> Filtrar Estabelecimentos Inativos</label>
+        <label style="margin-bottom:0;"><input type="checkbox" /> Filtrar Estabelecimentos Inativos</label>
       </div>
       <div class="fitros-consulta">
         <label>Esfera:</label>
@@ -117,7 +122,7 @@
         </select>
       </div>
       <div class="fitros-consulta">
-        <label>Imposto:</label>
+        <label>Obrigação Acessória:</label>
         <select>
           <option>Todos os itens</option>
         </select>
@@ -139,31 +144,46 @@
         <select>
           <option>Todos os itens</option>
         </select>
-        <label><input type="checkbox" /> Filtrar todos os registros sem responsável</label>
+        <label style="margin-bottom:0;"><input type="checkbox" /> Filtrar todos os registros sem responsável</label>
       </div>
-
       <div class="fitros-consulta">
         <label>Status:</label>
         <select>
           <option>Todos os itens</option>
         </select>
+        <div class="analiticos">
+          <label style="margin-bottom:0;"><input type="checkbox" checked /> Analítico</label>
+        </div>
       </div>
-      <div class="analiticos">
-        <label><input type="checkbox" checked /> Analítico</label>
+      <div class="fitros-consulta associar-responsavel">
+        <label>Associar Responsável:</label>
+        <div class="associar" style="display: flex; gap: 8px;">
+          <select>
+            <option>Todos os itens</option>
+          </select>
+          <button class="associar-botao">Associar</button>
+        </div>
       </div>
     </div>
-
     <div class="card-grafico">
-      <span class="titulo-grafico">Controle de Status</span>
-      <canvas id="graficoFarol" width="300" height="260"></canvas>
+      <div class="barra-de-progresso-container">
+        <div class="barra-de-progresso-bar"></div>
+      </div>
+      <div class="grafico-item" id="containerFarol">
+        <span class="titulo-grafico">Controle de Status</span>
+        <canvas id="graficoFarol" width="280" height="240"></canvas>
+      </div>
+      <div class="grafico-item" id="containerEsferas" style="display: none;">
+        <span class="titulo-grafico">Por Esfera</span>
+        <canvas id="graficoEsferas" width="280" height="240"></canvas>
+      </div>
     </div>
   </div>
 
 
 
   <div class="linha-legenda-botoes">
-    <div class="legenda">
-      <span class="complementar">Complementar</span>
+    <div class="legenda" style="margin-left: 250px;">
       <span class="retificacao">Retificação</span>
       <span class="dentro-prazo">Dentro do Prazo</span>
       <span class="no-limite">Prazo no Limite</span>
@@ -216,7 +236,7 @@
           <th>Empresa</th>
           <th>Estabelecimento</th>
           <th>Categória</th>
-          <th>Imposto</th>
+          <th>Obrigação</th>
           <th>Esfera</th>
           <th>Vencimento</th>
           <th>Mês</th>
@@ -255,7 +275,7 @@
           <td>10</td>
           <td>07</td>
           <td>2025</td>
-          <td>Imposto com vencimento todo dia 10</td>
+          <td>Obrigação com vencimento todo dia 10</td>
           <td>06/2025</td>
           </td>
         </tr>
@@ -306,7 +326,7 @@
               <span>12222</span>
             </div>
           </td>
-          <td><span>Pagamento</span></td>
+          <td><span>Eventual</span></td>
           <td>Damares Oliveira</td>
           <td>Concluído</td>
           <td>Original</td>
@@ -331,7 +351,7 @@
           <th>Empresa</th>
           <th>Estabelecimento</th>
           <th>Categória</th>
-          <th>Imposto</th>
+          <th>Obrigação</th>
           <th>Esfera</th>
           <th>Vencimento</th>
           <th>Mês</th>
@@ -370,7 +390,7 @@
           <td>10</td>
           <td>07</td>
           <td>2025</td>
-          <td>Imposto com vencimento todo dia 10</td>
+          <td>Obrigação com vencimento todo dia 10</td>
           <td>06/2025</td>
           </td>
         </tr>
@@ -415,42 +435,62 @@
           <td>Sim</td>
           <td>1</td>
         </tr>
-
-        <tr class="complementar">
-          <td>
-            <div class="status-etapa">
-              <input type="checkbox" name="checkbox" id="checkbox" />
-              <span>12222</span>
-            </div>
-          </td>
-          <td><span>Complementar</span></td>
-          <td>Damares Oliveira</td>
-          <td>Concluído</td>
-          <td>Original</td>
-          <td>ICMS PZM 3030</td>
-          <td>15/07/2025</td>
-          <td>250,00</td>
-          <td>Devedora</td>
-          <td>Contas a Pagar</td>
-          <td>Compensação</td>
-          <td>Sim</td>
-          <td>1</td>
-        </tr>
       </tbody>
     </table>
+  </div>
+  <div class="helpFab" id="helpFab">
+    <span>?</span>
+  </div>
+
+  <div class="chat-popup" id="chat-popup">
+    <div class="chat-header">
+      <span>Dúvidas?</span>
+      <button class="close-chat" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body">
+      <p>Olá! Precisa de ajuda no login?<br>
+        Entre em contato com os nossos consultores no e-mail: <strong>suporte@pzmweb.com</strong></p>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const darkToggle = document.querySelector(".checkbox");
-      const body = document.body;
+    const helpFab = document.getElementById('helpFab');
+    const chatPopup = document.getElementById('chat-popup');
 
+    helpFab.onclick = function () {
+      chatPopup.style.display = 'block';
+    };
+
+    function toggleChat() {
+      chatPopup.style.display = 'none';
+    }
+
+    window.addEventListener('mousedown', function (e) {
+      if (chatPopup.style.display === 'block' && !chatPopup.contains(e.target) && e.target !== helpFab) {
+        toggleChat();
+      }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+      const body = document.body;
+      const darkToggle = document.querySelector(".checkbox");
       if (localStorage.getItem("dark-mode") === "enabled") {
         body.classList.add("dark-mode");
-        darkToggle.checked = true;
+        if (darkToggle) darkToggle.checked = true;
       }
-
+      const farolContainer = document.getElementById("containerFarol");
+      const esferasContainer = document.getElementById("containerEsferas");
+      function trocaGraficos() {
+        const mostrandoFarol = farolContainer.style.display !== "none";
+        if (mostrandoFarol) {
+          farolContainer.style.display = "none";
+          esferasContainer.style.display = "";
+        } else {
+          farolContainer.style.display = "";
+          esferasContainer.style.display = "none";
+        }
+      }
+      setInterval(trocaGraficos, 10000);
       const centerTextPlugin = {
         id: "centerText",
         afterDraw(chart) {
@@ -464,14 +504,14 @@
           const x = left + width / 2;
           const y = top + height / 2;
           ctx.save();
-          ctx.font = "bold 24px Arial";
+          ctx.font = "bold 22px Arial";
           ctx.fillStyle = isDark ? "#fff" : "#000";
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
-          ctx.fillText(total, x, y - 10);
+          ctx.fillText(total, x, y - 8);
           ctx.font = "12px Arial";
           ctx.fillStyle = isDark ? "#fff" : "#000";
-          ctx.fillText("Total de tickets", x, y + 12);
+          ctx.fillText("Total de tickets", x, y + 15);
           ctx.restore();
         },
       };
@@ -486,7 +526,7 @@
             const value = data.datasets[0].data[i];
             ctx.save();
             ctx.fillStyle = "#333";
-            ctx.font = "bold 12px Arial";
+            ctx.font = "bold 11px Arial";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillText(value, x, y);
@@ -512,79 +552,101 @@
         },
       };
 
-      const ctx = document.getElementById("graficoFarol").getContext("2d");
-      const graficoFarol = new Chart(ctx, {
+      // Gráfico em ciculo
+      const ctxFarol = document.getElementById("graficoFarol").getContext("2d");
+      const graficoFarol = new Chart(ctxFarol, {
         type: "doughnut",
         data: {
-          labels: [
-            " Complementar",
-            " Retificação",
-            " Dentro do Prazo",
-            " Prazo no Limite",
-            " Atenção: Prazo Vencido",
-            " Processo Finalizado",
-            " Finalizado [Fora do Prazo]",
-          ],
-          datasets: [
-            {
-              data: [1, 2, 5, 3, 1, 4, 1], // ajuste os valores conforme sua necessidade!
-              backgroundColor: [
-                "#002fff",  // Complementar
-                "#f3007e",    // Retificação
-                "#00e1ff",    // Dentro do Prazo
-                "orange",     // Prazo no Limite
-                "red",        // Atenção: Prazo Vencido
-                "green",      // Processo Finalizado
-                "purple",     // Finalizado Fora do Prazo
-              ],
-              borderWidth: 3,
-            },
-          ],
+          labels: ["Retificação", "Dentro do Prazo", "Prazo no Limite", "Atenção: Prazo Vencido", "Processo Finalizado", "Finalizado [Fora do Prazo]"],
+          datasets: [{
+            data: [2, 5, 3, 1, 4, 1],
+            backgroundColor: ["#002fff6b", "#f3007e", "#00e1ff", "orange", "red", "green", "purple"],
+            borderWidth: 3
+          }]
         },
         options: {
           responsive: false,
           maintainAspectRatio: false,
-          layout: {
-            padding: 15,
-          },
-          elements: {
-            arc: {
-              hoverOffset: 15,
-            },
-          },
+          layout: { padding: 15 },
+          elements: { arc: { hoverOffset: 15 } },
           plugins: {
             legend: { display: false },
             tooltip: {
-              enabled: true,
               callbacks: {
-                label(context) {
-                  const label = context.label || "";
-                  const value = context.parsed;
-                  const dataArr = context.chart.data.datasets[0].data;
-                  const total = dataArr.reduce((sum, v) => sum + v, 0);
-                  const pct = ((value / total) * 100).toFixed(2);
-                  return `${label}: ${pct}%`;
-                },
-              },
-            },
-          },
+                label(ctx) {
+                  const label = ctx.label || "";
+                  const val = ctx.parsed;
+                  const arr = ctx.chart.data.datasets[0].data;
+                  const total = arr.reduce((s, v) => s + v, 0);
+                  return `${label}: ${((val / total) * 100).toFixed(2)}%`;
+                }
+              }
+            }
+          }
         },
         plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
       });
 
-      darkToggle.addEventListener("change", function () {
-        if (darkToggle.checked) {
-          body.classList.add("dark-mode");
-          localStorage.setItem("dark-mode", "enabled");
-        } else {
-          body.classList.remove("dark-mode");
-          localStorage.setItem("dark-mode", "disabled");
+      // Gráfico de esferas (colunas)
+      const quantidades = [60, 33, 14];
+      const valoresReais = [60000, 20000, 15000];
+      const ctxEsferas = document.getElementById("graficoEsferas").getContext("2d");
+      const graficoEsferas = new Chart(ctxEsferas, {
+        type: "bar",
+        data: {
+          labels: ["Federal", "Estadual", "Municipal"],
+          datasets: [{
+            label: "Quantidade",
+            data: quantidades,
+            backgroundColor: ["#002fff6b", "#00e1ff", "#f3007e"],
+            borderRadius: 12,
+            borderWidth: 1,
+            borderSkipped: false
+          }]
+        },
+        options: {
+          responsive: false,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label(ctx) {
+                  const lbl = ctx.label || "";
+                  const valor = valoresReais[ctx.dataIndex] || 0;
+                  return `${lbl}: ${valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false, drawBorder: false },
+              ticks: { color: body.classList.contains("dark-mode") ? "#fff" : "#222", font: { size: 13 } }
+            },
+            y: {
+              grid: { display: false, drawBorder: false },
+              beginAtZero: true,
+              ticks: { color: body.classList.contains("dark-mode") ? "#fff" : "#222", font: { size: 13 } },
+              suggestedMax: 80
+            }
+          }
         }
-        graficoFarol.update();
       });
+
+
+      if (darkToggle) {
+        darkToggle.addEventListener("change", () => {
+          body.classList.toggle("dark-mode", darkToggle.checked);
+          localStorage.setItem("dark-mode", darkToggle.checked ? "enabled" : "disabled");
+          graficoFarol.update();
+          graficoEsferas.options.scales.x.ticks.color = body.classList.contains("dark-mode") ? "#fff" : "#222";
+          graficoEsferas.options.scales.y.ticks.color = body.classList.contains("dark-mode") ? "#fff" : "#222";
+          graficoEsferas.update();
+        });
+      }
     });
   </script>
-
 </body>
 
 </html>
