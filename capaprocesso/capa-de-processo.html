@@ -62,8 +62,6 @@
     </div>
   </nav>
 
-
-
   <div class="form-header">
     <h3>Consulta Controle de Aprovação da Capa de Processo</h3>
   </div>
@@ -150,8 +148,6 @@
     </div>
   </div>
 
-
-
   <div class="linha-legenda-botoes">
     <div class="legenda">
       <span class="complementar">Complementar</span>
@@ -165,13 +161,12 @@
     </div>
   </div>
 
-
   <div class="imp-info">
     <div class="linha-total-paginacao">
       <div class="totalizadores">
         <span>Total de Registros: 8</span>
         <span>Total de Itens: 16</span>
-        <span><a class="baixar-anexos" href="/anexos">Total de Anexos: 14</a></span>
+        <span><a href="#" class="baixar-anexos" onclick="abrirModal()">Total de Anexos: 14</a></span>
       </div>
       <nav class="pagination-nav">
         <label class="pagination-select">
@@ -192,8 +187,6 @@
         <button class="pagination-btn" title="Última página">&raquo;</button>
       </nav>
     </div>
-
-
     <table>
       <thead>
         <tr class="header-table">
@@ -278,10 +271,146 @@
       </div>
     </div>
 
+    <div id="modalAnexos" class="modal">
+      <div class="modal-conteudo">
+        <span class="fechar" onclick="fecharModal()">&times;</span>
+        <h2>Anexos do Checklist</h2>
+
+        <div class="tabela-anexos">
+          <div class="cabecalho">
+            <span><input type="checkbox" /></span>
+            <span>ID</span>
+            <span>Empresa</span>
+            <span>Estabelecimento</span>
+            <span>Imposto</span>
+            <span>Ano e Mês</span>
+            <span>Tamanho</span>
+            <span>Arquivo</span>
+          </div>
+
+          <div class="linha">
+            <span><input type="checkbox" /></span>
+            <span>22222</span>
+            <span>ABC</span>
+            <span>Matriz</span>
+            <span>ICMS</span>
+            <span>2025/07</span>
+            <span>10GB</span>
+            <span><a href="/anexos/anexo1.pdf" target="_blank">Comprovante.pdf</a></span>
+          </div>
+
+          <div class="linha">
+            <span><input type="checkbox" /></span>
+            <span>33333</span>
+            <span>PZM</span>
+            <span>Filial SP</span>
+            <span>ISS</span>
+            <span>2025/07</span>
+            <span>3.4MB</span>
+            <span><a href="/anexos/anexo2.jpg" target="_blank">Comprovante.jpg</a></span>
+          </div>
+
+          <div class="linha">
+            <span><input type="checkbox" /></span>
+            <span>44444</span>
+            <span>XYZ</span>
+            <span>Unidade RJ</span>
+            <span>ICMS-ST</span>
+            <span>2025/07</span>
+            <span>790KB</span>
+            <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+          </div>
+
+          <div class="linha">
+            <span><input type="checkbox" /></span>
+            <span>44444</span>
+            <span>XYZ</span>
+            <span>Unidade RJ</span>
+            <span>ICMS-ST</span>
+            <span>2025/07</span>
+            <span>790KB</span>
+            <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+          </div>
+
+          <div class="linha">
+            <span><input type="checkbox" /></span>
+            <span>44444</span>
+            <span>XYZ</span>
+            <span>Unidade RJ</span>
+            <span>ICMS-ST</span>
+            <span>2025/07</span>
+            <span>790KB</span>
+            <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+          </div>
+
+          <div class="linha">
+            <span><input type="checkbox" /></span>
+            <span>44444</span>
+            <span>XYZ</span>
+            <span>Unidade RJ</span>
+            <span>ICMS-ST</span>
+            <span>2025/07</span>
+            <span>790KB</span>
+            <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+          </div>
+
+          <div class="linha">
+            <span><input type="checkbox" /></span>
+            <span>44444</span>
+            <span>XYZ</span>
+            <span>Unidade RJ</span>
+            <span>ICMS-ST</span>
+            <span>2025/07</span>
+            <span>790KB</span>
+            <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+          </div>
+
+          <div class="linha">
+            <span><input type="checkbox" /></span>
+            <span>44444</span>
+            <span>XYZ</span>
+            <span>Unidade RJ</span>
+            <span>ICMS-ST</span>
+            <span>2025/07</span>
+            <span>790KB</span>
+            <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+          </div>
+
+          <div class="linha">
+            <span><input type="checkbox" /></span>
+            <span>44444</span>
+            <span>XYZ</span>
+            <span>Unidade RJ</span>
+            <span>ICMS-ST</span>
+            <span>2025/07</span>
+            <span>790KB</span>
+            <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+          </div>
+
+        </div>
+        <button class="btn-download-todos">Baixar Todos</button>
+      </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <script>
+      function abrirModal() {
+        document.getElementById("modalAnexos").style.display = "block";
+      }
+
+      function fecharModal() {
+        document.getElementById("modalAnexos").style.display = "none";
+      }
+
+      // Fecha ao clicar fora
+      window.onclick = function (event) {
+        const modal = document.getElementById("modalAnexos");
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      }
+
       const helpFab = document.getElementById('helpFab');
       const chatPopup = document.getElementById('chat-popup');
 
@@ -298,13 +427,27 @@
           toggleChat();
         }
       });
+
       document.addEventListener("DOMContentLoaded", function () {
-        const darkToggle = document.querySelector(".checkbox");
         const body = document.body;
+        const darkToggle = document.querySelector(".checkbox");
 
         if (localStorage.getItem("dark-mode") === "enabled") {
           body.classList.add("dark-mode");
-          darkToggle.checked = true;
+          if (darkToggle) darkToggle.checked = true;
+        }
+
+        if (darkToggle) {
+          darkToggle.addEventListener("change", function () {
+            if (darkToggle.checked) {
+              body.classList.add("dark-mode");
+              localStorage.setItem("dark-mode", "enabled");
+            } else {
+              body.classList.remove("dark-mode");
+              localStorage.setItem("dark-mode", "disabled");
+            }
+            graficoFarol.update();
+          });
         }
 
         const centerTextPlugin = {
@@ -320,14 +463,14 @@
             const x = left + width / 2;
             const y = top + height / 2;
             ctx.save();
-            ctx.font = "bold 24px Arial";
+            ctx.font = "bold 22px Arial";
             ctx.fillStyle = isDark ? "#fff" : "#000";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillText(total, x, y - 10);
+            ctx.fillText(total, x, y - 8);
             ctx.font = "12px Arial";
             ctx.fillStyle = isDark ? "#fff" : "#000";
-            ctx.fillText("Total de tickets", x, y + 12);
+            ctx.fillText("Total de tickets", x, y + 15);
             ctx.restore();
           },
         };
@@ -342,7 +485,7 @@
               const value = data.datasets[0].data[i];
               ctx.save();
               ctx.fillStyle = "#333";
-              ctx.font = "bold 12px Arial";
+              ctx.font = "bold 11px Arial";
               ctx.textAlign = "center";
               ctx.textBaseline = "middle";
               ctx.fillText(value, x, y);
@@ -368,8 +511,9 @@
           },
         };
 
-        const ctx = document.getElementById("graficoFarol").getContext("2d");
-        const graficoFarol = new Chart(ctx, {
+        // Gráfico em ciculo
+        const ctxFarol = document.getElementById("graficoFarol").getContext("2d");
+        window.graficoFarol = new Chart(ctxFarol, {
           type: "doughnut",
           data: {
             labels: [
@@ -379,68 +523,40 @@
               " Prazo no Limite",
               " Atenção: Prazo Vencido",
               " Processo Finalizado",
-              " Finalizado [Fora do Prazo]",
+              " Finalizado [Fora do Prazo]"
             ],
-            datasets: [
-              {
-                data: [1, 2, 5, 3, 1, 4, 1], // ajuste os valores conforme sua necessidade!
-                backgroundColor: [
-                  "#002fff",  // Complementar
-                  "#f3007e",    // Retificação
-                  "#00e1ff",    // Dentro do Prazo
-                  "orange",     // Prazo no Limite
-                  "red",        // Atenção: Prazo Vencido
-                  "green",      // Processo Finalizado
-                  "purple",     // Finalizado Fora do Prazo
-                ],
-                borderWidth: 3,
-              },
-            ],
+            datasets: [{
+              data: [1, 2, 5, 3, 1, 4, 1],
+              backgroundColor: [
+                "#002fff6b", "#f3007e", "#00e1ff", "orange", "red", "green", "purple"
+              ],
+              borderWidth: 3
+            }]
           },
           options: {
             responsive: false,
             maintainAspectRatio: false,
-            layout: {
-              padding: 15,
-            },
-            elements: {
-              arc: {
-                hoverOffset: 15,
-              },
-            },
+            layout: { padding: 15 },
+            elements: { arc: { hoverOffset: 15 } },
             plugins: {
               legend: { display: false },
               tooltip: {
-                enabled: true,
                 callbacks: {
-                  label(context) {
-                    const label = context.label || "";
-                    const value = context.parsed;
-                    const dataArr = context.chart.data.datasets[0].data;
-                    const total = dataArr.reduce((sum, v) => sum + v, 0);
-                    const pct = ((value / total) * 100).toFixed(2);
-                    return `${label}: ${pct}%`;
-                  },
-                },
-              },
-            },
+                  label(ctx) {
+                    const label = ctx.label || "";
+                    const val = ctx.parsed;
+                    const arr = ctx.chart.data.datasets[0].data;
+                    const total = arr.reduce((s, v) => s + v, 0);
+                    return `${label}: ${((val / total) * 100).toFixed(2)}%`;
+                  }
+                }
+              }
+            }
           },
           plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
         });
-
-        darkToggle.addEventListener("change", function () {
-          if (darkToggle.checked) {
-            body.classList.add("dark-mode");
-            localStorage.setItem("dark-mode", "enabled");
-          } else {
-            body.classList.remove("dark-mode");
-            localStorage.setItem("dark-mode", "disabled");
-          }
-          graficoFarol.update();
-        });
       });
     </script>
-
 
 </body>
 

@@ -179,12 +179,12 @@
   </div>
 
 
-  <div class="obr-info">
+  <div class="quantidade">
     <div class="linha-total-paginacao">
       <div class="totalizadores">
         <span>Total de Registros: 8</span>
         <span>Total de Itens: 16</span>
-        <span><a class="baixar-anexos" href="/anexos">Total de Anexos: 14</a></span>
+        <span><a href="#" class="baixar-anexos" onclick="abrirModal()">Total de Anexos: 14</a></span>
       </div>
       <nav class="pagination-nav">
         <label class="pagination-select">
@@ -455,8 +455,145 @@
     </div>
   </div>
 
+  <div id="modalAnexos" class="modal">
+    <div class="modal-conteudo">
+      <span class="fechar" onclick="fecharModal()">&times;</span>
+      <h2>Anexos do Checklist</h2>
+
+      <div class="tabela-anexos">
+        <div class="cabecalho">
+          <span><input type="checkbox" /></span>
+          <span>ID</span>
+          <span>Empresa</span>
+          <span>Estabelecimento</span>
+          <span>Imposto</span>
+          <span>Ano e Mês</span>
+          <span>Tamanho</span>
+          <span>Arquivo</span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>22222</span>
+          <span>ABC</span>
+          <span>Matriz</span>
+          <span>ICMS</span>
+          <span>2025/07</span>
+          <span>10GB</span>
+          <span><a href="/anexos/anexo1.pdf" target="_blank">Comprovante.pdf</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>33333</span>
+          <span>PZM</span>
+          <span>Filial SP</span>
+          <span>ISS</span>
+          <span>2025/07</span>
+          <span>3.4MB</span>
+          <span><a href="/anexos/anexo2.jpg" target="_blank">Comprovante.jpg</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>ICMS-ST</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>ICMS-ST</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>ICMS-ST</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>ICMS-ST</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>ICMS-ST</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>ICMS-ST</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>ICMS-ST</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+      </div>
+      <button class="btn-download-todos">Baixar Todos</button>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+    function abrirModal() {
+      document.getElementById("modalAnexos").style.display = "block";
+    }
+
+    function fecharModal() {
+      document.getElementById("modalAnexos").style.display = "none";
+    }
+
+    // Fecha ao clicar fora
+    window.onclick = function (event) {
+      const modal = document.getElementById("modalAnexos");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+
     const helpFab = document.getElementById('helpFab');
     const chatPopup = document.getElementById('chat-popup');
 

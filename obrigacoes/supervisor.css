@@ -21,8 +21,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
   border-bottom: 3px solid #767a7e;
+  padding: 8px 16px;
 }
 .header-left h2 {
   margin: 0;
@@ -35,6 +35,11 @@ header {
 .mainmenu {
   text-decoration: none;
   color: #ffffff;
+}
+
+.sair {
+  text-decoration: none;
+  color: #343434;
 }
 
 /* ---------- FAROL DE STATUS ---------- */
@@ -123,11 +128,6 @@ nav {
   cursor: pointer;
 }
 
-.sair {
-  text-decoration: none;
-  color: #343434;
-}
-
 /* ---------- TOGGLE SWITCH ---------- */
 .toggle-switch {
   position: relative;
@@ -187,9 +187,18 @@ nav {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.imp-info {
+.obr-info {
   background-color: white;
   padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quantidade {
+  background-color: white;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -198,23 +207,17 @@ nav {
 .filtros-e-grafico {
   display: flex;
 }
-.filtros-e-grafico {
-  display: flex;
-  gap: 18px;
-}
 .filtros-e-grafico > .grafico-area {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 220px;
-  padding-left: 20px;
 }
 .grafico-coluna {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 28px;
   width: 100%;
   max-width: 450px;
   margin: 0 auto;
@@ -225,88 +228,30 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
 }
 .grafico-area {
-  width: 260px;
-  min-width: 200px;
-  padding-left: 18px;
+  width: 280px;
+  min-width: 220px;
+  padding-left: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.barra-de-progresso-container {
-  width: 100%;
-  height: 8px;
-  background-color: #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 48px;
-}
-
-.barra-de-progresso-bar {
-  width: 0%;
-  height: 100%;
-  background-color: #2c3d4f;
-  animation: progress 10s linear infinite;
-}
-
-@keyframes progress {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
-}
-
 .titulo-grafico {
   display: block;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 20px;
   color: #252525;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   text-align: center;
 }
 .analiticos {
-  margin-left: 4px;
+  margin-left: 5px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
   font-weight: bold;
   font-size: 16px;
-}
-
-.card-filtros label,
-.card-filtros .label {
-  font-weight: 500;
-  font-size: 15px;
-  margin-bottom: 2px;
-  display: inline-block;
-}
-
-.card-filtros .filtro-campo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-bottom: 0;
-}
-
-.card-filtros input[type="checkbox"],
-.card-filtros input[type="radio"] {
-  margin-right: 4px;
-}
-
-.card-filtros > * {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.card-filtros .btn,
-.card-filtros input[type="submit"] {
-  padding: 6px 14px;
-  font-size: 14px;
 }
 
 /* ---------- FILTROS - FORMULÁRIOS ---------- */
@@ -315,13 +260,13 @@ nav {
   gap: 10px;
   width: 100%;
   padding-left: 30px;
+  padding-right: 30px;
   padding-top: 10px;
   align-items: stretch;
 }
 
-.grupo-opcoes {
-  display: flex;
-  flex-direction: wrap;
+.operacao {
+  width: auto;
 }
 
 .grupo-opcoes {
@@ -330,32 +275,33 @@ nav {
 }
 
 .card-filtros {
+  min-width: 1100px;
+  flex: 1 1 0;
+}
+
+.card-filtros {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
   background: #fff;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding: 20px;
   padding-top: 20px;
-  padding-bottom: 20px;
   border-radius: 12px;
   box-shadow: 0 1px 6px rgba(70, 90, 110, 0.07);
   border: 1px solid #e5e8f1;
 }
 
 .card-grafico {
-  background: #ffffff;
+  background: #fff;
+  padding: 20px 8px 12px 8px;
   border-radius: 12px;
-  padding-right: 16px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 16px;
-  gap: 20px;
+  padding-top: 90px;
   box-shadow: 0 1px 6px rgba(70, 90, 110, 0.07);
   border: 1px solid #e5e8f1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 350px;
 }
 
 .fitros-consulta {
@@ -392,12 +338,20 @@ nav {
   max-width: 200px;
 }
 
+.titulo-grafico {
+  display: block;
+  font-weight: 600;
+  font-size: 19px;
+  color: #252525;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
 /* ---------- FORM HEADER ---------- */
 .form-header {
   display: flex;
-  justify-content: space-between; /* Agora o h3 vai à esquerda e o botão à direita */
-  align-items: center; /* Centraliza verticalmente */
-  padding-right: 20px; /* Mesmo recuo do título */
+  justify-content: space-between;
+  align-items: center;
   padding-top: 15px;
   padding-bottom: 10px;
 }
@@ -412,66 +366,9 @@ nav {
   margin: 0;
 }
 
-/* ---------- ASSOCIAR RESPONSÁVEL ---------- */
-
-.fitros-consulta.associar-responsavel {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Deixa tudo alinhado à esquerda */
-  gap: 0;
-  margin: 0;
-  padding: 0;
-  min-height: 0;
-}
-
-.associar-responsavel label.associar {
-  font-weight: bold;
-  font-size: 14px;
-  margin: 0 0 2px 0; /* Só um espacinho para baixo */
-  padding: 0;
-  white-space: nowrap;
-}
-
-.grupo-associar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-}
-
-.associar-responsavel select {
-  padding: 6px 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 385px;
-  font-size: 14px;
-  background-color: white;
-  min-width: 140px;
-  margin: 0;
-}
-
-.associar-botao {
-  padding: 8px 18px;
-  background-color: #c9c9c9;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 14px;
-  box-shadow: 0 1px 6px rgba(70, 90, 110, 0.09);
-  transition: background 0.18s, box-shadow 0.15s;
-  margin: 0;
-}
-.associar-botao:hover {
-  background-color: #dadada;
-}
-
 /* ---------- BUTTONS ---------- */
 .consulta,
-.associacao button,
+.associar-responsavel button,
 .archives,
 .eventual,
 .paginacao-direita button {
@@ -481,27 +378,6 @@ nav {
 .linha-botao {
   display: flex;
   align-items: center;
-}
-
-#btnToggle {
-  padding: 6px 14px;
-  background-color: #cecfd0;
-  color: black;
-  border: none;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.linha-total-paginacao {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  gap: 24px;
 }
 
 .totalizadores {
@@ -519,6 +395,161 @@ nav {
   color: #007bff;
   text-decoration: none;
   font-weight: 500;
+}
+
+/* Modal anexos */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-conteudo {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 24px 28px;
+  border-radius: 12px;
+  width: 900px;
+  max-width: 95%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fechar {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 22px;
+  color: #888;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.fechar:hover {
+  color: #000;
+}
+
+.modal-conteudo h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #373737;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* Botão principal */
+.btn-download-todos {
+  display: inline-block;
+  background-color: #2776ba;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 12px;
+}
+
+.btn-download-todos:hover {
+  background-color: #1d5e98;
+}
+
+/* Tabela com anexos */
+.tabela-anexos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+  max-height: 300px;
+  overflow-y: auto;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.tabela-anexos .cabecalho,
+.tabela-anexos .linha {
+  display: grid;
+  grid-template-columns:
+    32px
+    80px
+    120px
+    140px
+    100px
+    100px
+    80px
+    1fr;
+  align-items: center;
+  font-size: 14px;
+  gap: 8px;
+}
+
+.tabela-anexos .cabecalho span,
+.tabela-anexos .linha span {
+  display: flex;
+  align-items: center;
+}
+
+.tabela-anexos .cabecalho span {
+  font-weight: bold;
+  color: #444;
+}
+
+.tabela-anexos .linha {
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tabela-anexos a {
+  color: #2776ba;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.tabela-anexos a:hover {
+  text-decoration: underline;
+}
+
+/* Checkbox */
+.tabela-anexos input[type="checkbox"] {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Scroll estilizado */
+.tabela-anexos::-webkit-scrollbar {
+  width: 6px;
+}
+.tabela-anexos::-webkit-scrollbar-thumb {
+  background-color: #fabc00;
+  border-radius: 4px;
 }
 
 .paginacao {
@@ -563,7 +594,7 @@ nav {
   align-items: center;
   gap: 12px;
   background: #f0f0f0;
-  border-radius: 14px;
+  border-radius: 18px;
   box-shadow: 0 1px 8px rgba(30, 40, 60, 0.07);
   padding: 2px 14px;
 }
@@ -628,8 +659,7 @@ nav {
   color: black;
   border: none;
   margin-top: 5px;
-  margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
@@ -911,25 +941,17 @@ body.dark-mode .submenu {
   background-color: #444;
   border-color: #666;
 }
-body.dark-mode .sair {
-  text-decoration: none;
-  color: #dfe0e0;
-}
 body.dark-mode .submenu a {
   color: #ddd;
+}
+body.dark-mode .titulo-grafico {
+  color: white;
 }
 body.dark-mode .submenu a:hover {
   background-color: #555;
 }
-body.dark-mode .barra-de-progresso-container {
-  background-color: #3a3a3a;
-}
-body.dark-mode .barra-de-progresso-bar {
-  background-color: #fcb900;
-}
-
 body.dark-mode .section-ct,
-body.dark-mode .imp-info {
+body.dark-mode .obr-info {
   background-color: #2b2b2b;
   box-shadow: none;
 }
@@ -960,7 +982,7 @@ body.dark-mode .header-atv {
   background-color: rgba(253, 253, 253, 0.39);
 }
 body.dark-mode .consulta:hover,
-body.dark-mode .associacao button:hover,
+body.dark-mode .associar-responsavel button:hover,
 body.dark-mode .archives:hover,
 body.dark-mode .eventual:hover {
   background-color: #666;
@@ -969,11 +991,17 @@ body.dark-mode .slider::before {
   background-color: var(--light);
   box-shadow: inset 8px -3px 0px 0px var(--dark);
 }
-body.dark-mode .associacao button:hover {
+body.dark-mode .pagination-select {
+  color: white;
+}
+body.dark-mode .pagination-total {
+  color: white;
+}
+body.dark-mode .associar-responsavel button:hover {
   background-color: #fcb900;
 }
 body.dark-mode .consulta:hover,
-body.dark-mode .associacao button:hover {
+body.dark-mode .associar-responsavel button:hover {
   background-color: #c59101;
 }
 body.dark-mode .archives:hover {
@@ -981,11 +1009,11 @@ body.dark-mode .archives:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 body.dark-mode .eventual:hover {
-  background-color: #2c3d4f;
   color: white;
 }
-body.dark-mode .titulo-grafico {
-  color: white;
+body.dark-mode .guia-eventual td {
+  background-color: #ffeebd;
+  color: black;
 }
 body.dark-mode .checkbox:checked ~ .slider {
   background-color: var(--dark);
@@ -1000,18 +1028,35 @@ body.dark-mode .container {
   border-radius: 8px;
   box-shadow: none;
 }
+body.dark-mode .paginacao-esquerda,
+body.dark-mode .paginacao-direita {
+  color: #eee;
+}
 body.dark-mode .select-registros,
 body.dark-mode .input-pagina {
   background-color: #3a3a3a;
   color: #fff;
   border: 1px solid #555;
 }
-
-body.dark-mode .pagination-select {
-  color: white;
+body.dark-mode .paginacao-direita button {
+  background-color: #555;
+  color: #eee;
+  border-color: #777;
 }
-body.dark-mode .pagination-total {
+body.dark-mode .paginacao-direita button:hover {
+  background-color: #666;
+}
+body.dark-mode .paginacao button:hover {
+  background-color: #555;
+}
+body.dark-mode .paginacao button.ativo {
+  background-color: #007bff;
   color: white;
+  border-color: #007bff;
+}
+body.dark-mode .sair {
+  text-decoration: none;
+  color: #dfe0e0;
 }
 
 body.dark-mode .form-header {
@@ -1050,10 +1095,6 @@ body.dark-mode .fitros-consulta select {
 }
 body.dark-mode .fitros-consulta label {
   color: #e0e0e0;
-}
-body.dark-mode .guia-eventual {
-  background-color: #feeebd;
-  color: black;
 }
 body.dark-mode .fitros-consulta input[type="checkbox"],
 body.dark-mode .fitros-consulta input[type="radio"] {

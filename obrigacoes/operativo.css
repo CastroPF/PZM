@@ -194,6 +194,15 @@ nav {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.quantidade {
+  background-color: white;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 /* ---------- FILTROS & GRÁFICOS ---------- */
 .filtros-e-grafico {
   display: flex;
@@ -371,14 +380,6 @@ nav {
   align-items: center;
 }
 
-.linha-total-paginacao {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  gap: 24px;
-}
-
 .totalizadores {
   display: flex;
   gap: 16px;
@@ -394,6 +395,161 @@ nav {
   color: #007bff;
   text-decoration: none;
   font-weight: 500;
+}
+
+/* Modal anexos */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-conteudo {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 24px 28px;
+  border-radius: 12px;
+  width: 900px;
+  max-width: 95%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fechar {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 22px;
+  color: #888;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.fechar:hover {
+  color: #000;
+}
+
+.modal-conteudo h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #373737;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* Botão principal */
+.btn-download-todos {
+  display: inline-block;
+  background-color: #2776ba;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 12px;
+}
+
+.btn-download-todos:hover {
+  background-color: #1d5e98;
+}
+
+/* Tabela com anexos */
+.tabela-anexos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+  max-height: 300px;
+  overflow-y: auto;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.tabela-anexos .cabecalho,
+.tabela-anexos .linha {
+  display: grid;
+  grid-template-columns:
+    32px
+    80px
+    120px
+    140px
+    100px
+    100px
+    80px
+    1fr;
+  align-items: center;
+  font-size: 14px;
+  gap: 8px;
+}
+
+.tabela-anexos .cabecalho span,
+.tabela-anexos .linha span {
+  display: flex;
+  align-items: center;
+}
+
+.tabela-anexos .cabecalho span {
+  font-weight: bold;
+  color: #444;
+}
+
+.tabela-anexos .linha {
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tabela-anexos a {
+  color: #2776ba;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.tabela-anexos a:hover {
+  text-decoration: underline;
+}
+
+/* Checkbox */
+.tabela-anexos input[type="checkbox"] {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Scroll estilizado */
+.tabela-anexos::-webkit-scrollbar {
+  width: 6px;
+}
+.tabela-anexos::-webkit-scrollbar-thumb {
+  background-color: #fabc00;
+  border-radius: 4px;
 }
 
 .paginacao {
