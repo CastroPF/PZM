@@ -615,7 +615,7 @@
       if (event.target === modal) {
         modal.style.display = "none";
       }
-    }
+    };
 
     const helpFab = document.getElementById('helpFab');
     const chatPopup = document.getElementById('chat-popup');
@@ -629,30 +629,61 @@
     }
 
     window.addEventListener('mousedown', function (e) {
-      if (chatPopup.style.display === 'block' && !chatPopup.contains(e.target) && e.target !== helpFab) {
+      if (
+        chatPopup.style.display === 'block' &&
+        !chatPopup.contains(e.target) &&
+        e.target !== helpFab
+      ) {
         toggleChat();
       }
     });
+
     document.addEventListener("DOMContentLoaded", function () {
       const body = document.body;
       const darkToggle = document.querySelector(".checkbox");
+
       if (localStorage.getItem("dark-mode") === "enabled") {
         body.classList.add("dark-mode");
         if (darkToggle) darkToggle.checked = true;
       }
+
       const farolContainer = document.getElementById("containerFarol");
       const esferasContainer = document.getElementById("containerEsferas");
+      const progressBar = document.querySelector(".barra-de-progresso-bar");
+
       function trocaGraficos() {
         const mostrandoFarol = farolContainer.style.display !== "none";
         if (mostrandoFarol) {
           farolContainer.style.display = "none";
-          esferasContainer.style.display = "";
+          esferasContainer.style.display = "block";
         } else {
-          farolContainer.style.display = "";
+          farolContainer.style.display = "block";
           esferasContainer.style.display = "none";
         }
       }
-      setInterval(trocaGraficos, 10000);
+
+      function animateProgressBar() {
+        progressBar.style.width = "0%";
+        const start = Date.now();
+        const duracao = 10000;
+        function frame() {
+          const elapsed = Date.now() - start;
+          const pct = Math.min((elapsed / duracao) * 100, 100);
+          progressBar.style.width = pct + "%";
+          if (pct < 100) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      // inicializa
+      trocaGraficos();
+      animateProgressBar();
+      setInterval(() => {
+        trocaGraficos();
+        animateProgressBar();
+      }, 10000);
+
+      // plugins Chart.js...
       const centerTextPlugin = {
         id: "centerText",
         afterDraw(chart) {
@@ -714,17 +745,37 @@
         },
       };
 
-      // Gráfico em ciculo
-      const ctxFarol = document.getElementById("graficoFarol").getContext("2d");
+      // Gráfico doughnut
+      const ctxFarol = document
+        .getElementById("graficoFarol")
+        .getContext("2d");
       const graficoFarol = new Chart(ctxFarol, {
         type: "doughnut",
         data: {
-          labels: ["Complementar", "Retificação", "Dentro do Prazo", "Prazo no Limite", "Atenção: Prazo Vencido", "Processo Finalizado", "Finalizado [Fora do Prazo]"],
-          datasets: [{
-            data: [1, 2, 5, 3, 1, 4, 1],
-            backgroundColor: ["#002fff6b", "#f3007e", "#00e1ff", "orange", "red", "green", "purple"],
-            borderWidth: 3
-          }]
+          labels: [
+            "Complementar",
+            "Retificação",
+            "Dentro do Prazo",
+            "Prazo no Limite",
+            "Atenção: Prazo Vencido",
+            "Processo Finalizado",
+            "Finalizado [Fora do Prazo]",
+          ],
+          datasets: [
+            {
+              data: [1, 2, 5, 3, 1, 4, 1],
+              backgroundColor: [
+                "#002fff6b",
+                "#f3007e",
+                "#00e1ff",
+                "orange",
+                "red",
+                "green",
+                "purple",
+              ],
+              borderWidth: 3,
+            },
+          ],
         },
         options: {
           responsive: false,
@@ -741,30 +792,34 @@
                   const arr = ctx.chart.data.datasets[0].data;
                   const total = arr.reduce((s, v) => s + v, 0);
                   return `${label}: ${((val / total) * 100).toFixed(2)}%`;
-                }
-              }
-            }
-          }
+                },
+              },
+            },
+          },
         },
         plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
       });
 
-      // Gráfico de esferas (colunas)
+      // Gráfico de barras
       const quantidades = [60, 33, 14];
       const valoresReais = [60000, 20000, 15000];
-      const ctxEsferas = document.getElementById("graficoEsferas").getContext("2d");
+      const ctxEsferas = document
+        .getElementById("graficoEsferas")
+        .getContext("2d");
       const graficoEsferas = new Chart(ctxEsferas, {
         type: "bar",
         data: {
           labels: ["Federal", "Estadual", "Municipal"],
-          datasets: [{
-            label: "Quantidade",
-            data: quantidades,
-            backgroundColor: ["#002fff6b", "#00e1ff", "#f3007e"],
-            borderRadius: 12,
-            borderWidth: 1,
-            borderSkipped: false
-          }]
+          datasets: [
+            {
+              label: "Quantidade",
+              data: quantidades,
+              backgroundColor: ["#002fff6b", "#00e1ff", "#f3007e"],
+              borderRadius: 12,
+              borderWidth: 1,
+              borderSkipped: false,
+            },
+          ],
         },
         options: {
           responsive: false,
@@ -776,39 +831,59 @@
                 label(ctx) {
                   const lbl = ctx.label || "";
                   const valor = valoresReais[ctx.dataIndex] || 0;
-                  return `${lbl}: ${valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
-                }
-              }
-            }
+                  return `${lbl}: ${valor.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}`;
+                },
+              },
+            },
           },
           scales: {
             x: {
               grid: { display: false, drawBorder: false },
-              ticks: { color: body.classList.contains("dark-mode") ? "#fff" : "#222", font: { size: 13 } }
+              ticks: {
+                color: body.classList.contains("dark-mode") ? "#fff" : "#222",
+                font: { size: 13 },
+              },
             },
             y: {
               grid: { display: false, drawBorder: false },
               beginAtZero: true,
-              ticks: { color: body.classList.contains("dark-mode") ? "#fff" : "#222", font: { size: 13 } },
-              suggestedMax: 80
-            }
-          }
-        }
+              ticks: {
+                color: body.classList.contains("dark-mode") ? "#fff" : "#222",
+                font: { size: 13 },
+              },
+              suggestedMax: 80,
+            },
+          },
+        },
       });
-
 
       if (darkToggle) {
         darkToggle.addEventListener("change", () => {
           body.classList.toggle("dark-mode", darkToggle.checked);
-          localStorage.setItem("dark-mode", darkToggle.checked ? "enabled" : "disabled");
+          localStorage.setItem(
+            "dark-mode",
+            darkToggle.checked ? "enabled" : "disabled"
+          );
           graficoFarol.update();
-          graficoEsferas.options.scales.x.ticks.color = body.classList.contains("dark-mode") ? "#fff" : "#222";
-          graficoEsferas.options.scales.y.ticks.color = body.classList.contains("dark-mode") ? "#fff" : "#222";
+          graficoEsferas.options.scales.x.ticks.color = body.classList.contains(
+            "dark-mode"
+          )
+            ? "#fff"
+            : "#222";
+          graficoEsferas.options.scales.y.ticks.color = body.classList.contains(
+            "dark-mode"
+          )
+            ? "#fff"
+            : "#222";
           graficoEsferas.update();
         });
       }
     });
   </script>
+
 </body>
 
 </html>

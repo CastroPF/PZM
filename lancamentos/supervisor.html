@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/lancamentos/style.css">
+  <title>Automação Lançamentos Manuais</title>
+</head>
+
+<body>
+  <header class="header-container">
+    <div class="header-left">
+      <h2>
+        <a href="/lancamentos/operativo.html" class="mainmenu">
+          PZMWEB Enterprise :: Automação Lançamentos Manuais
+        </a>
+      </h2>
+    </div>
+    <div class="header-right">
+      <img src="/grupopzm.png" alt="logo" class="logo" />
+    </div>
+  </header>
+
+  <nav class="nav-container">
+    <div class="nav-left">
+      <div class="menu-item">
+        Controles
+        <div class="submenu">
+          <a href="/modulos/index.html">Alterar Aplicativo</a>
+          <a href="/modulos/divisão.html">Alterar Divisão</a>
+        </div>
+      </div>
+      <span>Cadastros</span>
+      <div class="menu-item">
+        Operações
+        <div class="submenu">
+          <a href="/lancamentos/operativo.html">Consulta de Checklist Lançamento Manual - Operativo</a>
+          <a href="/lancamentos/supervisor.html">Consulta de Checklist Lançamento Manual - Supervisor</a>
+          <a href="/">Consulta de Status de Lançamento Manual</a>
+        </div>
+      </div>
+      <span>Processos</span>
+      <span>Relatórios</span>
+      <span>Gráficos</span>
+      <span>Configurações</span>
+      <span>Ajuda</span>
+      <span><a class="sair" href="/login/login.html">Sair</a></span>
+    </div>
+    <div class="nav-right">
+      <div class="toggle-switch">
+        <label class="switch-label">
+          <input type="checkbox" class="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="flags">
+        <img src="https://flagcdn.com/16x12/br.png" alt="Português" title="Português" />
+        <img src="https://flagcdn.com/16x12/es.png" alt="Español" title="Español" />
+        <img src="https://flagcdn.com/16x12/gb.png" alt="English" title="English" />
+      </div>
+    </div>
+  </nav>
+
+  <div class="form-header">
+    <h3>Consulta Lançamentos Manuais - Operativo</h3>
+  </div>
+
+  <div class="filtros-compactos">
+    <div class="filtro-item">
+      <label>Data Inicial:</label>
+      <input type="date" />
+    </div>
+    <div class="filtro-item">
+      <label>Data Final:</label>
+      <input type="date" />
+    </div>
+    <div class="fitros-consulta">
+      <label style="margin-bottom: 10px;">Data Base:</label>
+      <div class="grupo-opcoes">
+        <label><input type="radio" name="data-base" />Data de Vencimento</label><br>
+        <label><input type="radio" name="data-base" />Data do Lançamento</label><br>
+        <label><input type="radio" name="data-base" />Data do Documento</label><br>
+        <label><input type="radio" name="data-base" />Data da Criação</label><br>
+      </div>
+    </div>
+    <div class="filtro-item">
+      <label>Filial / Divisão:</label>
+      <select>
+        <option>Todos os itens</option>
+      </select>
+    </div>
+    <div class="filtro-item">
+      <label>Responsável:</label>
+      <select>
+        <option>Todos os itens</option>
+      </select>
+    </div>
+    <button class="consulta">Consultar</button>
+    <button class="toggle-filtros">Mais Filtros [+]</button>
+  </div>
+
+  <div class="painel-suspenso" id="painelSuspenso">
+    <div class="filtros-e-grafico">
+      <div class="painel-filtros">
+        <div class="fitros-consulta"><label>Centro de Custo:</label><select>
+            <option>Todos os itens</option>
+          </select></div>
+        <div class="fitros-consulta"><label>Moeda:</label><select>
+            <option>Todos os itens</option>
+          </select></div>
+        <div class="fitros-consulta"><label>Tipo de Lançamento:</label><select>
+            <option>Todos os itens</option>
+          </select></div>
+        <div class="fitros-consulta"><label>Material:</label><select>
+            <option>Todos os itens</option>
+          </select></div>
+        <div class="fitros-consulta"><label>Unidade de Medida:</label><select>
+            <option>Todos os itens</option>
+          </select></div>
+        <div class="fitros-consulta"><label>Status:</label><select>
+            <option>Todos os itens</option>
+          </select></div>
+      </div>
+
+      <div class="card-grafico">
+        <span class="titulo-grafico">Controle de Status</span>
+        <div class="grafico-container">
+          <canvas id="graficoFarol"></canvas>
+        </div>
+      </div>
+
+      <div class="card-grafico">
+        <span class="titulo-grafico">Comparativo por Status</span>
+        <div class="grafico-container">
+          <canvas id="graficoBarras"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="linha-legenda-botoes">
+    <div class="legenda">
+      <span class="vencido">Pendente</span>
+      <span class="dentro-prazo">Liberado para Aprovação</span>
+      <span class="fora-prazo">Pendente de Liberação</span>
+      <span class="no-limite">Pendente no ERP</span>
+      <span class="finalizado">Processo Finalizado</span>
+      <span class="erro-erp">Finalizado com erro no ERP</span>
+      <span class="todos-os-status">Inativo</span>
+    </div>
+  </div>
+
+  <div class="quantidade">
+    <div class="linha-total-paginacao">
+      <div class="totalizadores">
+        <span>Total de Registros: 8</span>
+        <span>Total de Itens: 16</span>
+        <span><a href="#" class="baixar-anexos" onclick="abrirModal()">Total de Anexos: 14</a></span>
+      </div>
+
+      <nav class="pagination-nav">
+        <input type="text" placeholder="Pesquisar..." class="campo-pesquisa ao-lado" />
+        <label class="pagination-select">
+          <span>Exibir</span>
+          <select>
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
+          <span>por página</span>
+        </label>
+        <button class="pagination-btn" title="Primeira página">&laquo;</button>
+        <button class="pagination-btn" title="Página anterior">&lsaquo;</button>
+        <input type="number" value="1" min="1" class="pagination-input" />
+        <span class="pagination-total">de 5</span>
+        <button class="pagination-btn" title="Próxima página">&rsaquo;</button>
+        <button class="pagination-btn" title="Última página">&raquo;</button>
+      </nav>
+    </div>
+  </div>
+
+  <div class="lanc-info">
+    <table class="tabela-checklist">
+      <thead>
+        <tr class="header-table">
+          <th>Status</th>
+          <th>ID do Lançamento</th>
+          <th>Código do ERP</th>
+          <th>Operativo</th>
+          <th>Filial/Divisão</th>
+          <th>Montante</th>
+          <th>Histórico</th>
+          <th>Criação</th>
+          <th>Data do Lançamento</th>
+          <th>Lançamento</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="farol-cell">
+            <div class="status-etapa">
+              <span class="farol finalizado" id="modalOpenButton"></span>
+            </div>
+          </td>
+          <td>12222</td>
+          <td>N/A</td>
+          <td>Igor Castro</td>
+          <td>Implantação/Suporte</td>
+          <td>15,000</td>
+          <td>Teste PZM Interface</td>
+          <td>24/07/2025</td>
+          <td>24/07/2025 10:50</td>
+          <td>PZM Lançamento Teste</td>
+        </tr>
+
+        <tr>
+          <td class="farol-cell">
+            <div class="status-etapa">
+              <span class="farol finalizado" id="modalOpenButton"></span>
+            </div>
+          </td>
+          <td>12333</td>
+          <td>N/A</td>
+          <td>Igor Castro</td>
+          <td>Implantação/Suporte</td>
+          <td>15,000</td>
+          <td>Teste PZM Interface</td>
+          <td>24/07/2025</td>
+          <td>24/07/2025 10:50</td>
+          <td>PZM Lançamento Teste</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  </div>
+
+  <div class="helpFab" id="helpFab">
+    <span>?</span>
+  </div>
+
+  <div class="chat-popup" id="chat-popup">
+    <div class="chat-header">
+      <span>Dúvidas?</span>
+      <button class="close-chat" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body">
+      <p>Olá! Precisa de ajuda no login?<br>
+        Entre em contato com os nossos consultores no e-mail: <strong>suporte@pzmweb.com</strong></p>
+    </div>
+  </div>
+
+  <div id="modalAnexos" class="modal">
+    <div class="modal-conteudo">
+      <span class="fechar" onclick="fecharModal()">&times;</span>
+      <h2>Anexos do Checklist</h2>
+
+      <div class="tabela-anexos">
+        <div class="cabecalho">
+          <span><input type="checkbox" /></span>
+          <span>ID</span>
+          <span>Empresa</span>
+          <span>Filial/Divisão</span>
+          <span>Lançamento</span>
+          <span>Ano e Mês</span>
+          <span>Tamanho</span>
+          <span>Arquivo</span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>22222</span>
+          <span>ABC</span>
+          <span>Matriz</span>
+          <span>Lançamento PZM Interface</span>
+          <span>2025/07</span>
+          <span>10GB</span>
+          <span><a href="/anexos/anexo1.pdf" target="_blank">Comprovante.pdf</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>33333</span>
+          <span>PZM</span>
+          <span>Filial SP</span>
+          <span>Lançamento PZM Interface</span>
+          <span>2025/07</span>
+          <span>3.4MB</span>
+          <span><a href="/anexos/anexo2.jpg" target="_blank">Comprovante.jpg</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>Lançamento PZM Interface</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>Lançamento PZM Interface</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>Lançamento PZM Interface</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>Lançamento PZM Interface</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>Lançamento PZM Interface</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>Lançamento PZM Interface</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+        <div class="linha">
+          <span><input type="checkbox" /></span>
+          <span>44444</span>
+          <span>XYZ</span>
+          <span>Unidade RJ</span>
+          <span>Lançamento PZM Interface</span>
+          <span>2025/07</span>
+          <span>790KB</span>
+          <span><a href="/anexos/anexo3.xlsx" target="_blank">Planilha.xlsx</a></span>
+        </div>
+
+      </div>
+      <button class="btn-download-todos">Baixar Todos</button>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const toggleBtn = document.querySelector(".toggle-filtros");
+    const painel = document.getElementById("painelSuspenso");
+
+    toggleBtn.addEventListener("click", () => {
+      painel.classList.toggle("aberto");
+    });
+
+    function abrirModal() {
+      document.getElementById("modalAnexos").style.display = "block";
+    }
+
+    function fecharModal() {
+      document.getElementById("modalAnexos").style.display = "none";
+    }
+
+    // Fecha ao clicar fora
+    window.onclick = function (event) {
+      const modal = document.getElementById("modalAnexos");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    const helpFab = document.getElementById('helpFab');
+    const chatPopup = document.getElementById('chat-popup');
+
+    helpFab.onclick = function () {
+      chatPopup.style.display = 'block';
+    };
+
+    function toggleChat() {
+      chatPopup.style.display = 'none';
+    }
+
+    window.addEventListener('mousedown', function (e) {
+      if (chatPopup.style.display === 'block' && !chatPopup.contains(e.target) && e.target !== helpFab) {
+        toggleChat();
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const body = document.body;
+      const darkToggle = document.querySelector(".checkbox");
+
+      if (localStorage.getItem("dark-mode") === "enabled") {
+        body.classList.add("dark-mode");
+        if (darkToggle) darkToggle.checked = true;
+      }
+
+      if (darkToggle) {
+        darkToggle.addEventListener("change", function () {
+          if (darkToggle.checked) {
+            body.classList.add("dark-mode");
+            localStorage.setItem("dark-mode", "enabled");
+          } else {
+            body.classList.remove("dark-mode");
+            localStorage.setItem("dark-mode", "disabled");
+          }
+          graficoFarol.update();
+          graficoBarras.update();
+        });
+      }
+
+      const centerTextPlugin = {
+        id: "centerText",
+        afterDraw(chart) {
+          const {
+            ctx,
+            chartArea: { left, top, width, height },
+            data,
+          } = chart;
+          const total = data.datasets[0].data.reduce((sum, v) => sum + v, 0);
+          const isDark = body.classList.contains("dark-mode");
+          const x = left + width / 2;
+          const y = top + height / 2;
+          ctx.save();
+          ctx.font = "bold 22px Arial";
+          ctx.fillStyle = isDark ? "#fff" : "#000";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(total, x, y - 8);
+          ctx.font = "12px Arial";
+          ctx.fillText("Total de tickets", x, y + 15);
+          ctx.restore();
+        },
+      };
+
+      const dataLabelPlugin = {
+        id: "dataLabel",
+        afterDatasetsDraw(chart) {
+          const { ctx, data } = chart;
+          const meta = chart.getDatasetMeta(0);
+          meta.data.forEach((el, i) => {
+            const { x, y } = el.tooltipPosition();
+            const value = data.datasets[0].data[i];
+            ctx.save();
+            ctx.fillStyle = "#333";
+            ctx.font = "bold 11px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "bottom";
+            ctx.fillText(value, x, y - 8);
+            ctx.restore();
+          });
+        },
+      };
+
+      const shadowPlugin = {
+        id: "shadow",
+        beforeDraw(chart) {
+          const ctx = chart.ctx;
+          ctx.save();
+          ctx.shadowColor = body.classList.contains("dark-mode") ? "#ffffff40" : "#b9b9b9";
+          ctx.shadowBlur = 12;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0;
+        },
+        afterDraw(chart) {
+          chart.ctx.restore();
+        },
+      };
+
+      // === GRÁFICO 1: DOUGHNUT ===
+      const ctxFarol = document.getElementById("graficoFarol").getContext("2d");
+      window.graficoFarol = new Chart(ctxFarol, {
+        type: "doughnut",
+        data: {
+          labels: [
+            "Liberado para Aprovação",
+            "Pendente no ERP",
+            "Pendente",
+            "Processo finalizado",
+            "Pendente de Liberação",
+            "Finalizado [Fora do Prazo]"
+          ],
+          datasets: [{
+            data: [5, 3, 1, 4, 1],
+            backgroundColor: [
+              "#00e1ff", "orange", "red", "rgb(0, 250, 0)", "purple"
+            ],
+            borderWidth: 3
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: 15 },
+          elements: { arc: { hoverOffset: 15 } },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label(ctx) {
+                  const label = ctx.label || "";
+                  const val = ctx.parsed;
+                  const arr = ctx.chart.data.datasets[0].data;
+                  const total = arr.reduce((s, v) => s + v, 0);
+                  return `${label}: ${((val / total) * 100).toFixed(2)}%`;
+                }
+              }
+            }
+          }
+        },
+        plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
+      });
+
+      // === GRÁFICO 2: BARRAS ===
+      const ctxBarras = document.getElementById("graficoBarras").getContext("2d");
+      window.graficoBarras = new Chart(ctxBarras, {
+        type: "bar",
+        data: {
+          labels: [
+            "Liberado p/ Aprovação",
+            "Pendente no ERP",
+            "Pendente",
+            "Finalizado",
+            "Pendente Liberação",
+            "Fora do Prazo"
+          ],
+          datasets: [{
+            label: "Quantidade",
+            data: [5, 3, 1, 4, 1],
+            backgroundColor: [
+              "#00e1ff", "orange", "red", "rgb(0, 250, 0)", "purple"
+            ],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { precision: 0 }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label(ctx) {
+                  return `${ctx.label}: ${ctx.parsed.y}`;
+                }
+              }
+            }
+          }
+        },
+        plugins: [shadowPlugin, dataLabelPlugin],
+      });
+    });
+  </script>
+
+</body>
+
+</html>

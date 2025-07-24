@@ -1,4 +1,3 @@
-/* ---------- RESET E BASE ---------- */
 * {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
@@ -422,7 +421,7 @@ nav {
   margin: 5% auto;
   padding: 24px 28px;
   border-radius: 12px;
-  width: 620px;
+  width: 900px;
   max-width: 95%;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   position: relative;
@@ -497,21 +496,34 @@ nav {
 .tabela-anexos .cabecalho,
 .tabela-anexos .linha {
   display: grid;
-  grid-template-columns: 32px 80px 1fr 1fr 100px 1.5fr;
+  grid-template-columns:
+    32px
+    80px
+    120px
+    140px
+    100px
+    100px
+    80px
+    1fr;
   align-items: center;
   font-size: 14px;
+  gap: 8px;
 }
 
-.tabela-anexos .cabecalho {
+.tabela-anexos .cabecalho span,
+.tabela-anexos .linha span {
+  display: flex;
+  align-items: center;
+}
+
+.tabela-anexos .cabecalho span {
   font-weight: bold;
   color: #444;
-  padding-bottom: 6px;
-  border-bottom: 1px solid #ccc;
 }
 
 .tabela-anexos .linha {
-  border-bottom: 1px solid #f0f0f0;
   padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .tabela-anexos a {
@@ -538,7 +550,6 @@ nav {
   background-color: #fabc00;
   border-radius: 4px;
 }
-
 .paginacao {
   display: flex;
   align-items: center;

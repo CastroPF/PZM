@@ -1076,6 +1076,9 @@ body.dark-mode .btn-consulta-flutuante:hover {
   background-color: #c59101;
   color: #fff;
 }
+body.dark-mode .quantidade {
+  background-color: #232323;
+}
 
 body.dark-mode .painel-geral {
   background: transparent;

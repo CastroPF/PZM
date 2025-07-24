@@ -254,6 +254,22 @@ nav {
   font-size: 16px;
 }
 
+.barra-de-progresso-container {
+  width: 90%;
+  height: 4px;
+  background: #e0e0e0;
+  margin-bottom: 24px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.barra-de-progresso-bar {
+  width: 0;
+  height: 100%;
+  background: #2776ba;
+  transition: width 0s;
+}
+
 /* ---------- FILTROS - FORMULÁRIOS ---------- */
 .painel-geral {
   display: flex;
@@ -373,6 +389,22 @@ nav {
 .eventual,
 .paginacao-direita button {
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.associar-responsavel button {
+  background-color: #ffb903;
+  padding: 8px 16px;
+  color: black;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.associar-responsavel select {
+  width: 375px;
+  height: 32px;
 }
 
 .linha-botao {
@@ -968,6 +1000,9 @@ body.dark-mode .fitros-consulta select {
 body.dark-mode table {
   background-color: #2c2c2c;
   color: #e0e0e0;
+}
+body.dark-mode .barra-de-progresso-bar {
+  background: #ffb800;
 }
 body.dark-mode th {
   background-color: #3d3d3d;

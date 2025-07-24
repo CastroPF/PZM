@@ -254,6 +254,22 @@ nav {
   font-size: 16px;
 }
 
+.barra-de-progresso-container {
+  width: 90%;
+  height: 4px;
+  background: #e0e0e0;
+  margin-bottom: 24px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.barra-de-progresso-bar {
+  width: 0;
+  height: 100%;
+  background: #2776ba;
+  transition: width 0s;
+}
+
 /* ---------- FILTROS - FORMULÁRIOS ---------- */
 .painel-geral {
   display: flex;
@@ -267,6 +283,22 @@ nav {
 
 .operacao {
   width: auto;
+}
+
+.associar-responsavel button {
+  background-color: #ffb903;
+  padding: 8px 16px;
+  color: black;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.associar-responsavel select {
+  width: 375px;
+  height: 32px;
 }
 
 .grupo-opcoes {
@@ -950,6 +982,9 @@ body.dark-mode .titulo-grafico {
 body.dark-mode .submenu a:hover {
   background-color: #555;
 }
+body.dark-mode .barra-de-progresso-bar {
+  background: #ffb800;
+}
 body.dark-mode .section-ct,
 body.dark-mode .obr-info {
   background-color: #2b2b2b;
@@ -991,6 +1026,10 @@ body.dark-mode .slider::before {
   background-color: var(--light);
   box-shadow: inset 8px -3px 0px 0px var(--dark);
 }
+body.dark-mode .quantidade {
+  background-color: #232323;
+}
+
 body.dark-mode .pagination-select {
   color: white;
 }
