@@ -97,7 +97,7 @@
       </select>
     </div>
     <button class="consulta">Consultar</button>
-    <button class="toggle-filtros">Mais Filtros [+]</button>
+    <button class="toggle-filtros">Mais Filtros e Gráficos [+]</button>
   </div>
 
   <div class="painel-suspenso" id="painelSuspenso">
@@ -385,6 +385,7 @@
 
     toggleBtn.addEventListener("click", () => {
       painel.classList.toggle("aberto");
+      toggleBtn.textContent = painel.classList.contains("aberto") ? "Mais Filtros e Gráficos [-]" : "Mais Filtros e Gráficos [+]";
     });
 
     function abrirModal() {

@@ -212,7 +212,7 @@ nav {
 .filtros-e-grafico {
   display: flex;
   flex-wrap: nowrap;
-  gap: 24px;
+  gap: 18px;
   padding: 20px;
   justify-content: space-between;
   align-items: flex-start;
@@ -223,11 +223,11 @@ nav {
   flex-shrink: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 8px;
+  gap: 4px;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
+  padding: 12px 12px 8px 12px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -251,20 +251,20 @@ nav {
   overflow: hidden;
   min-width: 280px;
   max-width: 880px;
-  height: 485px;
+  height: 402px;
 }
 
 .card-grafico .titulo-grafico {
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 600;
   color: #252525;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
 .grafico-container {
-  width: 400px;
-  height: 400px;
+  width: 320px;
+  height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -287,7 +287,7 @@ nav {
 
 .fitros-consulta {
   display: flex;
-  margin-bottom: 9px;
+  margin-bottom: 2px;
   flex-direction: column;
   justify-content: flex-start;
   min-width: 180px;
