@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/lancamentos/style.css">
-  <title>Automação Lançamentos Manuais</title>
+  <title>Consulta de Checklist Lançamento Manual - Operativo</title>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
         <div class="submenu">
           <a href="/lancamentos/operativo.html">Consulta de Checklist Lançamento Manual - Operativo</a>
           <a href="/lancamentos/supervisor.html">Consulta de Checklist Lançamento Manual - Supervisor</a>
-          <a href="/">Consulta de Status de Lançamento Manual</a>
+          <a href="/lancamentos/erp.html">Consulta de Status de Lançamento Manual</a>
         </div>
       </div>
       <span>Processos</span>
@@ -63,10 +63,14 @@
   </nav>
 
   <div class="form-header">
-    <h3>Consulta Lançamentos Manuais - Operativo</h3>
+    <h3>Consulta Lançamentos Manuais - Supervisor</h3>
   </div>
 
   <div class="filtros-compactos">
+    <div class="filtro-item">
+      <label>Id do lançamento:</label>
+      <input style="max-width: 280px; width: 280px;">
+    </div>
     <div class="filtro-item">
       <label>Data Inicial:</label>
       <input type="date" />
@@ -76,7 +80,7 @@
       <input type="date" />
     </div>
     <div class="fitros-consulta">
-      <label style="margin-bottom: 10px;">Data Base:</label>
+      <label style="margin-bottom: 18px;">Data Base:</label>
       <div class="grupo-opcoes">
         <label><input type="radio" name="data-base" />Data de Vencimento</label><br>
         <label><input type="radio" name="data-base" />Data do Lançamento</label><br>
@@ -97,7 +101,9 @@
       </select>
     </div>
     <button class="consulta">Consultar</button>
-    <button class="toggle-filtros">Mais Filtros [+]</button>
+    <button id="toggleFiltros" class="toggle-filtros" aria-label="Alternar filtros">
+      <span class="icon"></span>
+    </button>
   </div>
 
   <div class="painel-suspenso" id="painelSuspenso">
@@ -237,9 +243,8 @@
       </tbody>
     </table>
   </div>
-
-
   </div>
+
 
   <div class="helpFab" id="helpFab">
     <span>?</span>
@@ -377,14 +382,14 @@
     </div>
   </div>
 
-
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    const toggleBtn = document.querySelector(".toggle-filtros");
-    const painel = document.getElementById("painelSuspenso");
+    const btn = document.getElementById('toggleFiltros');
+    const painel = document.getElementById('painelSuspenso');
 
-    toggleBtn.addEventListener("click", () => {
-      painel.classList.toggle("aberto");
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      painel.classList.toggle('aberto');
     });
 
     function abrirModal() {
@@ -395,7 +400,7 @@
       document.getElementById("modalAnexos").style.display = "none";
     }
 
-    // Fecha ao clicar fora
+
     window.onclick = function (event) {
       const modal = document.getElementById("modalAnexos");
       if (event.target === modal) {
@@ -438,8 +443,8 @@
             body.classList.remove("dark-mode");
             localStorage.setItem("dark-mode", "disabled");
           }
-          graficoFarol.update();
-          graficoBarras.update();
+          if (window.graficoFarol) graficoFarol.update();
+          if (window.graficoBarras) graficoBarras.update();
         });
       }
 
@@ -515,9 +520,9 @@
             "Finalizado [Fora do Prazo]"
           ],
           datasets: [{
-            data: [5, 3, 1, 4, 1],
+            data: [5, 3, 1, 4, 1, 2],
             backgroundColor: [
-              "#00e1ff", "orange", "red", "rgb(0, 250, 0)", "purple"
+              "#00e1ff", "orange", "red", "rgb(0, 250, 0)", "purple", "#9E9E9E"
             ],
             borderWidth: 3
           }]
@@ -546,23 +551,31 @@
       });
 
       // === GRÁFICO 2: BARRAS ===
-      const ctxBarras = document.getElementById("graficoBarras").getContext("2d");
+      const ctxBarras = document
+        .getElementById("graficoBarras")
+        .getContext("2d");
+
       window.graficoBarras = new Chart(ctxBarras, {
         type: "bar",
         data: {
           labels: [
-            "Liberado p/ Aprovação",
-            "Pendente no ERP",
             "Pendente",
-            "Finalizado",
-            "Pendente Liberação",
-            "Fora do Prazo"
+            "Pendente Supervisor",
+            "Pendente Gerente",
+            "Pendente Diretor",
+            "Concluído",
+            "Inativo"
           ],
           datasets: [{
             label: "Quantidade",
-            data: [5, 3, 1, 4, 1],
+            data: [12, 8, 5, 3, 10, 2],
             backgroundColor: [
-              "#00e1ff", "orange", "red", "rgb(0, 250, 0)", "purple"
+              "#2196F3",
+              "#FF9800",
+              "#FF5722",
+              "#FF3D00",
+              "#4CAF50",
+              "#9E9E9E"
             ],
             borderRadius: 6
           }]
@@ -571,9 +584,21 @@
           responsive: true,
           maintainAspectRatio: false,
           scales: {
+            // desativa grid no eixo X
+            x: {
+              grid: {
+                display: false
+              }
+            },
+            // desativa grid no eixo Y
             y: {
+              grid: {
+                display: false
+              },
               beginAtZero: true,
-              ticks: { precision: 0 }
+              ticks: {
+                precision: 0
+              }
             }
           },
           plugins: {

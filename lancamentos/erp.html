@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/lancamentos/erp.css">
+  <title>Consulta Status de Lançamentos</title>
+</head>
+
+
+<body>
+  <header class="header-container">
+    <div class="header-left">
+      <h2>
+        <a href="/lancamentos/operativo.html" class="mainmenu">
+          PZMWEB Enterprise :: Automação Lançamentos Manuais
+        </a>
+      </h2>
+    </div>
+    <div class="header-right">
+      <img src="/grupopzm.png" alt="logo" class="logo" />
+    </div>
+  </header>
+
+  <nav class="nav-container">
+    <div class="nav-left">
+      <div class="menu-item">
+        Controles
+        <div class="submenu">
+          <a href="/modulos/index.html">Alterar Aplicativo</a>
+          <a href="/modulos/divisão.html">Alterar Divisão</a>
+        </div>
+      </div>
+      <span>Cadastros</span>
+      <div class="menu-item">
+        Operações
+        <div class="submenu">
+          <a href="/lancamentos/operativo.html">Consulta de Checklist Lançamento Manual - Operativo</a>
+          <a href="/lancamentos/supervisor.html">Consulta de Checklist Lançamento Manual - Supervisor</a>
+          <a href="/">Consulta de Status de Lançamento Manual</a>
+        </div>
+      </div>
+      <span>Processos</span>
+      <span>Relatórios</span>
+      <span>Gráficos</span>
+      <span>Configurações</span>
+      <span>Ajuda</span>
+      <span><a class="sair" href="/login/login.html">Sair</a></span>
+    </div>
+    <div class="nav-right">
+      <div class="toggle-switch">
+        <label class="switch-label">
+          <input type="checkbox" class="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="flags">
+        <img src="https://flagcdn.com/16x12/br.png" alt="Português" title="Português" />
+        <img src="https://flagcdn.com/16x12/es.png" alt="Español" title="Español" />
+        <img src="https://flagcdn.com/16x12/gb.png" alt="English" title="English" />
+      </div>
+    </div>
+  </nav>
+
+  <div class="form-header">
+    <h3>Consulta de Status dos Lançamentos Manuais</h3>
+  </div>
+
+  <div class="filtros-compactos">
+    <div class="filtro-item">
+      <label>Código do ERP</label>
+      <input>
+    </div>
+    <div class="filtro-item">
+      <label>Data Inicial:</label>
+      <input type="date" />
+    </div>
+    <div class="filtro-item">
+      <label>Data Final:</label>
+      <input type="date" />
+    </div>
+    <div class="fitros-consulta">
+      <label style="margin-bottom: 18px;">Data Base:</label>
+      <div class="grupo-opcoes">
+        <label><input type="radio" name="data-base" />Data de Vencimento</label><br>
+        <label><input type="radio" name="data-base" />Data do Lançamento</label><br>
+        <label><input type="radio" name="data-base" />Data do Documento</label><br>
+        <label><input type="radio" name="data-base" />Data da Criação</label><br>
+      </div>
+    </div>
+    <div class="filtro-item">
+      <label>Histórico:</label>
+      <input type="text" style="max-width: 160px;">
+    </div>
+    <div class="filtro-item">
+      <label>Moeda:</label>
+      <select>
+        <option>Todos os itens</option>
+      </select>
+    </div>
+    <div class="filtro-item">
+      <label>Responsável:</label>
+      <select>
+        <option>Todos os itens</option>
+      </select>
+    </div>
+    <button class="consulta">Consultar</button>
+  </div>
+
+  <div class="quantidade">
+    <div class="linha-total-paginacao">
+      <div class="totalizadores">
+        <span>Total de Registros: 8</span>
+        <span>Total de Itens: 16</span>
+        <span><a href="#" class="baixar-anexos" onclick="abrirModal()">Total de Anexos: 14</a></span>
+      </div>
+
+      <nav class="pagination-nav">
+        <input type="text" placeholder="Pesquisar..." class="campo-pesquisa ao-lado" />
+        <label class="pagination-select">
+          <span>Exibir</span>
+          <select>
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
+          <span>por página</span>
+        </label>
+        <button class="pagination-btn" title="Primeira página">&laquo;</button>
+        <button class="pagination-btn" title="Página anterior">&lsaquo;</button>
+        <input type="number" value="1" min="1" class="pagination-input" />
+        <span class="pagination-total">de 5</span>
+        <button class="pagination-btn" title="Próxima página">&rsaquo;</button>
+        <button class="pagination-btn" title="Última página">&raquo;</button>
+      </nav>
+    </div>
+  </div>
+
+  <div class="lanc-info">
+    <table class="tabela-checklist">
+      <thead>
+        <tr class="header-table">
+          <th>ID do Lançamento</th>
+          <th>Data de Criação</th>
+          <th>Status</th>
+          <th>Detalhe do Erro</th>
+          <th>Resposta do ERP</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>12333</td>
+          <td>30/07/2025</td>
+          <td>Erro</td>
+          <td>Centro de Custo não Informado</td>
+          <td>Necessário indicação de Centro de Custo</td>
+        </tr>
+
+        <tr>
+          <td>33333</td>
+          <td>30/07/2025</td>
+          <td>Erro</td>
+          <td>Centro de Custo não Informado</td>
+          <td>Necessário indicação de Centro de Custo</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.querySelector('.checkbox');
+        // Aplica estado salvo
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+          toggle.checked = true;
+        }
+        // Ao mudar o checkbox
+        toggle.addEventListener('change', () => {
+          if (toggle.checked) {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('dark-mode', 'enabled');
+          } else {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('dark-mode', 'disabled');
+          }
+        });
+      });
+    </script>
+
+
+</body>
+
+</html>

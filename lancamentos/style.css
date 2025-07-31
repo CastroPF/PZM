@@ -185,9 +185,10 @@ nav {
   padding: 20px;
   background: #fff;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   margin: 20px;
+  margin-bottom: 0px;
 }
 
 .filtro-item {
@@ -219,14 +220,14 @@ nav {
 }
 
 .painel-filtros {
-  width: 320px;
+  width: 900px;
   flex-shrink: 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 4px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
   background: #fff;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 12px 12px 8px 12px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
@@ -245,13 +246,13 @@ nav {
   align-items: center;
   background: #fff;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 20px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   min-width: 280px;
   max-width: 880px;
-  height: 402px;
+  height: 232px;
 }
 
 .card-grafico .titulo-grafico {
@@ -349,19 +350,38 @@ nav {
 }
 
 /* Painel expansível */
+
 .toggle-filtros {
-  background-color: #2776ba;
-  color: white;
-  font-weight: 600;
+  width: 34px;
+  height: 34px;
+  padding: 0;
   border: none;
-  padding: 10.5px 20px;
-  border-radius: 6px;
+  border-radius: 100%;
+  background-color: #888888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-.toggle-filtros:hover {
-  background-color: #1e5c91;
+
+.toggle-filtros .icon {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid #fff;
+  transition: transform 0.4s ease;
 }
+
+.toggle-filtros.active {
+  background-color: #2c3d4f;
+}
+
+.toggle-filtros.active .icon {
+  transform: rotate(180deg);
+}
+
 .painel-suspenso {
   max-height: 0;
   overflow: hidden;
