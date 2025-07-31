@@ -220,7 +220,7 @@ nav {
 }
 
 .painel-filtros {
-  width: 900px;
+  width: 1200px;
   flex-shrink: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -228,7 +228,7 @@ nav {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 12px 12px 8px 12px;
+  padding: 35px 20px 35px 20px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -251,21 +251,20 @@ nav {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   min-width: 280px;
-  max-width: 880px;
-  height: 232px;
+  max-width: 580px;
+  height: 282px;
 }
 
 .card-grafico .titulo-grafico {
   font-size: 16px;
   font-weight: 600;
   color: #252525;
-  margin-bottom: 10px;
   text-align: center;
 }
 
 .grafico-container {
-  width: 320px;
-  height: 320px;
+  width: 265px;
+  height: 265px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -350,28 +349,23 @@ nav {
 }
 
 /* Painel expansível */
-
 .toggle-filtros {
   width: 34px;
   height: 34px;
   padding: 0;
   border: none;
-  border-radius: 100%;
+  border-radius: 50%;
   background-color: #888888;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s;
 }
 
 .toggle-filtros .icon {
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 8px solid #fff;
-  transition: transform 0.4s ease;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  display: block;
 }
 
 .toggle-filtros.active {

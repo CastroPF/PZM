@@ -365,7 +365,7 @@ nav {
 
 .totalizadores span {
   font-size: 15px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .baixar-anexos {
@@ -402,7 +402,6 @@ nav {
   padding-right: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
-  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -522,7 +521,6 @@ tr {
 .lanc-info {
   background-color: white;
   padding: 20px;
-  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -537,84 +535,109 @@ tr {
   vertical-align: middle;
 }
 
-/* === Dark Mode Overrides === */
+/* DARK MODE */
 body.dark-mode {
-  background-color: #181818;
-  color: #e0e0e0;
+  background-color: #1e1e1e;
+  color: #e2e2e2;
 }
-
 body.dark-mode header {
-  background-color: #1f1f1f;
+  background-color: #151f2b;
+  color: white;
+  border-bottom-color: #3e7ab7;
 }
-
-body.dark-mode .header-container {
-  border-bottom-color: #3a3a3a;
-}
-
 body.dark-mode nav {
-  background-color: #1f1f1f;
-  border-bottom: 1px solid #3a3a3a;
-}
-
-body.dark-mode .submenu {
   background-color: #2a2a2a;
-  border: 1px solid #3a3a3a;
+  color: white;
+  border-bottom: 1px solid #444;
 }
-
-body.dark-mode .submenu a {
-  color: #e0e0e0;
+body.dark-mode .card-filtros,
+body.dark-mode .card-grafico,
+body.dark-mode .quantidade,
+body.dark-mode .modal-conteudo,
+body.dark-mode .lanc-info {
+  background-color: #2a2a2a;
+  color: #e2e2e2;
+  border-color: #3b3b3b;
 }
-
-body.dark-mode .toggle-switch .switch-label {
-  background-color: #28292c !important;
-  border-color: #28292c !important;
+body.dark-mode .fitros-consulta input,
+body.dark-mode .fitros-consulta select,
+body.dark-mode .campo-pesquisa.ao-lado,
+body.dark-mode .input-pagina,
+body.dark-mode .pagination-input,
+body.dark-mode .pagination-select select {
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+  border-color: #555;
 }
-
-body.dark-mode .slider {
-  background-color: #d8dbe0 !important;
+body.dark-mode .header-table th,
+body.dark-mode th {
+  background-color: #414141;
+  color: white;
 }
-
-body.dark-mode .slider::before {
-  background-color: #28292c !important;
-  box-shadow: inset 8px -3px 0 0 #d8dbe0 !important;
+body.dark-mode td,
+body.dark-mode .tabela-anexos .linha span {
+  color: #f0f0f0;
 }
-
-body.dark-mode .form-header {
-  background-color: transparent;
+body.dark-mode .btn-download-todos,
+body.dark-mode .consulta {
+  background-color: #ffbb00;
+  color: black;
 }
-
-body.dark-mode .form-header h3 {
-  color: #e0e0e0;
+body.dark-mode .sair {
+  color: white;
 }
-
+body.dark-mode .btn-download-todos:hover,
+body.dark-mode .consulta:hover {
+  background-color: #1d5e98;
+}
+body.dark-mode .titulo-grafico {
+  color: white;
+}
 body.dark-mode .filtros-compactos {
   background-color: #2a2a2a;
-  border: 1px solid #444;
+  border: none;
 }
-
-body.dark-mode .filtro-item,
-body.dark-mode .fitros-consulta {
-  background: none;
+body.dark-mode .submenu {
+  background-color: #303030;
+  border-color: #444;
 }
-
-body.dark-mode input,
-body.dark-mode select,
+body.dark-mode .submenu a {
+  color: #ccc;
+}
+body.dark-mode .pagination-select {
+  color: white;
+}
+body.dark-mode .pagination-total {
+  color: white;
+}
+body.dark-mode .submenu a:hover {
+  background-color: #444;
+}
+body.dark-mode .pagination-nav {
+  background: #1f1f1f;
+  color: #ccc;
+  box-shadow: none;
+}
+body.dark-mode .pagination-btn {
+  color: #88b7ff;
+}
+body.dark-mode .farol:hover {
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.25);
+}
 body.dark-mode .campo-pesquisa.ao-lado {
-  background-color: #3a3a3a;
+  background-color: #ffffff;
+  color: black;
   border: 1px solid #555;
-  color: #e0e0e0;
+}
+
+body.dark-mode .campo-pesquisa.ao-lado:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.3);
+  outline: none;
 }
 
 body.dark-mode table th,
 body.dark-mode table td {
-  border-color: #444;
-}
-
-body.dark-mode .header-table th {
-  background-color: #2a2a2a;
-  color: #e0e0e0;
-}
-
-body.dark-mode .lanc-info {
-  background-color: #2a2a2a;
+  border: 1px solid #ddd;
+  color: black;
 }
