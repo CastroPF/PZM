@@ -509,13 +509,10 @@ td {
   border: 1px solid #ddd;
   padding: 8px;
   font-size: 15px;
+  background-color: rgb(255, 205, 205);
 }
 th {
-  background-color: #f0f0f0;
   text-align: left;
-}
-tr {
-  background-color: rgb(255, 205, 205);
 }
 
 .lanc-info {
@@ -525,7 +522,8 @@ tr {
 }
 
 .header-table th {
-  background-color: #dbe8f8;
+  background-color: #7c7c7e52;
+  border: 1px solid #484848;
   color: black;
   font-size: 14px;
   padding: 6px 6px;

@@ -821,7 +821,8 @@ th {
 }
 
 .header-table th {
-  background-color: #dbe8f8;
+  background-color: #7c7c7e52;
+  border: 1px solid #484848;
   color: black;
   font-size: 14px;
   padding: 6px 6px;
