@@ -445,14 +445,18 @@
 
   <div class="chat-popup" id="chat-popup">
     <div class="chat-header">
-      <span>Dúvidas?</span>
+      <span>Agente PZM</span>
       <button class="close-chat" onclick="toggleChat()">×</button>
     </div>
-    <div class="chat-body">
-      <p>Olá! Precisa de ajuda no login?<br>
-        Entre em contato com os nossos consultores no e-mail: <strong>suporte@pzmweb.com</strong></p>
+    <div class="chat-body" id="chat-body">
+      <div class="message bot">Olá! Como posso te ajudar hoje?</div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
+      <button onclick="sendMessage()">Enviar</button>
     </div>
   </div>
+
 
   <div id="modalAnexos" class="modal">
     <div class="modal-conteudo">
@@ -575,6 +579,9 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
   <script>
     function abrirModal() {
       document.getElementById("modalAnexos").style.display = "block";
@@ -584,160 +591,144 @@
       document.getElementById("modalAnexos").style.display = "none";
     }
 
-    // Fecha ao clicar fora
     window.onclick = function (event) {
       const modal = document.getElementById("modalAnexos");
       if (event.target === modal) {
         modal.style.display = "none";
       }
-    }
+    };
 
     const helpFab = document.getElementById('helpFab');
     const chatPopup = document.getElementById('chat-popup');
+    const chatBody = document.getElementById('chat-body');
+    const userInput = document.getElementById('user-input');
 
     helpFab.onclick = function () {
-      chatPopup.style.display = 'block';
+      chatPopup.classList.add('show');
     };
 
     function toggleChat() {
-      chatPopup.style.display = 'none';
+      chatPopup.classList.remove('show');
     }
 
     window.addEventListener('mousedown', function (e) {
-      if (chatPopup.style.display === 'block' && !chatPopup.contains(e.target) && e.target !== helpFab) {
+      if (chatPopup.classList.contains('show') && !chatPopup.contains(e.target) && e.target !== helpFab) {
         toggleChat();
       }
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const body = document.body;
-      const darkToggle = document.querySelector(".checkbox");
+    function appendMessage(content, sender) {
+      const msg = document.createElement('div');
+      msg.className = `message ${sender}`;
+      msg.textContent = content;
+      chatBody.appendChild(msg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
 
-      if (localStorage.getItem("dark-mode") === "enabled") {
-        body.classList.add("dark-mode");
-        if (darkToggle) darkToggle.checked = true;
+    const knowledgeBase = [
+      {
+        question: "Como cadastrar uma nova classe contábil?",
+        answer: "Acesse: Cadastros > Auxiliares > Classe contábil.\n- Insira um código sequencial (não pode ser repetido).\n- Informe o nome da classe.\n- Informe o tipo (ativo, passivo ou resultado)."
+      },
+      {
+        question: "Como cadastrar feriados no sistema?",
+        answer: "Acesse: Operações > Auxiliares > Feriados.\n- Clique em Consultar para verificar os existentes.\n- Indique dia/mês/ano, marque esfera (Federal, Estadual ou Municipal), indique se é Permanente e clique em Confirmar."
+      },
+      {
+        question: "Como resetar a senha?",
+        answer: "Acesse o módulo de administração, vá em Configurações > Usuários > Consulte o usuário desejado.\n- Em seguida, clique no lápis para acessar a tela de cadastro do usuário.\n- Insira a senha 'Padrao998', ela irá gerar uma contra senha que será encaminhada ao usuário."
+      },
+      {
+        question: "O que é checklist de partida?",
+        answer: "Serve para associar responsáveis a novas contas. Sempre tem o mês zero (0) e não é usado para conciliação."
+      },
+      {
+        question: "Como fazer carga em massa do plano de contas?",
+        answer: "Acesse: Controle > Importar > Dados via CSV/TXT.\n- Clique em 'Escolher arquivo' e depois em 'Importar arquivo'."
+      },
+      {
+        question: "Quais formatos de arquivo são aceitos para carga de anexos?",
+        answer: "PDF, ZIP e RAR."
+      },
+      {
+        question: "Como aprovar uma capa com ressalva?",
+        answer: "Somente o aprovador contábil pode aprovar com ressalva. É necessário inserir uma justificativa e um motivo de ressalva."
+      },
+      {
+        question: "O que é saldo extracontábil?",
+        answer: "São registros financeiros que não afetam a contabilidade oficial, usados para controle gerencial."
+      },
+      {
+        question: "Como validar um balancete?",
+        answer: "Acesse: Controles > Base de dados > Validação Balancete. Selecione os saldos e clique em Validar e depois Inserir Dados."
       }
+    ];
 
-      if (darkToggle) {
-        darkToggle.addEventListener("change", function () {
-          if (darkToggle.checked) {
-            body.classList.add("dark-mode");
-            localStorage.setItem("dark-mode", "enabled");
-          } else {
-            body.classList.remove("dark-mode");
-            localStorage.setItem("dark-mode", "disabled");
-          }
-          graficoFarol.update();
-        });
-      }
+    const fuse = new Fuse(knowledgeBase, {
+      keys: ['question'],
+      threshold: 0.4
+    });
 
-      const centerTextPlugin = {
-        id: "centerText",
-        afterDraw(chart) {
-          const {
-            ctx,
-            chartArea: { left, top, width, height },
-            data,
-          } = chart;
-          const total = data.datasets[0].data.reduce((sum, v) => sum + v, 0);
-          const isDark = body.classList.contains("dark-mode");
-          const x = left + width / 2;
-          const y = top + height / 2;
-          ctx.save();
-          ctx.font = "bold 22px Arial";
-          ctx.fillStyle = isDark ? "#fff" : "#000";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText(total, x, y - 8);
-          ctx.font = "12px Arial";
-          ctx.fillStyle = isDark ? "#fff" : "#000";
-          ctx.fillText("Total", x, y + 15);
-          ctx.restore();
-        },
-      };
+    async function sendMessage() {
+      const text = userInput.value.trim();
+      if (!text) return;
 
-      const dataLabelPlugin = {
-        id: "dataLabel",
-        afterDatasetsDraw(chart) {
-          const { ctx, data } = chart;
-          const meta = chart.getDatasetMeta(0);
-          meta.data.forEach((arc, i) => {
-            const { x, y } = arc.getCenterPoint();
-            const value = data.datasets[0].data[i];
-            ctx.save();
-            ctx.fillStyle = "#333";
-            ctx.font = "bold 11px Arial";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText(value, x, y);
-            ctx.restore();
-          });
-        },
-      };
+      appendMessage(text, 'user');
+      userInput.value = '';
 
-      const shadowPlugin = {
-        id: "shadow",
-        beforeDraw(chart) {
-          const ctx = chart.ctx;
-          ctx.save();
-          ctx.shadowColor = body.classList.contains("dark-mode")
-            ? "#ffffff40"
-            : "#b9b9b9";
-          ctx.shadowBlur = 12;
-          ctx.shadowOffsetX = 0;
-          ctx.shadowOffsetY = 0;
-        },
-        afterDraw(chart) {
-          chart.ctx.restore();
-        },
-      };
-
-      // Gráfico em ciculo
-      const ctxFarol = document.getElementById("graficoFarol").getContext("2d");
-      window.graficoFarol = new Chart(ctxFarol, {
-        type: "doughnut",
-        data: {
-          labels: [
-            " Complementar",
-            " Retificação",
-            " Dentro do Prazo",
-            " Prazo no Limite",
-            " Atenção: Prazo Vencido",
-            " Processo Finalizado",
-            " Finalizado [Fora do Prazo]"
-          ],
-          datasets: [{
-            data: [1, 2, 5, 3, 1, 4, 1],
-            backgroundColor: [
-              "#002fff6b", "#f3007e", "#00e1ff", "orange", "red", "green", "purple"
-            ],
-            borderWidth: 3
-          }]
-        },
-        options: {
-          responsive: false,
-          maintainAspectRatio: false,
-          layout: { padding: 15 },
-          elements: { arc: { hoverOffset: 15 } },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label(ctx) {
-                  const label = ctx.label || "";
-                  const val = ctx.parsed;
-                  const arr = ctx.chart.data.datasets[0].data;
-                  const total = arr.reduce((s, v) => s + v, 0);
-                  return `${label}: ${((val / total) * 100).toFixed(2)}%`;
-                }
+      try {
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer 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'
+          },
+          body: JSON.stringify({
+            model: 'mixtral-8x7b-32768',
+            messages: [
+              {
+                role: 'system',
+                content: 'Você é um assistente virtual da empresa PZM. Seja claro, direto e educado. Responda com base no manual.'
+              },
+              {
+                role: 'user',
+                content: text
               }
-            }
+            ]
+          })
+        });
+
+        const data = await response.json();
+        const botReply = data.choices?.[0]?.message?.content;
+
+        if (botReply) {
+          appendMessage(botReply, 'bot');
+        } else {
+          const local = fuse.search(text);
+          if (local.length > 0) {
+            appendMessage(local[0].item.answer, 'bot');
+          } else {
+            appendMessage("Desculpe, não encontrei nada relacionado a isso no manual.", 'bot');
           }
-        },
-        plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
-      });
+        }
+      } catch (error) {
+        console.error(error);
+        const local = fuse.search(text);
+        if (local.length > 0) {
+          appendMessage(local[0].item.answer, 'bot');
+        } else {
+          appendMessage("Erro ao se comunicar com a IA e não encontrei nada no manual.", 'bot');
+        }
+      }
+    }
+
+    userInput?.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") sendMessage();
     });
   </script>
+
+
+
 
 </body>
 
