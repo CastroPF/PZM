@@ -924,14 +924,14 @@ td.farol-cell {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.04rem;
+  font-size: 16.64px;
 }
 
 .close-chat {
   background: none;
   border: none;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 20.8px;
   cursor: pointer;
   padding: 0 4px;
   line-height: 1;
@@ -946,7 +946,7 @@ td.farol-cell {
 .chat-body {
   padding: 18px 16px 16px 16px;
   color: #373737;
-  font-size: 1.01rem;
+  font-size: 16.16px;
 }
 
 .chat-body a {

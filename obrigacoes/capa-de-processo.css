@@ -1142,14 +1142,14 @@ body.dark-mode .fitros-consulta input::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.04rem;
+  font-size: 16.64px;
 }
 
 .close-chat {
   background: none;
   border: none;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 20.8px;
   cursor: pointer;
   padding: 0 4px;
   line-height: 1;
@@ -1164,7 +1164,7 @@ body.dark-mode .fitros-consulta input::placeholder {
 .chat-body {
   padding: 18px 16px 16px 16px;
   color: #373737;
-  font-size: 1.01rem;
+  font-size: 16.16px;
 }
 
 .chat-body a {
@@ -1188,7 +1188,7 @@ body.dark-mode .fitros-consulta input::placeholder {
     bottom: 18px;
     width: 46px;
     height: 46px;
-    font-size: 1.4rem;
+    font-size: 22.4px;
   }
   .chat-popup {
     right: 12px;

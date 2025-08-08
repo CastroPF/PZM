@@ -595,6 +595,20 @@
       if (event.target === modal) {
         modal.style.display = "none";
       }
+    }
+    function abrirModal() {
+      document.getElementById("modalAnexos").style.display = "block";
+    }
+
+    function fecharModal() {
+      document.getElementById("modalAnexos").style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      const modal = document.getElementById("modalAnexos");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
     };
 
     const helpFab = document.getElementById('helpFab');
@@ -680,8 +694,7 @@
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer SUA_CHAVE_AQUI'
-
+            'Authorization': 'Bearer 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'
           },
           body: JSON.stringify({
             model: 'mixtral-8x7b-32768',
@@ -724,6 +737,135 @@
 
     userInput?.addEventListener("keypress", function (e) {
       if (e.key === "Enter") sendMessage();
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const body = document.body;
+      const darkToggle = document.querySelector(".checkbox");
+
+      if (localStorage.getItem("dark-mode") === "enabled") {
+        body.classList.add("dark-mode");
+        if (darkToggle) darkToggle.checked = true;
+      }
+
+      if (darkToggle) {
+        darkToggle.addEventListener("change", function () {
+          if (darkToggle.checked) {
+            body.classList.add("dark-mode");
+            localStorage.setItem("dark-mode", "enabled");
+          } else {
+            body.classList.remove("dark-mode");
+            localStorage.setItem("dark-mode", "disabled");
+          }
+          graficoFarol.update();
+        });
+      }
+
+      const centerTextPlugin = {
+        id: "centerText",
+        afterDraw(chart) {
+          const {
+            ctx,
+            chartArea: { left, top, width, height },
+            data,
+          } = chart;
+          const total = data.datasets[0].data.reduce((sum, v) => sum + v, 0);
+          const isDark = body.classList.contains("dark-mode");
+          const x = left + width / 2;
+          const y = top + height / 2;
+          ctx.save();
+          ctx.font = "bold 22px Arial";
+          ctx.fillStyle = isDark ? "#fff" : "#000";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(total, x, y - 8);
+          ctx.font = "12px Arial";
+          ctx.fillStyle = isDark ? "#fff" : "#000";
+          ctx.fillText("Total", x, y + 15);
+          ctx.restore();
+        },
+      };
+
+      const dataLabelPlugin = {
+        id: "dataLabel",
+        afterDatasetsDraw(chart) {
+          const { ctx, data } = chart;
+          const meta = chart.getDatasetMeta(0);
+          meta.data.forEach((arc, i) => {
+            const { x, y } = arc.getCenterPoint();
+            const value = data.datasets[0].data[i];
+            ctx.save();
+            ctx.fillStyle = "#333";
+            ctx.font = "bold 11px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(value, x, y);
+            ctx.restore();
+          });
+        },
+      };
+
+      const shadowPlugin = {
+        id: "shadow",
+        beforeDraw(chart) {
+          const ctx = chart.ctx;
+          ctx.save();
+          ctx.shadowColor = body.classList.contains("dark-mode")
+            ? "#ffffff40"
+            : "#b9b9b9";
+          ctx.shadowBlur = 12;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0;
+        },
+        afterDraw(chart) {
+          chart.ctx.restore();
+        },
+      };
+
+      // Gráfico em ciculo
+      const ctxFarol = document.getElementById("graficoFarol").getContext("2d");
+      window.graficoFarol = new Chart(ctxFarol, {
+        type: "doughnut",
+        data: {
+          labels: [
+            " Complementar",
+            " Retificação",
+            " Dentro do Prazo",
+            " Prazo no Limite",
+            " Atenção: Prazo Vencido",
+            " Processo Finalizado",
+            " Finalizado [Fora do Prazo]"
+          ],
+          datasets: [{
+            data: [1, 2, 5, 3, 1, 4, 1],
+            backgroundColor: [
+              "#002fff6b", "#f3007e", "#00e1ff", "orange", "red", "green", "purple"
+            ],
+            borderWidth: 3
+          }]
+        },
+        options: {
+          responsive: false,
+          maintainAspectRatio: false,
+          layout: { padding: 15 },
+          elements: { arc: { hoverOffset: 15 } },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label(ctx) {
+                  const label = ctx.label || "";
+                  const val = ctx.parsed;
+                  const arr = ctx.chart.data.datasets[0].data;
+                  const total = arr.reduce((s, v) => s + v, 0);
+                  return `${label}: ${((val / total) * 100).toFixed(2)}%`;
+                }
+              }
+            }
+          }
+        },
+        plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
+      });
     });
   </script>
 

@@ -402,6 +402,10 @@ nav {
   font-weight: bold;
 }
 
+.associar-responsavel button:hover {
+  background-color: #e0a800;
+}
+
 .associar-responsavel select {
   width: 375px;
   height: 32px;
@@ -625,7 +629,7 @@ nav {
   align-items: center;
   gap: 12px;
   background: #f0f0f0;
-  border-radius: 18px;
+  border-radius: 10px;
   box-shadow: 0 1px 8px rgba(30, 40, 60, 0.07);
   padding: 2px 14px;
 }
@@ -1155,7 +1159,7 @@ body.dark-mode .fitros-consulta input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.1rem;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   z-index: 2000;
@@ -1168,10 +1172,11 @@ body.dark-mode .fitros-consulta input::placeholder {
 
 .chat-popup {
   display: none;
+  flex-direction: column;
   position: fixed;
   bottom: 104px;
   right: 48px;
-  width: 320px;
+  width: 340px;
   max-width: 95vw;
   background: #fff;
   border-radius: 14px;
@@ -1189,44 +1194,77 @@ body.dark-mode .fitros-consulta input::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.04rem;
+  font-size: 16.64px;
 }
 
 .close-chat {
   background: none;
   border: none;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 20.8px;
   cursor: pointer;
   padding: 0 4px;
   line-height: 1;
   margin-left: 6px;
   opacity: 0.85;
 }
-
 .close-chat:hover {
   opacity: 1;
 }
 
 .chat-body {
-  padding: 18px 16px 16px 16px;
+  padding: 16px;
+  max-height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1rem;
   color: #373737;
-  font-size: 1.01rem;
 }
 
-.chat-body a {
-  color: #2776ba;
-  text-decoration: underline;
-  font-weight: 500;
+.message {
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 80%;
+  line-height: 1.4;
+}
+.message.bot {
+  background: #f1f1f1;
+  align-self: flex-start;
+}
+.message.user {
+  background: #2776ba;
+  color: white;
+  align-self: flex-end;
 }
 
-.chat-body p {
-  margin-top: 0px;
-  margin-bottom: 10px;
+.chat-input-area {
+  display: flex;
+  border-top: 1px solid #ddd;
 }
 
-.chat-body strong {
-  color: #c59400;
+.chat-popup.show {
+  display: flex;
+  flex-direction: column;
+}
+.chat-input-area input {
+  flex: 1;
+  padding: 12px 14px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+.chat-input-area button {
+  background: #ffc107;
+  border: none;
+  padding: 0 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.chat-input-area button:hover {
+  background: #ffdb5c;
 }
 
 @media (max-width: 600px) {
@@ -1235,7 +1273,7 @@ body.dark-mode .fitros-consulta input::placeholder {
     bottom: 18px;
     width: 46px;
     height: 46px;
-    font-size: 1.4rem;
+    font-size: 22.4px;
   }
   .chat-popup {
     right: 12px;

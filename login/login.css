@@ -58,7 +58,7 @@ body {
   font-weight: bold;
   border-radius: 8px;
   padding: 5px 12px;
-  font-size: 1.03rem;
+  font-size: 16.48px;
   margin-top: 10px;
   transition: background 0.2s;
 }
@@ -76,7 +76,7 @@ body {
   border-radius: 8px;
   padding: 5px 12px;
   text-decoration: none;
-  font-size: 1.03rem;
+  font-size: 16.48px;
   margin-top: 10px;
   margin-left: 0;
   transition: background 0.2s;
@@ -93,7 +93,7 @@ body {
   border: none;
   padding: 12px 0;
   border-radius: 9px;
-  font-size: 1.06rem;
+  font-size: 16.96px;
   cursor: pointer;
   margin-bottom: 20px;
   transition: background 0.2s;
@@ -120,7 +120,7 @@ body {
   margin: 12px 0 18px 0;
   position: relative;
   color: #535353;
-  font-size: 0.98rem;
+  font-size: 15.68px;
 }
 
 .divisor:before,
@@ -139,7 +139,7 @@ body {
   margin: 0 0 18px 0;
   color: #373737;
   font-weight: 700;
-  font-size: 1.22rem;
+  font-size: 19.52px;
   letter-spacing: 1px;
   text-align: center;
 }
@@ -157,7 +157,7 @@ body {
 .input-group svg {
   color: #2776ba;
   margin-right: 8px;
-  font-size: 1.2rem;
+  font-size: 19.2px;
 }
 
 .input-group input {
@@ -166,7 +166,7 @@ body {
   background: transparent;
   padding: 13px 8px;
   width: 100%;
-  font-size: 0.85rem;
+  font-size: 13.6px;
   color: #373737;
 }
 .input-group:focus-within {
@@ -178,7 +178,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.95rem;
+  font-size: 15.2px;
   color: #373737;
   margin-bottom: 18px;
 }
@@ -187,7 +187,7 @@ body {
   color: #2776ba;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: 13.6px;
 }
 
 .btn-login {
@@ -197,7 +197,7 @@ body {
   border: none;
   padding: 12px 0;
   border-radius: 8px;
-  font-size: 1.05rem;
+  font-size: 16.8px;
   cursor: pointer;
   transition: background 0.2s;
   width: 100%;
@@ -246,7 +246,7 @@ body {
 }
 
 .welcome-panel p {
-  font-size: 1.06rem;
+  font-size: 16.96px;
   font-weight: 400;
   margin-bottom: 26px;
   margin-left: 40px;
@@ -387,14 +387,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.04rem;
+  font-size: 16.64px;
 }
 
 .close-chat {
   background: none;
   border: none;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 20.8px;
   cursor: pointer;
   padding: 0 4px;
   line-height: 1;
@@ -409,7 +409,7 @@ body {
 .chat-body {
   padding: 18px 16px 16px 16px;
   color: #373737;
-  font-size: 1.01rem;
+  font-size: 16.16px;
 }
 
 .chat-body a {
@@ -432,7 +432,7 @@ body {
     bottom: 18px;
     width: 46px;
     height: 46px;
-    font-size: 1.4rem;
+    font-size: 22.4px;
   }
   .chat-popup {
     right: 12px;
