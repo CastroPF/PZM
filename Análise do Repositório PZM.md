@@ -1,6 +1,4 @@
-# Análise do Repositório PZM
-
-Este documento detalha os comportamentos esperados do sistema PZM com base na análise do código-fonte disponível no repositório GitHub.
+## Impostos e Obrigações
 
 ## 1. Botões de Consulta
 
@@ -22,7 +20,7 @@ O formulário de consulta contém os seguintes campos:
 
 - **Esfera:** Um dropdown (`<select>`) com a opção padrão "Todos os itens" onde é possivel filtrar mais itens relacionados a esferas.
 
-- **Imposto:** Um dropdown (`<select>`) com a opção padrão "Todos os itens"onde é possivel filtrar mais itens relacionados a impostos.
+- **Imposto/Obrigações:** Um dropdown (`<select>`) com a opção padrão "Todos os itens"onde é possivel filtrar mais itens relacionados a impostos.
 
 - **Estágios:** Um dropdown (`<select>`) com a opção padrão "Todos os itens" onde é possivel filtrar mais itens relacionados a estágios.
 
@@ -60,13 +58,13 @@ As validações para a associação de responsável podem incluir:
 
 ## 3. Gráficos Incluídos
 
-Nas telas de consultas de checklist (Impostos, Obrigações e Lançamentos) agora há novos elementos. Sendo eles, gráficos que demonstraram as informações de atividades conforme tela em que o usuário estiver.
+Nas telas de consultas de checklist (Impostos e Obrigações) agora há novos elementos. Sendo eles, gráficos que demonstraram as informações de atividades conforme tela em que o usuário estiver.
 
-- **Tela do operativo: **O usuário visualizará as informações de cada status das atividades no qual ele é responsável. (Ao passar o mouse sobre o gráfico, deve ser indicado o status (nome) e a quantidade de registros de acordo com o que o gráfico traz).
+- **Tela do operativo**: O usuário visualizará as informações de cada status das atividades no qual ele é responsável. (Ao passar o mouse sobre o gráfico, deve ser indicado o status (nome) e a quantidade de registros de acordo com o que o gráfico traz).
 
-- **Tela do supervis**or**: **O usuário visualizará as informações de cada status das atividades consultadas pelo usuário e também as atividades por esfera no caso das telas de Impostos/Obrigações. Na tela de lançamentos manuais, a informação mostrada se refere ao status para cada nivel de associação (gerente, supervisor, diretor). (Ao passar o mouse sobre o gráfico, deve ser indicado o status (nome) e a quantidade de registros de acordo com o que o gráfico traz).
+- **Tela do supervisor**: O usuário visualizará as informações de cada status das atividades consultadas pelo usuário e também as atividades por esfera no caso das telas de Impostos/Obrigações. Na tela de lançamentos manuais, a informação mostrada se refere ao status para cada nivel de associação (gerente, supervisor, diretor). (Ao passar o mouse sobre o gráfico, deve ser indicado o status (nome) e a quantidade de registros de acordo com o que o gráfico traz).
 
-**Observação: **
+**Observação:**
 
 Os gráficos também devem servir como filtros, ou seja, ao clicarmos em algum campo do gráfico, como o de **pendente, **o sistema deve trazer as informações no checklist conforme filtrado, assim como ocorre nas legendas (farois de consulta).
 
@@ -89,3 +87,7 @@ Presentes em todas as telas, o farol que acompanha o usuário, sendo ele uma "?"
 ## 6. Alternancia entre modo escuro e modo claro
 
 O campo ao lado das bandeiras do sistema permitirá com que o usuário inverta as colorações do sistema entre modo claro e modo escuro, assim como ocorre em diversos sites e aplicativos. O campo permitirá que as cores sejam alteradas entre banco (padrão do sistema) e um tom mais escuro, mantendo a coloração original dos campos do sistema, alterando apenas alguns campos para harmonização visual.
+
+![alt text](image-9.png)
+
+![alt text](image-10.png)
