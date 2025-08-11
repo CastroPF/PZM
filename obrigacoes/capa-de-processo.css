@@ -23,7 +23,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 3px solid var(--gray-border-dark);
+  border-bottom: 3px solid var(--secondary-color);
   padding: 8px 16px;
 }
 .header-left h2 {
@@ -700,15 +700,15 @@ nav {
   color: var(--dark-text-color);
   border: none;
   margin-top: 5px;
-  margin-bottom: 30px;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
 }
 
 .consulta:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--warning-color);
+  color: var(--light-color);
 }
 
 .container-button {
@@ -992,6 +992,7 @@ body.dark-mode td {
 }
 body.dark-mode .header-table th {
   background-color: var(--dark-4141);
+  border: 1px solid var(--light-color);
 }
 body.dark-mode .header-atv {
   background-color: var(--light-overlay);

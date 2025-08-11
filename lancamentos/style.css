@@ -1045,6 +1045,7 @@ body.dark-mode .header-table th,
 body.dark-mode th {
   background-color: var(--dark-4141);
   color: var(--light-color);
+  border: 1px solid var(--light-color);
 }
 
 body.dark-mode td,

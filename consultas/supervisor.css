@@ -23,7 +23,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 3px solid var(--gray-border-dark);
+  border-bottom: 3px solid var(--secondary-color);
   padding: 8px 16px;
 }
 .header-left h2 {
@@ -703,7 +703,24 @@ nav {
 }
 
 .consulta:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--warning-color);
+  color: var(--light-color);
+}
+
+.associar-responsavel button {
+  padding: 8px 16px;
+  background-color: var(--accent-color);
+  color: var(--dark-text-color);
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.associar-responsavel button:hover {
+  background-color: var(--warning-color);
+  color: var(--light-color);
 }
 
 .container-button {
@@ -869,7 +886,8 @@ th {
 }
 
 .header-table2 th {
-  background-color: var(--info-alt-bg);
+  background-color: var(--overlay-color);
+  border: 1px solid var(--gray-4848);
   color: var(--dark-text-color);
   font-size: 13px;
   padding: 7px 8px;
@@ -1020,6 +1038,7 @@ body.dark-mode td {
 }
 body.dark-mode .header-table th {
   background-color: var(--dark-4141);
+  border: 1px solid var(--light-color);
 }
 body.dark-mode .header-atv {
   background-color: var(--light-overlay);
@@ -1048,11 +1067,12 @@ body.dark-mode .associar-responsavel button:hover {
   background-color: var(--warning-color);
 }
 body.dark-mode .archives:hover {
-  background-color: var(--accent-color);
+  background-color: var(--secondary-color);
   box-shadow: 0 4px 6px var(--shadow-lg);
 }
 body.dark-mode .eventual:hover {
-  color: var(--light-color);
+  background-color: var(--primary-color);
+  color: var(--light-);
 }
 body.dark-mode .guia-eventual td {
   background-color: var(--warning-bg);
