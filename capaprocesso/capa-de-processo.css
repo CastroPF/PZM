@@ -1,3 +1,5 @@
+@import url("../colors.css");
+
 /* ---------- RESET E BASE ---------- */
 * {
   box-sizing: border-box;
@@ -5,15 +7,15 @@
 }
 body {
   margin: 0;
-  background-color: #f7f7f7;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
   font-family: "Open Sans", sans-serif;
 }
 
 /* ---------- HEADER ---------- */
 header {
-  background-color: #2c3d4f;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--light-color);
   padding: 12px 24px;
   font-size: 20px;
 }
@@ -34,7 +36,7 @@ header {
 }
 .mainmenu {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--light-color);
 }
 
 /* ---------- FAROL DE STATUS ---------- */
@@ -97,12 +99,12 @@ header {
 /* ---------- Navegação ---------- */
 
 nav {
-  background-color: #e0e0e0;
+  background-color: var(--muted-color);
   padding: 10px 20px;
   display: flex;
   gap: 20px;
   font-weight: bold;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--border-color);
   position: relative;
   font-size: 18px;
 }
@@ -183,7 +185,7 @@ nav {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .imp-info {
-  background-color: white;
+  background-color: var(--light-color);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -254,7 +256,7 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
-  background: #fff;
+  background: var(--light-color);
   padding: 16px 16px 10px 16px;
   border-radius: 12px;
   box-shadow: 0 1px 6px rgba(70, 90, 110, 0.07);
@@ -262,7 +264,7 @@ nav {
 }
 
 .card-grafico {
-  background: #ffffff;
+  background: var(--light-color);
   border-radius: 12px;
   padding-top: 40px;
   padding-bottom: 40px;
@@ -279,7 +281,7 @@ nav {
 
 .sair {
   text-decoration: none;
-  color: black;
+  color: var(--dark-text-color);
 }
 
 .fitros-consulta {
@@ -298,10 +300,10 @@ nav {
 .fitros-consulta input,
 .fitros-consulta select {
   padding: 4px 6px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 15px;
-  background-color: white;
+  background-color: var(--light-color);
   margin-bottom: 20px;
 }
 
@@ -357,7 +359,7 @@ nav {
   font-size: 14px;
   margin: 0 0 2px 0;
   padding: 0;
-  white-space: nowrap;
+  var(--light-color)-space: nowrap;
 }
 
 .grupo-associar {
@@ -371,11 +373,11 @@ nav {
 
 .associar-responsavel select {
   padding: 6px 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   width: 385px;
   font-size: 14px;
-  background-color: white;
+  background-color: var(--light-color);
   min-width: 140px;
   margin: 0;
 }
@@ -383,7 +385,7 @@ nav {
 .associar-botao {
   padding: 8px 18px;
   background-color: #c9c9c9;
-  color: black;
+  color: var(--dark-text-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -423,7 +425,7 @@ nav {
 }
 
 .baixar-anexos {
-  color: #007bff;
+  color: var(--secondary-color);
   text-decoration: none;
   font-weight: 500;
 }
@@ -449,7 +451,7 @@ nav {
 }
 
 .modal-conteudo {
-  background-color: #fff;
+  background-color: var(--light-color);
   margin: 5% auto;
   padding: 24px 28px;
   border-radius: 12px;
@@ -489,7 +491,7 @@ nav {
 .modal-conteudo h2 {
   font-size: 20px;
   margin-bottom: 16px;
-  color: #373737;
+  color: var(--dark-text-color);
   border-bottom: 1px solid #eee;
   padding-bottom: 8px;
 }
@@ -497,8 +499,8 @@ nav {
 /* Botão principal */
 .btn-download-todos {
   display: inline-block;
-  background-color: #2776ba;
-  color: #fff;
+  background-color: var(--secondary-color);
+  color: var(--light-color);
   padding: 10px 20px;
   font-weight: 600;
   font-size: 14px;
@@ -510,7 +512,7 @@ nav {
 }
 
 .btn-download-todos:hover {
-  background-color: #1d5e98;
+  background-color: var(--secondary-color);
 }
 
 /* Tabela com anexos */
@@ -559,7 +561,7 @@ nav {
 }
 
 .tabela-anexos a {
-  color: #2776ba;
+  color: var(--secondary-color);
   text-decoration: none;
   word-break: break-word;
 }
@@ -579,7 +581,7 @@ nav {
   width: 6px;
 }
 .tabela-anexos::-webkit-scrollbar-thumb {
-  background-color: #fabc00;
+  background-color: var(--accent-color);
   border-radius: 4px;
 }
 
@@ -597,7 +599,7 @@ nav {
   width: 50px;
   padding: 4px 6px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
 }
 .paginacao button {
   padding: 4px 10px;
@@ -608,7 +610,7 @@ nav {
   transition: background 0.2s;
 }
 .paginacao button:hover {
-  background: #e0e0e0;
+  background: var(--muted-color);
 }
 
 .linha-total-paginacao {
@@ -643,7 +645,7 @@ nav {
   padding: 3px 8px;
   font-size: 14px;
   background: #f9fafc;
-  color: #333;
+  color: var(--text-color);
   margin: 0 4px;
 }
 
@@ -674,7 +676,7 @@ nav {
   border-radius: 4px;
   padding: 2px 2px;
   font-size: 14px;
-  color: #333;
+  color: var(--text-color);
   background: #f9fafc;
 }
 
@@ -686,8 +688,8 @@ nav {
 
 .consulta {
   padding: 10px 16px;
-  background-color: rgb(255, 187, 0);
-  color: black;
+  background-color: var(--accent-color);
+  color: var(--dark-text-color);
   border: none;
   margin-top: 5px;
   margin-bottom: 30px;
@@ -698,7 +700,7 @@ nav {
 }
 
 .consulta:hover {
-  background-color: #e0a800;
+  background-color: var(--secondary-color);
 }
 
 .container-button {
@@ -711,31 +713,31 @@ nav {
   flex-wrap: wrap;
 }
 .archives {
-  background-color: white;
+  background-color: var(--light-color);
   padding: 8px 16px;
-  color: black;
-  border: 3px solid #e0a800;
+  color: var(--dark-text-color);
+  border: 3px solid var(--secondary-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.267);
   border-radius: 8px;
   cursor: pointer;
 }
 .archives:hover {
-  background-color: #e0a800;
+  background-color: var(--secondary-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 .eventual {
-  background-color: white;
+  background-color: var(--light-color);
   padding: 8px 16px;
-  color: black;
-  border: 3px solid #2c3d4f;
+  color: var(--dark-text-color);
+  border: 3px solid var(--primary-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.267);
   border-radius: 8px;
   cursor: pointer;
 }
 .eventual:hover {
-  background-color: #2c3d4f;
+  background-color: var(--primary-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  color: white;
+  color: var(--light-color);
 }
 .carregar-arquivos {
   display: flex;
@@ -856,7 +858,7 @@ th {
 .header-table th {
   background-color: #7c7c7e52;
   border: 1px solid #484848;
-  color: black;
+  color: var(--dark-text-color);
   font-size: 13px;
 }
 
@@ -888,8 +890,8 @@ th {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: var(--light-color);
+  border: 1px solid var(--border-color);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   padding: 10px 0;
@@ -899,12 +901,12 @@ th {
 .submenu a {
   display: block;
   padding: 8px 20px;
-  color: #333;
+  color: var(--text-color);
   text-decoration: none;
-  white-space: nowrap;
+  var(--light-color)-space: nowrap;
 }
 .submenu a:hover {
-  background-color: #f2f2f2;
+  background-color: var(--muted-color);
 }
 .menu-item:hover .submenu {
   display: block;
@@ -924,18 +926,18 @@ th {
 /* ---------- DARK MODE ---------- */
 body.dark-mode {
   background-color: #252525;
-  color: #e0e0e0;
+  color: var(--muted-color);
 }
 body.dark-mode header {
-  background-color: #2c3d4f;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--light-color);
 }
 body.dark-mode nav {
-  background-color: #333;
+  background-color: var(--text-color);
   border-bottom: 1px solid #555555;
 }
 body.dark-mode .mainmenu {
-  color: #fff;
+  color: var(--light-color);
 }
 body.dark-mode .submenu {
   background-color: #444;
@@ -958,17 +960,17 @@ body.dark-mode .imp-info {
   box-shadow: none;
 }
 body.dark-mode .form-header h3 {
-  color: white;
+  color: var(--light-color);
 }
 body.dark-mode .fitros-consulta input,
 body.dark-mode .fitros-consulta select {
   background-color: #3a3a3a;
-  color: #fff;
+  color: var(--light-color);
   border: 1px solid #666;
 }
 body.dark-mode table {
   background-color: #2c2c2c;
-  color: #e0e0e0;
+  color: var(--muted-color);
 }
 body.dark-mode th {
   background-color: #3d3d3d;
@@ -994,22 +996,22 @@ body.dark-mode .slider::before {
   box-shadow: inset 8px -3px 0px 0px var(--dark);
 }
 body.dark-mode .associacao button:hover {
-  background-color: #fcb900;
+  background-color: var(--accent-color);
 }
 body.dark-mode .consulta:hover,
 body.dark-mode .associacao button:hover {
   background-color: #c59101;
 }
 body.dark-mode .archives:hover {
-  background-color: #fcb900;
+  background-color: var(--accent-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 body.dark-mode .eventual:hover {
-  background-color: #2c3d4f;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--light-color);
 }
 body.dark-mode .titulo-grafico {
-  color: white;
+  color: var(--light-color);
 }
 body.dark-mode .checkbox:checked ~ .slider {
   background-color: var(--dark);
@@ -1027,33 +1029,33 @@ body.dark-mode .container {
 body.dark-mode .select-registros,
 body.dark-mode .input-pagina {
   background-color: #3a3a3a;
-  color: #fff;
+  color: var(--light-color);
   border: 1px solid #555;
 }
 
 body.dark-mode .pagination-select {
-  color: white;
+  color: var(--light-color);
 }
 body.dark-mode .pagination-total {
-  color: white;
+  color: var(--light-color);
 }
 
 body.dark-mode .form-header {
-  color: #e0e0e0;
+  color: var(--muted-color);
 }
 body.dark-mode .form-header h3 {
-  color: #fff;
+  color: var(--light-color);
 }
 
 body.dark-mode .consulta,
 body.dark-mode .btn-consulta-flutuante {
-  background-color: #fcb900;
+  background-color: var(--accent-color);
   color: #242c35;
 }
 body.dark-mode .consulta:hover,
 body.dark-mode .btn-consulta-flutuante:hover {
   background-color: #c59101;
-  color: #fff;
+  color: var(--light-color);
 }
 
 body.dark-mode .painel-geral {
@@ -1064,23 +1066,23 @@ body.dark-mode .card-grafico {
   background-color: #232323;
   border-color: #444a53;
   box-shadow: none;
-  color: #e0e0e0;
+  color: var(--muted-color);
 }
 body.dark-mode .fitros-consulta input,
 body.dark-mode .fitros-consulta select {
   background-color: #3a3a3a;
-  color: #fff;
+  color: var(--light-color);
   border: 1px solid #555;
 }
 body.dark-mode .fitros-consulta label {
-  color: #e0e0e0;
+  color: var(--muted-color);
 }
 body.dark-mode .fitros-consulta input[type="checkbox"],
 body.dark-mode .fitros-consulta input[type="radio"] {
-  accent-color: #fcb900;
+  accent-color: var(--accent-color);
 }
 body.dark-mode .fitros-consulta input::placeholder {
-  color: #cccccc;
+  color: var(--border-color);
   opacity: 1;
 }
 
@@ -1090,8 +1092,8 @@ body.dark-mode .fitros-consulta input::placeholder {
   right: 40px;
   width: 56px;
   height: 56px;
-  background: #ffc107;
-  color: #373737;
+  background: var(--accent-color);
+  color: var(--dark-text-color);
   border-radius: 50%;
   box-shadow: 0 4px 20px #0002;
   display: flex;
@@ -1104,7 +1106,7 @@ body.dark-mode .fitros-consulta input::placeholder {
   transition: background 0.2s, box-shadow 0.2s;
 }
 .helpFab:hover {
-  background: #ffdb5c;
+  background: var(--accent-color);
   box-shadow: 0 6px 32px #0003;
 }
 
@@ -1115,7 +1117,7 @@ body.dark-mode .fitros-consulta input::placeholder {
   right: 48px;
   width: 320px;
   max-width: 95vw;
-  background: #fff;
+  background: var(--light-color);
   border-radius: 14px;
   box-shadow: 0 6px 32px #0003;
   z-index: 2500;
@@ -1124,8 +1126,8 @@ body.dark-mode .fitros-consulta input::placeholder {
 }
 
 .chat-header {
-  background: #2776ba;
-  color: #fff;
+  background: var(--secondary-color);
+  color: var(--light-color);
   padding: 13px 16px;
   font-weight: bold;
   display: flex;
@@ -1137,7 +1139,7 @@ body.dark-mode .fitros-consulta input::placeholder {
 .close-chat {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--light-color);
   font-size: 20.8px;
   cursor: pointer;
   padding: 0 4px;
@@ -1152,12 +1154,12 @@ body.dark-mode .fitros-consulta input::placeholder {
 
 .chat-body {
   padding: 18px 16px 16px 16px;
-  color: #373737;
+  color: var(--dark-text-color);
   font-size: 16.16px;
 }
 
 .chat-body a {
-  color: #2776ba;
+  color: var(--secondary-color);
   text-decoration: underline;
   font-weight: 500;
 }
@@ -1168,7 +1170,7 @@ body.dark-mode .fitros-consulta input::placeholder {
 }
 
 .chat-body strong {
-  color: #c59400;
+  color: var(--accent-color);
 }
 
 @media (max-width: 600px) {
