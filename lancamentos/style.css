@@ -357,7 +357,7 @@ nav {
   padding: 0;
   border: none;
   border-radius: 50%;
-  background-color: var(--gray-600) 888;
+  background-color: var(--gray-600);
   display: flex;
   align-items: center;
   justify-content: center;

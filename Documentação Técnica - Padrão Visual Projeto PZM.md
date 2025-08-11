@@ -123,12 +123,10 @@ A paleta de cores do projeto PZM é definida no arquivo `colors.css` e deve ser 
 
 **Tamanhos de Fonte:**
 
-- **Títulos (H1):** `2.1rem` (Exemplo: `welcome-panel h1` em `login.css` - Título de boas-vindas na tela de login).
-- **Títulos (H2):** `19.52px` (Exemplo: `login-form h2` em `login.css` - Título
+- **Títulos (H1):** `2.1rem`
+- **Títulos (H2):** `19.52px`
 
-"Faça seu login" na tela de login).
-
-- **Texto Padrão (Body):** `16.16px` (Exemplo: `chat-body` em `login.css` - Texto do chat de suporte).
+- **Texto Padrão (Body):** `16.16px`
 - **Botões:**
   - `16.48px` (Exemplo: `btn-whatsapp`, `btn-zendesk` em `login.css` - Botões de contato WhatsApp e Zendesk)
   - `16.96px` (Exemplo: `btn-saml` em `login.css` - Botão de login SAML)
@@ -282,7 +280,6 @@ A paleta de cores do projeto PZM é definida no arquivo `colors.css` e deve ser 
 
 - **Medidas Padrão de Margens e Paddings:**
 
-  - `body`: `margin: 0;`, `padding: 0;` - Reset padrão para todas as páginas
   - `header`: `padding: 12px 24px;` - Espaçamento interno do cabeçalho principal
   - `.header-container`: `padding: 8px 16px;` - Container do cabeçalho
   - `nav`: `padding: 10px 20px;` - Menu de navegação principal
@@ -371,8 +368,10 @@ A paleta de cores do projeto PZM é definida no arquivo `colors.css` e deve ser 
 
 ## 6. Exemplos Visuais
 
-- **Imagem 1 – Layout de Login:** [Inserir imagem aqui] - Tela de login com formulário à esquerda e painel de boas-vindas à direita
-- **Imagem 2 – Tela Operacional:** [Inserir imagem aqui] - Tela de consultas operativas com filtros e tabela de resultados
-- **Imagem 3 – Exemplo de Cards:** [Inserir imagem aqui] - Cards de filtros e gráficos na capa de processo
-
-**Autor:** Manus AI
+- **Imagem 1 – Layout de Login:** ![alt text](image.png) - Tela de login com formulário à esquerda e painel de boas-vindas à direita
+- **Imagem 2 – Tela Operacional Impostos/Obrigações:** ![alt text](image-2.png) - Tela de consultas operativas com filtros e tabela de resultados
+- **Imagem 3 – Tela Supervisor Impostos/Obrigações:** ![alt text](image-1.png) - Tela de consultas operativas com filtros e tabela de resultados
+- **Imagem 4 – Tela Capa de Processo Impostos/Obrigações:** ![alt text](image-3.png) - Tela de consultas operativas com filtros e tabela de resultados
+- **Imagem 3 – Tela de lançamentos manuais - Operativo:** ![alt text](image-5.png) - Tela de consulta do operativo.
+- **Imagem 3 – Tela de lançamentos manuais - Supervisor:** ![alt text](image-4.png) - Tela de consulta do supervisor.
+- **Imagem 3 – Tela de lançamentos manuais - Status do Lançamento:** ![alt text](image-6.png) - Tela de consulta do status dos lançamentos no ERP.
