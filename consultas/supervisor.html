@@ -605,159 +605,259 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+    // --- Modal de Anexos ---
     function abrirModal() {
-      document.getElementById("modalAnexos").style.display = "block";
+      const el = document.getElementById("modalAnexos");
+      if (el) el.style.display = "block";
     }
 
     function fecharModal() {
-      document.getElementById("modalAnexos").style.display = "none";
+      const el = document.getElementById("modalAnexos");
+      if (el) el.style.display = "none";
     }
 
-    window.onclick = function (event) {
+    // Fecha modal ao clicar fora
+    window.addEventListener("click", function (event) {
       const modal = document.getElementById("modalAnexos");
-      if (event.target === modal) {
+      if (modal && event.target === modal) {
         modal.style.display = "none";
-      }
-    };
-
-    const helpFab = document.getElementById('helpFab');
-    const chatPopup = document.getElementById('chat-popup');
-    const chatBody = document.getElementById('chat-body');
-    const userInput = document.getElementById('user-input');
-
-    helpFab.onclick = function () {
-      chatPopup.classList.add('show');
-    };
-
-    function toggleChat() {
-      chatPopup.classList.remove('show');
-    }
-
-    window.addEventListener('mousedown', function (e) {
-      if (chatPopup.classList.contains('show') && !chatPopup.contains(e.target) && e.target !== helpFab) {
-        toggleChat();
       }
     });
 
-    function appendMessage(content, sender) {
-      const msg = document.createElement('div');
-      msg.className = `message ${sender}`;
-      msg.textContent = content;
-      chatBody.appendChild(msg);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
+    // --- Base de conhecimento local ---
     const knowledgeBase = [
       {
         question: "Como cadastrar uma nova classe contábil?",
-        answer: "Acesse: Cadastros > Auxiliares > Classe contábil.\n- Insira um código sequencial (não pode ser repetido).\n- Informe o nome da classe.\n- Informe o tipo (ativo, passivo ou resultado)."
+        answer:
+          "Acesse: Cadastros > Auxiliares > Classe contábil.\n- Insira um código sequencial (não pode ser repetido).\n- Informe o nome da classe.\n- Informe o tipo (ativo, passivo ou resultado).",
       },
       {
         question: "Como cadastrar feriados no sistema?",
-        answer: "Acesse: Operações > Auxiliares > Feriados.\n- Clique em Consultar para verificar os existentes.\n- Indique dia/mês/ano, marque esfera (Federal, Estadual ou Municipal), indique se é Permanente e clique em Confirmar."
+        answer:
+          "Acesse: Operações > Auxiliares > Feriados.\n- Clique em Consultar para verificar os existentes.\n- Indique dia/mês/ano, marque esfera (Federal, Estadual ou Municipal), indique se é Permanente e clique em Confirmar.",
       },
       {
         question: "Como resetar a senha?",
-        answer: "Acesse o módulo de administração, vá em Configurações > Usuários > Consulte o usuário desejado.\n- Em seguida, clique no lápis para acessar a tela de cadastro do usuário.\n- Insira a senha 'Padrao998', ela irá gerar uma contra senha que será encaminhada ao usuário."
+        answer:
+          "Acesse o módulo de administração, vá em Configurações > Usuários > Consulte o usuário desejado.\n- Em seguida, clique no lápis para acessar a tela de cadastro do usuário.\n- Insira a senha 'Padrao998', ela irá gerar uma contra senha que será encaminhada ao usuário.",
       },
       {
         question: "O que é checklist de partida?",
-        answer: "Serve para associar responsáveis a novas contas. Sempre tem o mês zero (0) e não é usado para conciliação."
+        answer:
+          "Serve para associar responsáveis a novas contas. Sempre tem o mês zero (0) e não é usado para conciliação.",
       },
       {
         question: "Como fazer carga em massa do plano de contas?",
-        answer: "Acesse: Controle > Importar > Dados via CSV/TXT.\n- Clique em 'Escolher arquivo' e depois em 'Importar arquivo'."
+        answer:
+          "Acesse: Controle > Importar > Dados via CSV/TXT.\n- Clique em 'Escolher arquivo' e depois em 'Importar arquivo'.",
       },
       {
         question: "Quais formatos de arquivo são aceitos para carga de anexos?",
-        answer: "PDF, ZIP e RAR."
+        answer: "PDF, ZIP e RAR.",
       },
       {
         question: "Como aprovar uma capa com ressalva?",
-        answer: "Somente o aprovador contábil pode aprovar com ressalva. É necessário inserir uma justificativa e um motivo de ressalva."
+        answer:
+          "Somente o aprovador contábil pode aprovar com ressalva. É necessário inserir uma justificativa e um motivo de ressalva.",
       },
       {
         question: "O que é saldo extracontábil?",
-        answer: "São registros financeiros que não afetam a contabilidade oficial, usados para controle gerencial."
+        answer:
+          "São registros financeiros que não afetam a contabilidade oficial, usados para controle gerencial.",
       },
       {
         question: "Como validar um balancete?",
-        answer: "Acesse: Controles > Base de dados > Validação Balancete. Selecione os saldos e clique em Validar e depois Inserir Dados."
-      }
+        answer:
+          "Acesse: Controles > Base de dados > Validação Balancete. Selecione os saldos e clique em Validar e depois Inserir Dados.",
+      },
     ];
 
-    const fuse = new Fuse(knowledgeBase, {
-      keys: ['question'],
-      threshold: 0.4
-    });
+    // Fallback simples de busca (caso Fuse.js não esteja carregado)
+    function localSearch(query) {
+      const q = (query || "").toLowerCase().trim();
+      if (!q) return null;
 
-    async function sendMessage() {
-      const text = userInput.value.trim();
-      if (!text) return;
+      // score simples: quantas palavras da query aparecem na pergunta
+      let best = null;
+      let bestScore = 0;
 
-      appendMessage(text, 'user');
-      userInput.value = '';
-
-      try {
-        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer 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'
-          },
-          body: JSON.stringify({
-            model: 'mixtral-8x7b-32768',
-            messages: [
-              {
-                role: 'system',
-                content: 'Você é um assistente virtual da empresa PZM. Seja claro, direto e educado. Responda com base no manual.'
-              },
-              {
-                role: 'user',
-                content: text
-              }
-            ]
-          })
-        });
-
-        const data = await response.json();
-        const botReply = data.choices?.[0]?.message?.content;
-
-        if (botReply) {
-          appendMessage(botReply, 'bot');
-        } else {
-          const local = fuse.search(text);
-          if (local.length > 0) {
-            appendMessage(local[0].item.answer, 'bot');
-          } else {
-            appendMessage("Desculpe, não encontrei nada relacionado a isso no manual.", 'bot');
-          }
-        }
-      } catch (error) {
-        console.error(error);
-        const local = fuse.search(text);
-        if (local.length > 0) {
-          appendMessage(local[0].item.answer, 'bot');
-        } else {
-          appendMessage("Erro ao se comunicar com a IA e não encontrei nada no manual.", 'bot');
+      for (const item of knowledgeBase) {
+        const hay = item.question.toLowerCase();
+        const words = q.split(/\s+/);
+        let score = 0;
+        for (const w of words) if (w && hay.includes(w)) score++;
+        if (score > bestScore) {
+          bestScore = score;
+          best = item;
         }
       }
+      return bestScore > 0 ? best : null;
     }
 
+    // --- App principal após DOM carregar ---
     document.addEventListener("DOMContentLoaded", function () {
       const body = document.body;
+
+      // Elementos do chat
+      const helpFab = document.getElementById("helpFab");
+      const chatPopup = document.getElementById("chat-popup");
+      const chatBody = document.getElementById("chat-body");
+      const userInput = document.getElementById("user-input");
+      const closeChatBtn = document.getElementById("close-chat"); // se existir
+
+      // Toggle dark-mode (checkbox)
       const darkToggle = document.querySelector(".checkbox");
 
+      // Containers/elementos opcionais de gráficos e barra de progresso
+      const farolContainer = document.getElementById("containerFarol");
+      const esferasContainer = document.getElementById("containerEsferas");
+      const progressBar = document.querySelector(".barra-de-progresso-bar");
+
+      // Estado inicial do dark-mode
       if (localStorage.getItem("dark-mode") === "enabled") {
         body.classList.add("dark-mode");
         if (darkToggle) darkToggle.checked = true;
       }
 
-      const farolContainer = document.getElementById("containerFarol");
-      const esferasContainer = document.getElementById("containerEsferas");
-      const progressBar = document.querySelector(".barra-de-progresso-bar");
+      // Ações de abrir/fechar chat com null-check
+      if (helpFab && chatPopup) {
+        helpFab.addEventListener("click", () => {
+          chatPopup.classList.add("show");
+        });
+      }
 
+      function toggleChat() {
+        if (chatPopup) chatPopup.classList.remove("show");
+      }
+
+      if (closeChatBtn) {
+        closeChatBtn.addEventListener("click", toggleChat);
+      }
+
+      // Fecha o chat clicando fora
+      window.addEventListener("mousedown", function (e) {
+        if (
+          chatPopup &&
+          chatPopup.classList.contains("show") &&
+          !chatPopup.contains(e.target) &&
+          e.target !== helpFab
+        ) {
+          toggleChat();
+        }
+      });
+
+      // Append de mensagens no chat
+      function appendMessage(content, sender) {
+        if (!chatBody) return;
+        const msg = document.createElement("div");
+        msg.className = `message ${sender}`;
+        msg.textContent = content;
+        chatBody.appendChild(msg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+
+      // Enviar mensagem (usa IA se chave/API estiver configurada; senão, base local)
+      async function sendMessage() {
+        const inputEl = userInput || document.getElementById("user-input");
+        const text = (inputEl?.value || "").trim();
+        if (!text) return;
+
+        appendMessage(text, "user");
+        if (inputEl) inputEl.value = "";
+
+        const apiKey = "YOUR_GROQ_API_KEY"; // << Coloque sua chave aqui (ou deixe vazio para usar a base local)
+        const useRemote =
+          !!apiKey &&
+          typeof fetch === "function"; // só tenta remoto se houver chave
+
+        try {
+          if (useRemote) {
+            const response = await fetch(
+              "https://api.groq.com/openai/v1/chat/completions",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${apiKey}`,
+                },
+                body: JSON.stringify({
+                  model: "mixtral-8x7b-32768",
+                  messages: [
+                    {
+                      role: "system",
+                      content:
+                        "Você é um assistente virtual da empresa PZM. Seja claro, direto e educado. Responda com base no manual.",
+                    },
+                    { role: "user", content: text },
+                  ],
+                }),
+              }
+            );
+
+            const data = await response.json();
+            const botReply = data?.choices?.[0]?.message?.content;
+
+            if (botReply) {
+              appendMessage(botReply, "bot");
+              return;
+            }
+          }
+
+          // Fallback para base local
+          const hit =
+            (window.Fuse &&
+              new window.Fuse(knowledgeBase, {
+                keys: ["question"],
+                threshold: 0.4,
+              }).search(text)?.[0]?.item) ||
+            localSearch(text);
+
+          if (hit) {
+            appendMessage(hit.answer, "bot");
+          } else {
+            appendMessage(
+              "Desculpe, não encontrei nada relacionado a isso no manual.",
+              "bot"
+            );
+          }
+        } catch (err) {
+          console.error(err);
+          const hit =
+            (window.Fuse &&
+              new window.Fuse(knowledgeBase, {
+                keys: ["question"],
+                threshold: 0.4,
+              }).search(text)?.[0]?.item) ||
+            localSearch(text);
+          if (hit) {
+            appendMessage(hit.answer, "bot");
+          } else {
+            appendMessage(
+              "Erro ao se comunicar com a IA e não encontrei nada no manual.",
+              "bot"
+            );
+          }
+        }
+      }
+
+      // Envio por Enter (se existir input)
+      if (userInput) {
+        userInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            sendMessage();
+          }
+        });
+      }
+      // Botão enviar (se existir)
+      const sendBtn = document.getElementById("send-btn");
+      if (sendBtn) {
+        sendBtn.addEventListener("click", sendMessage);
+      }
+
+      // --- Alternância dos gráficos (se containers existirem) ---
       function trocaGraficos() {
+        if (!farolContainer || !esferasContainer) return;
         const mostrandoFarol = farolContainer.style.display !== "none";
         if (mostrandoFarol) {
           farolContainer.style.display = "none";
@@ -769,6 +869,7 @@
       }
 
       function animateProgressBar() {
+        if (!progressBar) return;
         progressBar.style.width = "0%";
         const start = Date.now();
         const duracao = 10000;
@@ -781,24 +882,28 @@
         requestAnimationFrame(frame);
       }
 
-      // inicializa
-      trocaGraficos();
-      animateProgressBar();
-      setInterval(() => {
-        trocaGraficos();
+      // Inicialização suave (só se existir estrutura)
+      if (farolContainer && esferasContainer) {
+        // começa mostrando alternado
+        farolContainer.style.display = "block";
+        esferasContainer.style.display = "none";
         animateProgressBar();
-      }, 10000);
+        setInterval(() => {
+          trocaGraficos();
+          animateProgressBar();
+        }, 10000);
+      }
 
-      // plugins Chart.js...
+      // --- Plugins de Chart.js (se Chart disponível) ---
+      const hasChart = typeof window.Chart !== "undefined";
+
       const centerTextPlugin = {
         id: "centerText",
         afterDraw(chart) {
-          const {
-            ctx,
-            chartArea: { left, top, width, height },
-            data,
-          } = chart;
-          const total = data.datasets[0].data.reduce((sum, v) => sum + v, 0);
+          const { ctx, chartArea, data } = chart;
+          if (!chartArea || !data?.datasets?.[0]?.data?.length) return;
+          const { left, top, width, height } = chartArea;
+          const total = data.datasets[0].data.reduce((s, v) => s + v, 0);
           const isDark = body.classList.contains("dark-mode");
           const x = left + width / 2;
           const y = top + height / 2;
@@ -820,15 +925,17 @@
         afterDatasetsDraw(chart) {
           const { ctx, data } = chart;
           const meta = chart.getDatasetMeta(0);
+          if (!meta?.data) return;
           meta.data.forEach((arc, i) => {
-            const { x, y } = arc.getCenterPoint();
-            const value = data.datasets[0].data[i];
+            const pt = arc.getCenterPoint ? arc.getCenterPoint() : null;
+            const value = data?.datasets?.[0]?.data?.[i];
+            if (!pt || value == null) return;
             ctx.save();
             ctx.fillStyle = "#333";
             ctx.font = "bold 11px Arial";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillText(value, x, y);
+            ctx.fillText(value, pt.x, pt.y);
             ctx.restore();
           });
         },
@@ -851,121 +958,129 @@
         },
       };
 
-      // Gráfico doughnut
-      const ctxFarol = document
-        .getElementById("graficoFarol")
-        .getContext("2d");
-      const graficoFarol = new Chart(ctxFarol, {
-        type: "doughnut",
-        data: {
-          labels: [
-            "Complementar",
-            "Retificação",
-            "Dentro do Prazo",
-            "Prazo no Limite",
-            "Atenção: Prazo Vencido",
-            "Processo Finalizado",
-            "Finalizado [Fora do Prazo]",
-          ],
-          datasets: [
-            {
-              data: [1, 2, 5, 3, 1, 4, 1],
-              backgroundColor: [
-                "#002fff6b",
-                "#f3007e",
-                "#00e1ff",
-                "orange",
-                "red",
-                "green",
-                "purple",
+      // --- Gráficos ---
+      let graficoFarol = null;
+      let graficoEsferas = null;
+
+      if (hasChart) {
+        const farolCanvas = document.getElementById("graficoFarol");
+        if (farolCanvas && farolCanvas.getContext) {
+          const ctxFarol = farolCanvas.getContext("2d");
+          graficoFarol = new Chart(ctxFarol, {
+            type: "doughnut",
+            data: {
+              labels: [
+                "Complementar",
+                "Retificação",
+                "Dentro do Prazo",
+                "Prazo no Limite",
+                "Atenção: Prazo Vencido",
+                "Processo Finalizado",
+                "Finalizado [Fora do Prazo]",
               ],
-              borderWidth: 3,
+              datasets: [
+                {
+                  data: [1, 2, 5, 3, 1, 4, 1],
+                  backgroundColor: [
+                    "#002fff6b", // azul com alpha
+                    "#f3007e",
+                    "#00e1ff",
+                    "orange",
+                    "red",
+                    "green",
+                    "purple",
+                  ],
+                  borderWidth: 3,
+                },
+              ],
             },
-          ],
-        },
-        options: {
-          responsive: false,
-          maintainAspectRatio: false,
-          layout: { padding: 15 },
-          elements: { arc: { hoverOffset: 15 } },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label(ctx) {
-                  const label = ctx.label || "";
-                  const val = ctx.parsed;
-                  const arr = ctx.chart.data.datasets[0].data;
-                  const total = arr.reduce((s, v) => s + v, 0);
-                  return `${label}: ${((val / total) * 100).toFixed(2)}%`;
+            options: {
+              responsive: false,
+              maintainAspectRatio: false,
+              layout: { padding: 15 },
+              elements: { arc: { hoverOffset: 15 } },
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  callbacks: {
+                    label(ctx) {
+                      const label = ctx.label || "";
+                      const val = ctx.parsed;
+                      const arr = ctx.chart.data.datasets[0].data;
+                      const total = arr.reduce((s, v) => s + v, 0);
+                      return `${label}: ${((val / total) * 100).toFixed(2)}%`;
+                    },
+                  },
                 },
               },
             },
-          },
-        },
-        plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
-      });
+            plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
+          });
+        }
 
-      // Gráfico de barras
-      const quantidades = [60, 33, 14];
-      const valoresReais = [60000, 20000, 15000];
-      const ctxEsferas = document
-        .getElementById("graficoEsferas")
-        .getContext("2d");
-      const graficoEsferas = new Chart(ctxEsferas, {
-        type: "bar",
-        data: {
-          labels: ["Federal", "Estadual", "Municipal"],
-          datasets: [
-            {
-              label: "Quantidade",
-              data: quantidades,
-              backgroundColor: ["#002fff6b", "#00e1ff", "#f3007e"],
-              borderRadius: 12,
-              borderWidth: 1,
-              borderSkipped: false,
+        const esferasCanvas = document.getElementById("graficoEsferas");
+        if (esferasCanvas && esferasCanvas.getContext) {
+          const ctxEsferas = esferasCanvas.getContext("2d");
+          const quantidades = [60, 33, 14];
+          const valoresReais = [60000, 20000, 15000];
+
+          graficoEsferas = new Chart(ctxEsferas, {
+            type: "bar",
+            data: {
+              labels: ["Federal", "Estadual", "Municipal"],
+              datasets: [
+                {
+                  label: "Quantidade",
+                  data: quantidades,
+                  backgroundColor: ["#002fff6b", "#00e1ff", "#f3007e"],
+                  borderRadius: 12,
+                  borderWidth: 1,
+                  borderSkipped: false,
+                },
+              ],
             },
-          ],
-        },
-        options: {
-          responsive: false,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label(ctx) {
-                  const lbl = ctx.label || "";
-                  const valor = valoresReais[ctx.dataIndex] || 0;
-                  return `${lbl}: ${valor.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}`;
+            options: {
+              responsive: false,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  callbacks: {
+                    label(ctx) {
+                      const lbl = ctx.label || "";
+                      const valor = valoresReais[ctx.dataIndex] || 0;
+                      return `${lbl}: ${valor.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}`;
+                    },
+                  },
+                },
+              },
+              scales: {
+                x: {
+                  grid: { display: false, drawBorder: false },
+                  ticks: {
+                    color: body.classList.contains("dark-mode") ? "#fff" : "#222",
+                    font: { size: 13 },
+                  },
+                },
+                y: {
+                  grid: { display: false, drawBorder: false },
+                  beginAtZero: true,
+                  ticks: {
+                    color: body.classList.contains("dark-mode") ? "#fff" : "#222",
+                    font: { size: 13 },
+                  },
+                  suggestedMax: 80,
                 },
               },
             },
-          },
-          scales: {
-            x: {
-              grid: { display: false, drawBorder: false },
-              ticks: {
-                color: body.classList.contains("dark-mode") ? "#fff" : "#222",
-                font: { size: 13 },
-              },
-            },
-            y: {
-              grid: { display: false, drawBorder: false },
-              beginAtZero: true,
-              ticks: {
-                color: body.classList.contains("dark-mode") ? "#fff" : "#222",
-                font: { size: 13 },
-              },
-              suggestedMax: 80,
-            },
-          },
-        },
-      });
+          });
+        }
+      }
 
+      // --- Toggle Dark Mode ---
       if (darkToggle) {
         darkToggle.addEventListener("change", () => {
           body.classList.toggle("dark-mode", darkToggle.checked);
@@ -973,22 +1088,32 @@
             "dark-mode",
             darkToggle.checked ? "enabled" : "disabled"
           );
-          graficoFarol.update();
-          graficoEsferas.options.scales.x.ticks.color = body.classList.contains(
-            "dark-mode"
-          )
-            ? "#fff"
-            : "#222";
-          graficoEsferas.options.scales.y.ticks.color = body.classList.contains(
-            "dark-mode"
-          )
-            ? "#fff"
-            : "#222";
-          graficoEsferas.update();
+
+          // Atualiza cores dos gráficos ao alternar tema
+          if (graficoFarol) graficoFarol.update();
+          if (graficoEsferas) {
+            const isDark = body.classList.contains("dark-mode");
+            if (graficoEsferas.options?.scales?.x?.ticks) {
+              graficoEsferas.options.scales.x.ticks.color = isDark
+                ? "#fff"
+                : "#222";
+            }
+            if (graficoEsferas.options?.scales?.y?.ticks) {
+              graficoEsferas.options.scales.y.ticks.color = isDark
+                ? "#fff"
+                : "#222";
+            }
+            graficoEsferas.update();
+          }
         });
       }
+
+      // Exponha sendMessage no escopo global caso um botão HTML use onclick="sendMessage()"
+      window.sendMessage = sendMessage;
+      window.toggleChat = toggleChat;
     });
   </script>
+
 
 </body>
 
