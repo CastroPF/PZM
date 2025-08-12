@@ -445,12 +445,15 @@
 
   <div class="chat-popup" id="chat-popup">
     <div class="chat-header">
-      <span>Dúvidas?</span>
+      <span>Agente PZM</span>
       <button class="close-chat" onclick="toggleChat()">×</button>
     </div>
-    <div class="chat-body">
-      <p>Olá! Precisa de ajuda no login?<br>
-        Entre em contato com os nossos consultores no e-mail: <strong>suporte@pzmweb.com</strong></p>
+    <div class="chat-body" id="chat-body">
+      <div class="message bot">Olá! Como posso te ajudar hoje?</div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
+      <button onclick="sendMessage()">Enviar</button>
     </div>
   </div>
 

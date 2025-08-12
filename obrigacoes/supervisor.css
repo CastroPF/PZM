@@ -1180,7 +1180,7 @@ body.dark-mode .fitros-consulta input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.1rem;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   z-index: 2000;
@@ -1193,10 +1193,11 @@ body.dark-mode .fitros-consulta input::placeholder {
 
 .chat-popup {
   display: none;
+  flex-direction: column;
   position: fixed;
   bottom: 104px;
   right: 48px;
-  width: 320px;
+  width: 340px;
   max-width: 95vw;
   background: var(--light-color);
   border-radius: 14px;
@@ -1228,30 +1229,63 @@ body.dark-mode .fitros-consulta input::placeholder {
   margin-left: 6px;
   opacity: 0.85;
 }
-
 .close-chat:hover {
   opacity: 1;
 }
 
 .chat-body {
-  padding: 18px 16px 16px 16px;
+  padding: 16px;
+  max-height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1rem;
   color: var(--dark-text-color);
-  font-size: 16.16px;
 }
 
-.chat-body a {
-  color: var(--secondary-color);
-  text-decoration: underline;
-  font-weight: 500;
+.message {
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 80%;
+  line-height: 1.4;
+}
+.message.bot {
+  background: var(--gray-f1);
+  align-self: flex-start;
+}
+.message.user {
+  background: var(--secondary-color);
+  color: var(--light-color);
+  align-self: flex-end;
 }
 
-.chat-body p {
-  margin-top: 0px;
-  margin-bottom: 10px;
+.chat-input-area {
+  display: flex;
+  border-top: 1px solid var(--gray-400);
 }
 
-.chat-body strong {
-  color: var(--accent-color);
+.chat-popup.show {
+  display: flex;
+  flex-direction: column;
+}
+.chat-input-area input {
+  flex: 1;
+  padding: 12px 14px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+.chat-input-area button {
+  background: var(--accent-color);
+  border: none;
+  padding: 0 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.chat-input-area button:hover {
+  background: var(--accent-color);
 }
 
 @media (max-width: 600px) {
