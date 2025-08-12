@@ -587,31 +587,12 @@
     function fecharModal() {
       document.getElementById("modalAnexos").style.display = "none";
     }
-
-    // Fecha ao clicar fora
     window.onclick = function (event) {
       const modal = document.getElementById("modalAnexos");
       if (event.target === modal) {
         modal.style.display = "none";
       }
     }
-
-    const helpFab = document.getElementById('helpFab');
-    const chatPopup = document.getElementById('chat-popup');
-
-    helpFab.onclick = function () {
-      chatPopup.style.display = 'block';
-    };
-
-    function toggleChat() {
-      chatPopup.style.display = 'none';
-    }
-
-    window.addEventListener('mousedown', function (e) {
-      if (chatPopup.style.display === 'block' && !chatPopup.contains(e.target) && e.target !== helpFab) {
-        toggleChat();
-      }
-    });
 
     document.addEventListener("DOMContentLoaded", function () {
       const body = document.body;
@@ -742,6 +723,7 @@
       });
     });
   </script>
+  <script src="/chatbot.js"></script>
 
 
 </body>

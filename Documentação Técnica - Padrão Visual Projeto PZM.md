@@ -1,6 +1,6 @@
-# Documentação Técnica - Padrão Visual Projeto PCM
+# Documentação Técnica - Padrão Visual Projeto PZM
 
-Este documento define o padrão visual a ser seguido no desenvolvimento do projeto PCM, garantindo consistência e coesão em toda a aplicação.
+Este documento define o padrão visual a ser seguido no desenvolvimento do projeto PZM, garantindo consistência e coesão em toda a aplicação.
 
 ## 1. Paleta de Cores
 

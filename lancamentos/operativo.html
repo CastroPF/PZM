@@ -275,6 +275,7 @@
       <button onclick="sendMessage()">Enviar</button>
     </div>
   </div>
+
   <div id="modalAnexos" class="modal">
     <div class="modal-conteudo">
       <span class="fechar" onclick="fecharModal()">&times;</span>
@@ -400,7 +401,6 @@
   <script>
     const btn = document.getElementById('toggleFiltros');
     const painel = document.getElementById('painelSuspenso');
-
     btn.addEventListener('click', () => {
       btn.classList.toggle('active');
       painel.classList.toggle('aberto');
@@ -417,19 +417,6 @@
       if (e.target === m) m.style.display = 'none';
     };
 
-    const helpFab = document.getElementById('helpFab');
-    const chatPopup = document.getElementById('chat-popup');
-    helpFab.onclick = () => chatPopup.style.display = 'block';
-    function toggleChat() {
-      chatPopup.style.display = 'none';
-    }
-    window.addEventListener('mousedown', e => {
-      if (chatPopup.style.display === 'block' &&
-        !chatPopup.contains(e.target) &&
-        e.target !== helpFab) {
-        toggleChat();
-      }
-    });
 
     document.addEventListener('DOMContentLoaded', () => {
       const body = document.body;
@@ -585,8 +572,7 @@
       });
     });
   </script>
-
-
+  <script src="/chatbot.js"></script>
 
 </body>
 
