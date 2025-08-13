@@ -24,7 +24,7 @@ Os gráficos também devem servir como filtros, ou seja, ao clicarmos em algum c
 
 Presentes em todas as telas, o farol que acompanha o usuário, sendo ele uma "?", permite com que o usuário abra uma especie de chat, onde poderá questionar o chat sobre dúvidas rápidas, como carregar um balancete, criar uma conta ou como processar um checklist. O farol acompanhará o usuário não importa onde ele esteja nas telas do sistema, exceto modais de atividades, anexos, etc.
 
-![alt text](image-8.png)
+![alt text](image-13.png)
 
 ## 4. Totalizadores de Anexos
 
@@ -34,4 +34,4 @@ O campo de totalizador de anexos exibe informações resumidas sobre os anexos i
 
 O sistema irá demonstrar todos anexos inseridos nas atividades atráves desse campo, nele, tendo a possibilidade de download de todos os anexos de uma só vez, indicados cada um com o nome da atividade, ID e etc, referenciando de onde o anexo está sendo baixado e, além disso, o usuário poderá baixar apenas um clicando no link do anexo.
 
-![alt text](image-7.png)
+![alt text](image-14.png)
