@@ -91,3 +91,10 @@ O campo ao lado das bandeiras do sistema permitirá com que o usuário inverta a
 ![alt text](image-9.png)
 
 ![alt text](image-10.png)
+
+## 7. Mudança no formato das bandeiras dos módulos
+
+O formato das bandeiras foi mudado, eles devem seguir o padrão indicado abaixo:
+
+<img width="711" height="173" alt="image" src="https://github.com/user-attachments/assets/15030fc9-5b8c-479e-8282-b25b6fd04dd1" />
+
