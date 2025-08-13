@@ -186,7 +186,7 @@ nav {
   align-items: flex-end;
   padding: 20px;
   background: var(--light-color);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--dark-gray);
   border-radius: 5px;
   box-shadow: 0 1px 4px var(--shadow-xs);
   margin: 20px;
@@ -1192,7 +1192,7 @@ body.dark-mode .titulo-grafico {
 }
 body.dark-mode .filtros-compactos {
   background-color: var(--dark-surface);
-  border: none;
+  border-color: var(--gray-850) a53;
 }
 body.dark-mode .filtro-item input {
   background-color: var(--dark-bg);
