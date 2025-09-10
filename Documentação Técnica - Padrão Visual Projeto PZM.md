@@ -368,7 +368,7 @@ A paleta de cores do projeto PZM é definida no arquivo `colors.css` e deve ser 
 
 ## 6. Exemplos Visuais
 
-- **Imagem 1 – Layout de Login:** ![alt text](image.png) - Tela de login com formulário à esquerda e painel de boas-vindas à direita
+- **Imagem 1 – Layout de Login:** ![alt text](image-15.png) - Tela de login com formulário à esquerda e painel de boas-vindas à direita
 - **Imagem 2 – Tela Operacional Impostos/Obrigações:** ![alt text](image-2.png) - Tela de consultas operativas com filtros e tabela de resultados
 - **Imagem 3 – Tela Supervisor Impostos/Obrigações:** ![alt text](image-1.png) - Tela de consultas operativas com filtros e tabela de resultados
 - **Imagem 4 – Tela Capa de Processo Impostos/Obrigações:** ![alt text](image-3.png) - Tela de consultas operativas com filtros e tabela de resultados
