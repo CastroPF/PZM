@@ -19,7 +19,7 @@ body {
   align-items: center;
   padding: 8px 16px;
   background: var(--primary-color);
-  border-bottom: 2px solid var(--text-color);
+  border-bottom: 3px solid var(--secondary-color);
   box-shadow: 0 2px 8px var(--shadow-xs);
 }
 
@@ -33,6 +33,13 @@ body {
   gap: 12px;
   font-weight: 600;
   color: var(--light-color);
+}
+
+.usuario-logado h2 {
+  font-size: 30px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
 }
 
 .avatar {
@@ -60,18 +67,16 @@ body {
 .bloco-titulo {
   width: 100%;
   max-width: 1100px;
-  padding: 40px 32px 0 32px;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  margin-right: 350px;
   margin-bottom: 24px;
   position: relative;
-  margin-left: 145px;
 }
 
 .titulo-principal {
-  font-size: 3.2rem;
-  font-weight: 800;
+  font-size: 2.225rem;
+  font-weight: bold;
   color: var(--dark-text-color);
   position: relative;
   z-index: 1;
@@ -83,9 +88,9 @@ body {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 1px;
-  width: 100%;
-  height: 4px;
+  bottom: -4px;
+  width: 90px;
+  height: 2px;
   background: var(--accent-color);
   border-radius: 10px;
   z-index: 0;
@@ -98,7 +103,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 8px 24px var(--shadow-light-alt);
   width: 100%;
-  max-width: 900px;
+  max-width: 1400px;
   max-height: 440px;
   overflow-y: auto;
   border: 1px solid var(--border-color);
