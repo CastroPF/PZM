@@ -31,7 +31,7 @@
           <a href="/modulos/divisão.html">Alterar Divisão</a>
         </div>
       </div>
-      <span>Cadastros</span>
+      <a class="cadastro-lanc" href="/CadastroLanc/cadastro-lanc.html">Cadastrar Lançamento</a>
       <div class="menu-item">
         Operações
         <div class="submenu">
@@ -40,7 +40,6 @@
           <a href="/lancamentos/erp.html">Consulta de Status de Lançamento Manual</a>
         </div>
       </div>
-      <span>Processos</span>
       <span>Relatórios</span>
       <span>Gráficos</span>
       <span>Configurações</span>
@@ -69,7 +68,7 @@
   <div class="filtros-compactos">
     <div class="filtro-item">
       <label>Id do lançamento:</label>
-      <input style="max-width: 180px; width: 280px; margin-bottom: 1px;">
+      <input style="max-width: 280px; width: 280px;">
     </div>
     <div class="filtro-item">
       <label>Data Inicial:</label>
@@ -82,20 +81,20 @@
     <div class="fitros-consulta">
       <label style="margin-bottom: 18px;">Data Base:</label>
       <div class="grupo-opcoes">
-        <label style="margin-top: -18px;"><input type="radio" name="data-base" />Data de Vencimento</label><br>
-        <label style="margin-top: -18px"><input type="radio" name="data-base" />Data do Lançamento</label><br>
-        <label style="margin-top: -18px"><input type="radio" name="data-base" />Data do Documento</label><br>
-        <label style="margin-top: -18px"><input type="radio" name="data-base" />Data da Criação</label><br>
+        <label><input type="radio" name="data-base" />Data de Vencimento</label><br>
+        <label><input type="radio" name="data-base" />Data do Lançamento</label><br>
+        <label><input type="radio" name="data-base" />Data do Documento</label><br>
+        <label><input type="radio" name="data-base" />Data da Criação</label><br>
       </div>
     </div>
     <div class="filtro-item">
-      <label style="max-width: 220px; width: 280px;">Filial / Divisão:</label>
+      <label>Filial / Divisão:</label>
       <select>
         <option>Todos os itens</option>
       </select>
     </div>
     <div class="filtro-item">
-      <label style="max-width: 220px; width: 280px;">Responsável:</label>
+      <label>Responsável:</label>
       <select>
         <option>Usuário PZM</option>
       </select>
@@ -110,7 +109,7 @@
 
   <div class="painel-suspenso" id="painelSuspenso">
     <div class="filtros-e-grafico">
-      <div class="painel-filtros-opr">
+      <div class="painel-filtros">
         <div class="fitros-consulta"><label>Centro de Custo:</label><select>
             <option>Todos os itens</option>
           </select></div>
@@ -147,6 +146,14 @@
           <canvas id="graficoFarol"></canvas>
         </div>
       </div>
+
+      <div class="card-grafico">
+        <span class="titulo-grafico">Comparativo por Status</span>
+        <div class="grafico-container">
+          <canvas id="graficoBarras"></canvas>
+        </div>
+      </div>
+
     </div>
   </div>
 

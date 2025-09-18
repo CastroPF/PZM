@@ -64,29 +64,10 @@ nav {
   align-items: center;
   gap: 16px;
 }
-
-.flags {
-  display: flex;
-  align-items: center;
-}
-
 .flags img {
-  width: 28px;
-  height: 20px;
-  border-radius: 20px;
-  margin-left: -6px;
+  width: 24px;
+  height: auto;
   cursor: pointer;
-  object-fit: cover;
-  transition: transform 0.2s ease;
-}
-
-.flags img:first-child {
-  margin-left: 0;
-}
-
-.flags img:hover {
-  transform: scale(1.1);
-  z-index: 2;
 }
 
 /* ---------- TOGGLE SWITCH ---------- */
@@ -197,6 +178,12 @@ nav {
   flex-wrap: wrap;
 }
 
+.cadastro-lanc {
+  text-decoration: none;
+  color: var(--dark-text-color);
+  font-weight: bold;
+}
+
 /* ---------- FILTROS & GRÁFICOS ---------- */
 .filtros-compactos {
   display: flex;
@@ -242,19 +229,6 @@ nav {
 
 .painel-filtros {
   width: 1200px;
-  flex-shrink: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 15px;
-  background: var(--light-color);
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  padding: 35px 20px 35px 20px;
-  box-shadow: 0 1px 4px var(--shadow-xs);
-}
-
-.painel-filtros-opr {
-  width: 1400px;
   flex-shrink: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -484,17 +458,18 @@ nav {
 .totalizadores {
   display: flex;
   gap: 16px;
+  font-weight: bold;
 }
 
 .totalizadores span {
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .baixar-anexos {
   color: var(--secondary-color);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .paginacao {
@@ -566,7 +541,7 @@ nav {
   background: var(--gray-100);
   border-radius: 10px;
   box-shadow: 0 1px 8px var(--shadow-blue-dark);
-  padding: 6px 14px;
+  padding: 2px 14px;
 }
 
 .pagination-select {
@@ -644,7 +619,7 @@ nav {
 }
 
 .modal-conteudo {
-  background-color: var(--dark-surface);
+  background-color: var(--light-color);
   margin: 5% auto;
   padding: 24px 28px;
   border-radius: 12px;
@@ -684,8 +659,8 @@ nav {
 .modal-conteudo h2 {
   font-size: 20px;
   margin-bottom: 16px;
-  color: var(--light-color);
-  border-bottom: 1px solid var(--light-color);
+  color: var(--dark-text-color);
+  border-bottom: 1px solid var(--gray-100);
   padding-bottom: 8px;
 }
 
@@ -745,7 +720,7 @@ nav {
 
 .tabela-anexos .cabecalho span {
   font-weight: bold;
-  color: var(--light-color);
+  color: var(--gray-850);
 }
 
 .tabela-anexos .linha {
@@ -1236,10 +1211,6 @@ body.dark-mode .filtro-item select {
   border-color: var(--gray-800);
 }
 body.dark-mode .painel-filtros {
-  background-color: var(--dark-surface);
-  border: none;
-}
-body.dark-mode .painel-filtros-opr {
   background-color: var(--dark-surface);
   border: none;
 }

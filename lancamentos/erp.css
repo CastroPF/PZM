@@ -64,28 +64,10 @@ nav {
   align-items: center;
   gap: 16px;
 }
-.flags {
-  display: flex;
-  align-items: center;
-}
-
 .flags img {
-  width: 28px;
-  height: 20px;
-  border-radius: 20px;
-  margin-left: -6px;
+  width: 24px;
+  height: auto;
   cursor: pointer;
-  object-fit: cover;
-  transition: transform 0.2s ease;
-}
-
-.flags img:first-child {
-  margin-left: 0;
-}
-
-.flags img:hover {
-  transform: scale(1.1);
-  z-index: 2;
 }
 
 /* ---------- TOGGLE SWITCH ---------- */
@@ -169,6 +151,12 @@ nav {
 }
 .menu-item:hover .submenu {
   display: block;
+}
+
+.cadastro-lanc {
+  text-decoration: none;
+  color: var(--dark-text-color);
+  font-weight: bold;
 }
 
 /* ---------- FORM HEADER ---------- */
@@ -391,7 +379,7 @@ nav {
 .baixar-anexos {
   color: var(--secondary-color);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .paginacao {
@@ -462,7 +450,7 @@ nav {
   background: var(--gray-100);
   border-radius: 10px;
   box-shadow: 0 1px 8px var(--shadow-blue-dark);
-  padding: 6px 14px;
+  padding: 2px 14px;
 }
 
 .pagination-select {
