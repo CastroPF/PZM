@@ -50,10 +50,29 @@ header {
   color: var(--dark-text-color);
 }
 
+.flags {
+  display: flex;
+  align-items: center;
+}
+
 .flags img {
-  width: 20px;
-  height: auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 50% / 50%;
+  border: 2px solid #fff;
+  margin-left: -6px;
   cursor: pointer;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.flags img:first-child {
+  margin-left: 0;
+}
+
+.flags img:hover {
+  transform: scale(1.1);
+  z-index: 2;
 }
 
 .main-bg {

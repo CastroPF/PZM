@@ -119,10 +119,29 @@ nav {
   align-items: center;
   gap: 16px;
 }
+.flags {
+  display: flex;
+  align-items: center;
+}
+
 .flags img {
-  width: 24px;
-  height: auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 50% / 50%;
+  border: 2px solid #fff;
+  margin-left: -6px;
   cursor: pointer;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.flags img:first-child {
+  margin-left: 0;
+}
+
+.flags img:hover {
+  transform: scale(1.1);
+  z-index: 2;
 }
 
 /* ---------- TOGGLE SWITCH ---------- */
@@ -416,18 +435,17 @@ nav {
 .totalizadores {
   display: flex;
   gap: 16px;
-  font-weight: bold;
 }
 
 .totalizadores span {
   font-size: 15px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .baixar-anexos {
   color: var(--secondary-color);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 /* Modal anexos */
@@ -451,7 +469,7 @@ nav {
 }
 
 .modal-conteudo {
-  background-color: var(--light-color);
+  background-color: var(--dark-surface);
   margin: 5% auto;
   padding: 24px 28px;
   border-radius: 12px;
@@ -491,8 +509,8 @@ nav {
 .modal-conteudo h2 {
   font-size: 20px;
   margin-bottom: 16px;
-  color: var(--dark-text-color);
-  border-bottom: 1px solid var(--gray-100);
+  color: var(--light-color);
+  border-bottom: 1px solid var(--light-color);
   padding-bottom: 8px;
 }
 
@@ -552,7 +570,7 @@ nav {
 
 .tabela-anexos .cabecalho span {
   font-weight: bold;
-  color: var(--gray-850);
+  color: var(--light-color);
 }
 
 .tabela-anexos .linha {
@@ -629,7 +647,7 @@ nav {
   background: var(--gray-100);
   border-radius: 14px;
   box-shadow: 0 1px 8px var(--shadow-blue-dark);
-  padding: 2px 14px;
+  padding: 6px 14px;
 }
 
 .pagination-select {

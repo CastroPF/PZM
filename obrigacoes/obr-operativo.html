@@ -322,66 +322,52 @@
     </table>
 
     <table>
-      <thead>
-        <tr class="header-table">
-          <th></th>
-          <th>CNPJ</th>
-          <th>Local</th>
-          <th>Empresa</th>
-          <th>Estabelecimento</th>
-          <th>Categória</th>
-          <th>Obrigação</th>
-          <th>Esfera</th>
-          <th>Vencimento</th>
-          <th>Mês</th>
-          <th>Ano</th>
-          <th>Descrição de Vencimento</th>
-          <th>Mês de competência</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="header-table2">
-          <th>Número da Operação</th>
-          <th>Estágio</th>
-          <th>Responsável</th>
-          <th>Status</th>
-          <th>Retificação</th>
-          <th>Data Prevista</th>
-          <th>Data Realizada</th>
-          <th>Valor</th>
-          <th>Resultado da Operação</th>
-          <th>Local de Pagamento</th>
-          <th>Forma de Quitação</th>
-          <th>Contabilização Automática</th>
-          <th>Anexos</th>
-        </tr>
-
-        <tr class="header-atv">
-          <td colspan="1">
-            <img src="/ChatGPT Image 3 de jul. de 2025, 20_13_58.png" alt="parameter" class="parameter" />
-          <td><span>444.000.000/0004-04</span></td>
-          <td>Belo Horizonte</td>
-          <td>Grupo PZM Matriz</td>
-          <td>Filial PZM - SP</td>
-          <td>Comercial</td>
-          <td>ICMS</td>
-          <td>Estadual</td>
-          <td>10</td>
-          <td>07</td>
-          <td>2025</td>
-          <td>Obrigação com vencimento todo dia 10</td>
-          <td>06/2025</td>
-          </td>
-        </tr>
+      <tr class="header-atv">
+        <td colspan="1">
+          <img src="/ChatGPT Image 3 de jul. de 2025, 20_13_58.png" alt="parameter" class="parameter" />
+        <td><span>444.000.000/0004-04</span></td>
+        <td>Belo Horizonte</td>
+        <td>Grupo PZM Matriz</td>
+        <td>Filial PZM - SP</td>
+        <td>Comercial</td>
+        <td>ICMS</td>
+        <td>Estadual</td>
+        <td>10</td>
+        <td>07</td>
+        <td>2025</td>
+        <td>Obrigação com vencimento todo dia 10</td>
+        <td>06/2025</td>
+        </td>
+      </tr>
 
 
+      <td>
+        <div class="status-etapa">
+          <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol dentro-prazo" id="modalOpenButton"></span>
+          <span>12222</span>
+        </div>
+      </td>
+      <td><span>Apuração</span></td>
+      <td>Damares Oliveira</td>
+      <td>Pendente</td>
+      <td>Original</td>
+      <td>ICMS PZM 3030</td>
+      <td>15/07/2025</td>
+      <td>2500,00</td>
+      <td>Devedora</td>
+      <td>Contas a Pagar</td>
+      <td>Compensação</td>
+      <td>Sim</td>
+      <td>1</td>
+      </tr>
+      <tr>
         <td>
           <div class="status-etapa">
-            <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol dentro-prazo" id="modalOpenButton"></span>
-            <span>12222</span>
+            <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol finalizado" id="modalOpenButton"></span>
+            <span>12222</span> +
           </div>
         </td>
-        <td><span>Apuração</span></td>
+        <td><span>Pagamento</span></td>
         <td>Damares Oliveira</td>
         <td>Pendente</td>
         <td>Original</td>
@@ -393,48 +379,28 @@
         <td>Compensação</td>
         <td>Sim</td>
         <td>1</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="status-etapa">
-              <input type="checkbox" name="checkbox" id="checkbox" /><span class="farol finalizado" id="modalOpenButton"></span>
-              <span>12222</span> +
-            </div>
-          </td>
-          <td><span>Pagamento</span></td>
-          <td>Damares Oliveira</td>
-          <td>Pendente</td>
-          <td>Original</td>
-          <td>ICMS PZM 3030</td>
-          <td>15/07/2025</td>
-          <td>2500,00</td>
-          <td>Devedora</td>
-          <td>Contas a Pagar</td>
-          <td>Compensação</td>
-          <td>Sim</td>
-          <td>1</td>
-        </tr>
+      </tr>
 
-        <tr class="complementar">
-          <td>
-            <div class="status-etapa">
-              <input type="checkbox" name="checkbox" id="checkbox" />
-              <span>12222</span>
-            </div>
-          </td>
-          <td><span>Complementar</span></td>
-          <td>Damares Oliveira</td>
-          <td>Concluído</td>
-          <td>Original</td>
-          <td>ICMS PZM 3030</td>
-          <td>15/07/2025</td>
-          <td>250,00</td>
-          <td>Devedora</td>
-          <td>Contas a Pagar</td>
-          <td>Compensação</td>
-          <td>Sim</td>
-          <td>1</td>
-        </tr>
+      <tr class="complementar">
+        <td>
+          <div class="status-etapa">
+            <input type="checkbox" name="checkbox" id="checkbox" />
+            <span>12222</span>
+          </div>
+        </td>
+        <td><span>Complementar</span></td>
+        <td>Damares Oliveira</td>
+        <td>Concluído</td>
+        <td>Original</td>
+        <td>ICMS PZM 3030</td>
+        <td>15/07/2025</td>
+        <td>250,00</td>
+        <td>Devedora</td>
+        <td>Contas a Pagar</td>
+        <td>Compensação</td>
+        <td>Sim</td>
+        <td>1</td>
+      </tr>
       </tbody>
     </table>
   </div>
