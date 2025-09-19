@@ -565,6 +565,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/dark-mode.js"></script>
   <script>
     function abrirModal() {
       document.getElementById("modalAnexos").style.display = "block";
@@ -583,12 +584,6 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       const body = document.body;
-      const darkToggle = document.querySelector(".checkbox");
-
-      if (localStorage.getItem("dark-mode") === "enabled") {
-        body.classList.add("dark-mode");
-        if (darkToggle) darkToggle.checked = true;
-      }
 
       const farolContainer = document.getElementById("containerFarol");
       const esferasContainer = document.getElementById("containerEsferas");
@@ -803,27 +798,13 @@
         },
       });
 
-      if (darkToggle) {
-        darkToggle.addEventListener("change", () => {
-          body.classList.toggle("dark-mode", darkToggle.checked);
-          localStorage.setItem(
-            "dark-mode",
-            darkToggle.checked ? "enabled" : "disabled"
-          );
-          graficoFarol.update();
-          graficoEsferas.options.scales.x.ticks.color = body.classList.contains(
-            "dark-mode"
-          )
-            ? "#fff"
-            : "#222";
-          graficoEsferas.options.scales.y.ticks.color = body.classList.contains(
-            "dark-mode"
-          )
-            ? "#fff"
-            : "#222";
-          graficoEsferas.update();
-        });
-      }
+      document.addEventListener("dark-mode-change", (event) => {
+        const isDark = event.detail?.enabled ?? body.classList.contains("dark-mode");
+        graficoFarol.update();
+        graficoEsferas.options.scales.x.ticks.color = isDark ? "#fff" : "#222";
+        graficoEsferas.options.scales.y.ticks.color = isDark ? "#fff" : "#222";
+        graficoEsferas.update();
+      });
     });
   </script>
   <script src="/chatbot.js"></script>

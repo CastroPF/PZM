@@ -798,3 +798,7 @@ body.dark-mode table td {
   border: 1px solid var(--gray-400);
   color: var(--dark-text-color);
 }
+
+body.dark-mode .cadastro-lanc {
+  color: var(--light-color);
+}

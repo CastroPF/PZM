@@ -547,6 +547,7 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+  <script src="/dark-mode.js"></script>
 
   <script>
     function abrirModal() {
@@ -580,25 +581,6 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       const body = document.body;
-      const darkToggle = document.querySelector(".checkbox");
-
-      if (localStorage.getItem("dark-mode") === "enabled") {
-        body.classList.add("dark-mode");
-        if (darkToggle) darkToggle.checked = true;
-      }
-
-      if (darkToggle) {
-        darkToggle.addEventListener("change", function () {
-          if (darkToggle.checked) {
-            body.classList.add("dark-mode");
-            localStorage.setItem("dark-mode", "enabled");
-          } else {
-            body.classList.remove("dark-mode");
-            localStorage.setItem("dark-mode", "disabled");
-          }
-          graficoFarol.update();
-        });
-      }
 
       const centerTextPlugin = {
         id: "centerText",
@@ -704,6 +686,12 @@
           }
         },
         plugins: [shadowPlugin, centerTextPlugin, dataLabelPlugin],
+      });
+
+      document.addEventListener("dark-mode-change", () => {
+        if (window.graficoFarol) {
+          window.graficoFarol.update();
+        }
       });
     });
   </script>

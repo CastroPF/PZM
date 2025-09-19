@@ -1245,6 +1245,10 @@ body.dark-mode .painel-filtros {
   background-color: var(--dark-surface);
   border: none;
 }
+body.dark-mode .painel-filtros2 {
+  background-color: var(--dark-surface);
+  border: none;
+}
 body.dark-mode .submenu {
   background-color: var(--dark-3030);
   border-color: var(--gray-850);
@@ -1303,4 +1307,8 @@ body.dark-mode .campo-pesquisa.ao-lado:focus {
   border-color: var(--accent-color);
   box-shadow: 0 0 0 2px var(--shadow-warning);
   outline: none;
+}
+
+body.dark-mode .cadastro-lanc {
+  color: var(--light-color);
 }

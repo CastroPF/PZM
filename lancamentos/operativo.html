@@ -389,6 +389,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/dark-mode.js"></script>
   <script>
     const btn = document.getElementById('toggleFiltros');
     const painel = document.getElementById('painelSuspenso');
@@ -411,29 +412,6 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const body = document.body;
-      const darkToggle = document.querySelector('.checkbox');
-      if (localStorage.getItem('dark-mode') === 'enabled') {
-        body.classList.add('dark-mode');
-        if (darkToggle) darkToggle.checked = true;
-      }
-      if (darkToggle) {
-        darkToggle.addEventListener('change', () => {
-          const isDark = darkToggle.checked;
-          if (isDark) {
-            body.classList.add('dark-mode');
-            localStorage.setItem('dark-mode', 'enabled');
-          } else {
-            body.classList.remove('dark-mode');
-            localStorage.setItem('dark-mode', 'disabled');
-          }
-          if (window.graficoFarol) graficoFarol.update();
-          if (window.graficoBarras) {
-            graficoBarras.options.scales.y.ticks.color = isDark ? '#fff' : '#333';
-            graficoBarras.options.scales.x.ticks.color = isDark ? '#fff' : '#333';
-            graficoBarras.update();
-          }
-        });
-      }
 
       const centerTextPlugin = {
         id: 'centerText',
@@ -560,6 +538,18 @@
           }
         },
         plugins: [shadowPlugin, dataLabelPlugin]
+      });
+
+      document.addEventListener('dark-mode-change', (event) => {
+        const isDark = event.detail?.enabled ?? document.body.classList.contains('dark-mode');
+        if (window.graficoFarol) {
+          graficoFarol.update();
+        }
+        if (window.graficoBarras) {
+          graficoBarras.options.scales.y.ticks.color = isDark ? '#fff' : '#333';
+          graficoBarras.options.scales.x.ticks.color = isDark ? '#fff' : '#333';
+          graficoBarras.update();
+        }
       });
     });
   </script>

@@ -185,26 +185,7 @@
       </div>
     </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const toggle = document.querySelector('.checkbox');
-        // Aplica estado salvo
-        if (localStorage.getItem('dark-mode') === 'enabled') {
-          document.body.classList.add('dark-mode');
-          toggle.checked = true;
-        }
-        // Ao mudar o checkbox
-        toggle.addEventListener('change', () => {
-          if (toggle.checked) {
-            document.body.classList.add('dark-mode');
-            localStorage.setItem('dark-mode', 'enabled');
-          } else {
-            document.body.classList.remove('dark-mode');
-            localStorage.setItem('dark-mode', 'disabled');
-          }
-        });
-      });
-    </script>
+    <script src="/dark-mode.js"></script>
     <script src="/chatbot.js"></script>
 
 
