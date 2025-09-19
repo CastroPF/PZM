@@ -259,6 +259,19 @@ nav {
   box-shadow: 0 1px 4px var(--shadow-xs);
 }
 
+.painel-filtros2 {
+  width: 1400px;
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  background: var(--light-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 35px 20px 35px 20px;
+  box-shadow: 0 1px 4px var(--shadow-xs);
+}
+
 .area-graficos {
   display: flex;
   flex: 1;
@@ -477,18 +490,17 @@ nav {
 .totalizadores {
   display: flex;
   gap: 16px;
-  font-weight: bold;
 }
 
 .totalizadores span {
   font-size: 15px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .baixar-anexos {
   color: var(--secondary-color);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .paginacao {
