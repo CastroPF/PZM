@@ -1,205 +1,4 @@
-@import url("../colors.css");
-
-/* ---------- RESET E BASE ---------- */
-* {
-  box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
-}
-body {
-  margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: "Open Sans", sans-serif;
-}
-
-/* ---------- HEADER ---------- */
-header {
-  background-color: var(--primary-color);
-  color: var(--light-color);
-  padding: 12px 24px;
-  font-size: 20px;
-}
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 3px solid var(--secondary-color);
-  padding: 8px 16px;
-}
-.header-left h2 {
-  margin: 0;
-}
-.logo {
-  height: 40px;
-  max-width: 100%;
-  object-fit: contain;
-}
-.mainmenu {
-  text-decoration: none;
-  color: var(--light-color);
-}
-
-.sair {
-  text-decoration: none;
-  color: var(--dark-text-color);
-}
-
-/* ---------- FAROL DE STATUS ---------- */
-
-.farol {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.farol:hover {
-  transform: scale(1.35);
-  box-shadow: 0 0 8px 2px var(--shadow-md);
-}
-
-.farol.complementar,
-.complementar::before {
-  background-color: var(--link-color);
-  cursor: pointer;
-}
-
-.farol.todos-os-status,
-.todos-os-status::before {
-  background-color: var(--dark-gray);
-  cursor: pointer;
-}
-
-.farol.retificacao,
-.retificacao::before {
-  background-color: var(--danger-color);
-  cursor: pointer;
-}
-.farol.dentro-prazo,
-.dentro-prazo::before {
-  background-color: var(--status-dentro-prazo);
-  cursor: pointer;
-}
-.farol.no-limite,
-.no-limite::before {
-  background-color: var(--status-no-limite);
-  cursor: pointer;
-}
-.farol.vencido,
-.vencido::before {
-  background-color: var(--status-vencido);
-  cursor: pointer;
-}
-.farol.finalizado,
-.finalizado::before {
-  background-color: var(--status-finalizado);
-  cursor: pointer;
-}
-.farol.fora-prazo,
-.fora-prazo::before {
-  background-color: var(--status-fora-prazo);
-  cursor: pointer;
-}
-
-/* ---------- Navegação ---------- */
-
-nav {
-  background-color: var(--muted-color);
-  padding: 10px 20px;
-  display: flex;
-  gap: 20px;
-  font-weight: bold;
-  border-bottom: 1px solid var(--border-color);
-  position: relative;
-  font-size: 18px;
-}
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.nav-left,
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.flags {
-  display: flex;
-  align-items: center;
-}
-
-.flags img {
-  width: 36px;
-  height: 20px;
-  border-radius: 999px;
-  margin-left: -6px;
-  cursor: pointer;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.2s ease;
-}
-
-.flags img:first-child {
-  margin-left: 0;
-}
-
-.flags img:hover {
-  transform: scale(1.1);
-  z-index: 2;
-}
-
-/* ---------- TOGGLE SWITCH ---------- */
-.toggle-switch {
-  position: relative;
-  width: 45px;
-  height: 22px;
-  --light: var(--toggle-light);
-  --dark: var(--toggle-dark);
-  --link: var(--toggle-link);
-  --link-hover: var(--toggle-link-hover);
-}
-.switch-label {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: var(--dark);
-  cursor: pointer;
-  border-radius: 11px;
-  border: 2px solid var(--dark);
-}
-.checkbox {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-.slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 11px;
-  transition: background-color 0.3s ease;
-}
-.checkbox:checked ~ .slider {
-  background-color: var(--light);
-}
-.slider::before {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: var(--dark);
-  box-shadow: inset 8px -3px 0 0 var(--light);
-  transition: transform 0.3s ease;
-}
-.checkbox:checked ~ .slider::before {
-  transform: translateX(23px);
-}
+@import url("../style/common.css");
 
 /* ---------- CONTAINER & SECTIONS ---------- */
 .container,
@@ -225,7 +24,7 @@ nav {
   box-shadow: 0 2px 4px var(--shadow-sm);
 }
 
-/* ---------- FILTROS & GRÁFICOS ---------- */
+/* ---------- FILTROS & GRÃFICOS ---------- */
 .filtros-e-grafico {
   display: flex;
 }
@@ -292,7 +91,7 @@ nav {
   transition: width 0s;
 }
 
-/* ---------- FILTROS - FORMULÁRIOS ---------- */
+/* ---------- FILTROS - FORMULÃRIOS ---------- */
 .painel-geral {
   display: flex;
   gap: 10px;
@@ -520,7 +319,7 @@ nav {
   padding-bottom: 8px;
 }
 
-/* Botão principal */
+/* BotÃ£o principal */
 .btn-download-todos {
   display: inline-block;
   background-color: var(--secondary-color);
@@ -926,7 +725,7 @@ th {
   text-align: center;
   vertical-align: middle;
   background-color: var(--info-bg);
-  var(--light-color)-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -934,7 +733,7 @@ th {
 .header-atv span {
   font-size: 14px;
   font-weight: bold;
-  var(--light-color)-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -976,7 +775,7 @@ th {
   padding: 8px 20px;
   color: var(--text-color);
   text-decoration: none;
-  var(--light-color)-space: nowrap;
+  white-space: nowrap;
 }
 .submenu a:hover {
   background-color: var(--muted-color);

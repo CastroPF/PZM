@@ -1,16 +1,4 @@
-@import url("../colors.css");
-
-body {
-  margin: 0;
-  font-family: "Open Sans", sans-serif;
-  background: var(--gray-400);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@import url("../colors.css");
+@import url("../style/common.css");
 
 body {
   margin: 0;
@@ -18,35 +6,21 @@ body {
   background: var(--gray-100);
   font-family: "Open Sans", sans-serif;
   min-height: 100vh;
+
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
-header {
-  background-color: var(--primary-color);
-  color: var(--light-color);
-  padding: 12px 24px;
-  font-size: 20px;
-}
 .header-container {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--primary-color);
-  color: var(--light-color);
-  border-bottom: 3px solid var(--secondary-color);
   padding: 12px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
-.header-left h2 {
-  margin: 0;
-}
+
 .logo {
   height: 50px;
   max-width: 100%;
@@ -54,11 +28,12 @@ header {
 }
 
 .login-container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 400px;
   background: var(--light-color);
-  border-radius: 18px;
-  margin-top: 240px;
+  border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.4s ease;
@@ -81,6 +56,7 @@ header {
 }
 
 .form-section h2 {
+  margin-top: 0;
   margin-bottom: 24px;
   font-size: 30px;
   font-weight: bold;
@@ -93,11 +69,13 @@ header {
 
 form {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
 }
 
 form input {
+  flex: 1;
   padding: 14px;
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -112,21 +90,27 @@ form input:focus {
 }
 
 form button {
-  margin-top: 4px;
-  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 20px;
   background: var(--accent-color);
   color: var(--dark-text-color);
   border: none;
   border-radius: 8px;
+  max-width: 100px;
+  max-height: 45px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 12px;
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
+  white-space: normal;
+  text-align: center;
 }
 
 form button:hover {
-  background: var(--accent-color);
-  transform: translateY(-2px);
+  background: var(--warning-color);
 }
 
 .alerta {
@@ -137,7 +121,6 @@ form button:hover {
   text-align: center;
 }
 
-/* Animação */
 @keyframes fadeIn {
   from {
     opacity: 0;

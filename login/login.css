@@ -36,6 +36,7 @@ header {
   margin: 0;
 }
 .logo {
+  margin-top: 4px;
   height: 40px;
   max-width: 100%;
   object-fit: contain;
