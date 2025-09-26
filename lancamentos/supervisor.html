@@ -259,6 +259,7 @@
 
   <div class="helpFab" id="helpFab">
     <span>?</span>
+    <button class="helpFab-close" id="helpFabClose">×</button>
   </div>
 
   <div class="chat-popup" id="chat-popup">
@@ -402,6 +403,9 @@
   <script>
     const btn = document.getElementById('toggleFiltros');
     const painel = document.getElementById('painelSuspenso');
+    const helpFabClose = document.getElementById('helpFabClose');
+
+
     btn.addEventListener('click', () => {
       btn.classList.toggle('active');
       painel.classList.toggle('aberto');
@@ -418,6 +422,10 @@
       if (e.target === m) m.style.display = 'none';
     };
 
+    helpFabClose.onclick = function (e) {
+      e.stopPropagation();
+      helpFab.style.display = 'none';
+    };
 
     document.addEventListener('DOMContentLoaded', () => {
       const body = document.body;

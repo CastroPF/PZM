@@ -1,4 +1,4 @@
-@import url("../colors.css");
+@import url("/colors.css");
 
 body {
   margin: 0;
@@ -361,9 +361,36 @@ header {
   z-index: 2000;
   transition: background 0.2s, box-shadow 0.2s;
 }
+
 .helpFab:hover {
   background: #d6a100;
   box-shadow: 0 6px 32px #0003;
+}
+
+.helpFab-close {
+  position: absolute;
+  top: -8px;
+  left: -14px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: var(--dark-accent);
+  color: var(--light-color);
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px #0003;
+  z-index: 2100;
+  transition: background 0.2s;
+}
+
+.helpFab-close:hover {
+  background: var(--primary-color);
+  color: var(--light-color);
 }
 
 .chat-popup {

@@ -73,6 +73,7 @@
 
   <div class="helpFab" id="helpFab">
     <span>?</span>
+    <button class="helpFab-close" id="helpFabClose">×</button>
   </div>
 
   <div class="chat-popup" id="chat-popup">
@@ -90,16 +91,23 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="" style="width:20px;vertical-align:middle;margin-right:8px;">
         Fale com um agente
       </a>
-
     </div>
   </div>
 
   <script>
     const helpFab = document.getElementById('helpFab');
     const chatPopup = document.getElementById('chat-popup');
+    const helpFabClose = document.getElementById('helpFabClose');
 
-    helpFab.onclick = function () {
-      chatPopup.style.display = 'block';
+    helpFab.onclick = function (e) {
+      if (e.target.id !== 'helpFabClose') {
+        chatPopup.style.display = 'block';
+      }
+    };
+
+    helpFabClose.onclick = function (e) {
+      e.stopPropagation(); 
+      helpFab.style.display = 'none';
     };
 
     function toggleChat() {
@@ -111,7 +119,6 @@
         toggleChat();
       }
     });
-
   </script>
 </body>
 

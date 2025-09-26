@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/ProcessosObrigacoes/GerarChecklist/checklist.css">
+  <title>PZMWEB Enterprise :: Controle de Impostos - Geração Checklist de Impostos</title>
+</head>
+
+<body>
+  <header class="header-container">
+    <div class="header-left">
+      <h2>
+        <a href="/consultas/operativo.html" class="mainmenu">
+          PZMWEB Enterprise :: Controle de Obrigações Acessórias
+        </a>
+      </h2>
+    </div>
+    <div class="header-right">
+      <img src="/grupopzm.png" alt="logo" class="logo" />
+    </div>
+  </header>
+
+  <nav class="nav-container">
+    <div class="nav-left">
+      <div class="menu-item">
+        Controles
+        <div class="submenu">
+          <a href="/modulos/index.html">Alterar Aplicativo</a>
+          <a href="/modulos/divisão.html">Alterar Divisão</a>
+        </div>
+      </div>
+      <span>Cadastros</span>
+      <div class="menu-item">
+        Operações
+        <div class="submenu">
+          <a href="/obrigacoes/obr-operativo.html">Checklist de Obrigações Acessória Operativo</a>
+          <a href="/obrigacoes/obr-supervisor.html">Checklist de Obrigações Acessória Supervisor</a>
+          <a href="/obrigacoes/obr-supervisor.html">Controle de Aprovação da Capa de Processo</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        Processos
+        <div class="submenu">
+          <a href="/ProcessosObrigacoes/calendario/calendario.html">Gerar Calendário de Vencimento de Obrigações Acessórias
+          </a>
+          <a href="/ProcessosObrigacoes/revisão/revisao.html">Gerar Checklist de Revisão</a>
+          <a href="/ProcessosObrigacoes/GerarChecklist/checklist.html">Gerar Checklist de Obrigações Acessórias</a>
+          <a href="/ProcessosObrigacoes/ExclusaoChecklist/exclusao.html">Excluir Checklist de Obrigações Acessórias</a>
+          <a href="/ProcessosObrigacoes/ExclusaoRevisao/index.html">Excluir Checklist de Revisão</a>
+        </div>
+      </div>
+      <span>Relatórios</span>
+      <span>Gráficos</span>
+      <span>Configurações</span>
+      <span>Ajuda</span>
+      <span><a class="sair" href="/login/login.html">Sair</a></span>
+    </div>
+    <div class="nav-right">
+      <div class="toggle-switch">
+        <label class="switch-label">
+          <input type="checkbox" class="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="flags">
+        <img src="https://flagcdn.com/16x12/br.png" alt="Português" title="Português" />
+        <img src="https://flagcdn.com/16x12/es.png" alt="Español" title="Español" />
+        <img src="https://flagcdn.com/16x12/gb.png" alt="English" title="English" />
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="form-card">
+      <header class="form-header">
+        <h1>Gerar Checklist de Obrigações Acessórias</h1>
+      </header>
+      <hr style="margin-bottom: 20px; margin-top: -10px;">
+
+      <div class="filters-row">
+        <div class="form-group">
+          <label for="organizacao">Organização</label>
+          <select id="organizacao">
+            <option>Todos os Itens</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <select id="empresa">
+            <option>Todos os Itens</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="estabelecimento">Estabelecimento</label>
+          <select id="estabelecimento">
+            <option>Todos os Itens</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filters-row">
+        <div class="filters-period">
+          <div class="form-group">
+            <label for="ano-apuracao">Ano Checklist</label>
+            <input type="number" id="ano-apuracao" value="2025" />
+          </div>
+          <div class="form-group">
+            <label for="mes-inicio">Mês Inicial</label>
+            <input type="number" id="mes-inicio" min="1" max="12" value="01" />
+          </div>
+          <div class="form-group">
+            <label for="mes-fim">Mês Final</label>
+            <input type="number" id="mes-fim" min="1" max="12" value="12" />
+          </div>
+        </div>
+      </div>
+
+      <div class="filters-row">
+        <div class="filters-reference">
+          <div class="form-group">
+            <label for="ano-ref">Ano Referência</label>
+            <input type="number" id="ano-ref" value="2025" />
+          </div>
+          <div class="form-group">
+            <label for="mes-ref">Mês Referência</label>
+            <input type="number" id="mes-ref" min="1" max="12" value="09" />
+            <small>Ano/Mês usado para associação do Responsável</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="filters-row">
+        <div class="form-group">
+          <label for="esfera">Esfera</label>
+          <select id="esfera">
+            <option>Todos os Itens</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filters-row">
+        <div class="form-group">
+          <label for="imposto-padrao">Obrigação Padrão</label>
+          <select id="imposto-padrao">
+            <option>Todos os Itens</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="imposto-especifico">Obrigação Específica</label>
+          <select id="imposto-especifico">
+            <option>Todos os Itens</option>
+          </select>
+        </div>
+      </div>
+
+      <footer class="form-actions">
+        <button type="submit" class="btn outlined">Atualizar (Filtro de Mês Referência)</button>
+        <button type="submit" class="btn primary">Processar</button>
+      </footer>
+    </div>
+  </main>
+
+  <script src="/dark-mode.js"></script>
+</body>
+
+</html>

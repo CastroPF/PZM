@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/ProcessosObrigacoes/ExclusaoRevisao/style.css">
+  <title>PZMWEB Enterprise :: Controle de Impostos - Exclusão de Checklist de Revisão</title>
+</head>
+
+<body>
+  <header class="header-container">
+    <div class="header-left">
+      <h2>
+        <a href="/consultas/operativo.html" class="mainmenu">
+          PZMWEB Enterprise :: Controle de Obrigações Acessórias
+        </a>
+      </h2>
+    </div>
+    <div class="header-right">
+      <img src="/grupopzm.png" alt="logo" class="logo" />
+    </div>
+  </header>
+
+  <nav class="nav-container">
+    <div class="nav-left">
+      <div class="menu-item">
+        Controles
+        <div class="submenu">
+          <a href="/modulos/index.html">Alterar Aplicativo</a>
+          <a href="/modulos/divisão.html">Alterar Divisão</a>
+        </div>
+      </div>
+      <span>Cadastros</span>
+      <div class="menu-item">
+        Operações
+        <div class="submenu">
+          <a href="/obrigacoes/obr-operativo.html">Checklist de Obrigações Acessória Operativo</a>
+          <a href="/obrigacoes/obr-supervisor.html">Checklist de Obrigações Acessória Supervisor</a>
+          <a href="/obrigacoes/obr-supervisor.html">Controle de Aprovação da Capa de Processo</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        Processos
+        <div class="submenu">
+          <a href="/ProcessosObrigacoes/calendario/calendario.html">Gerar Calendário de Vencimento de Obrigações Acessórias
+          </a>
+          <a href="/ProcessosObrigacoes/revisão/revisao.html">Gerar Checklist de Revisão</a>
+          <a href="/ProcessosObrigacoes/GerarChecklist/checklist.html">Gerar Checklist de Obrigações Acessórias</a>
+          <a href="/ProcessosObrigacoes/ExclusaoChecklist/exclusao.html">Excluir Checklist de Obrigações Acessórias</a>
+          <a href="/ProcessosObrigacoes/ExclusaoRevisao/index.html">Excluir Checklist de Revisão</a>
+        </div>
+      </div>
+      <span>Relatórios</span>
+      <span>Gráficos</span>
+      <span>Configurações</span>
+      <span>Ajuda</span>
+      <span><a class="sair" href="/login/login.html">Sair</a></span>
+    </div>
+    <div class="nav-right">
+      <div class="toggle-switch">
+        <label class="switch-label">
+          <input type="checkbox" class="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="flags">
+        <img src="https://flagcdn.com/16x12/br.png" alt="Português" title="Português" />
+        <img src="https://flagcdn.com/16x12/es.png" alt="Español" title="Español" />
+        <img src="https://flagcdn.com/16x12/gb.png" alt="English" title="English" />
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>Exclusão de Checklist de Revisão Fiscal</h1>
+  </header>
+
+  <main class="container">
+    <form class="form-layout">
+      <fieldset class="periodo">
+        <legend>Período de Revisão</legend>
+        <div class="fields">
+          <!-- Período Inicial -->
+          <div class="field">
+            <label for="ano">Ano <span class="asterisk">*</span></label>
+            <input type="number" id="ano" value="2025" min="2000" max="2100" />
+          </div>
+          <div class="field">
+            <label for="mes">Mês <span class="asterisk">*</span></label>
+            <input type="number" id="mes" value="01" min="1" max="12" />
+          </div>
+
+          <div class="field">
+            <label for="revisao">Revisão <span class="asterisk">*</span></label>
+            <select id="selecao">
+              <option value="">Todos os itens</option>
+              <option value="op1">Opção 1</option>
+              <option value="op2">Opção 2</option>
+              <option value="op3">Opção 3</option>
+            </select>
+          </div>
+
+          <!-- Botões -->
+          <div class="buttons">
+            <button type="submit" class="btn primary outlined">Consultar</button>
+            <button type="submit" class="btn primary processar">Processar</button>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="legend-obrigatorio">* Campos de preenchimento obrigatório</p>
+
+      <section class="dual-list">
+        <div class="list-box">
+          <h2>Disponíveis</h2>
+          <select multiple class="list" id="disponivel"></select>
+        </div>
+
+        <div class="list-actions">
+          <button type="button" class="btn primary processar">Adicionar 🡲</button>
+          <button type="button" class="btn primary outlined">🡰 Remover</button>
+        </div>
+
+        <div class="list-box">
+          <h2>Excluir</h2>
+          <select multiple class="list" id="gerar"></select>
+        </div>
+      </section>
+    </form>
+  </main>
+  <script src="/dark-mode.js"></script>
+</body>
+
+</html>

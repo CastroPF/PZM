@@ -42,7 +42,16 @@
           <a href="/capaprocesso/capa-de-processo.html">Controle de Aprovação da Capa de Processo</a>
         </div>
       </div>
-      <span>Processos</span>
+      <div class="menu-item">
+        Processos
+        <div class="submenu">
+          <a href="/ProcessosImpostos/calendario/calendario.html">Gerar Calendário de Vencimento de Impostos</a>
+          <a href="/ProcessosImpostos/revisão/revisao.html">Gerar Checklist de Revisão</a>
+          <a href="/ProcessosImpostos/GerarChecklist/checklist.html">Gerar Checklist de Apuração de Impostos</a>
+          <a href="/ProcessosImpostos/ExclusaoChecklist/exclusao.html">Excluir Checklist de Apuração de Impostos</a>
+          <a href="/ProcessosImpostos/ExclusaoRevisao/index.html">Excluir Checklist de Revisão</a>
+        </div>
+      </div>
       <span>Relatórios</span>
       <span>Gráficos</span>
       <span>Configurações</span>
@@ -260,6 +269,7 @@
 
     <div class="helpFab" id="helpFab">
       <span>?</span>
+      <button class="helpFab-close" id="helpFabClose">×</button>
     </div>
 
     <div class="chat-popup" id="chat-popup">
@@ -401,6 +411,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/dark-mode.js"></script>
     <script>
+      const helpFabClose = document.getElementById('helpFabClose')
+
       function abrirModal() {
         document.getElementById("modalAnexos").style.display = "block";
       }
@@ -416,6 +428,11 @@
           modal.style.display = "none";
         }
       }
+
+      helpFabClose.onclick = function (e) {
+        e.stopPropagation();
+        helpFab.style.display = 'none';
+      };
 
       document.addEventListener("DOMContentLoaded", function () {
         const body = document.body;

@@ -1,18 +1,19 @@
 @import url("../style/common.css");
 
 .consulta {
-  padding: 10px 16px;
   background-color: var(--accent-color);
   color: var(--dark-text-color);
+  font-weight: 600;
   border: none;
-  font-size: 14px;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
+  transition: background-color 0.2s ease;
 }
 
 .consulta:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--warning-color);
+  color: var(--light-color);
 }
 
 .container-button {
@@ -200,20 +201,6 @@
   margin-right: 6px;
   transform: scale(1.1);
   cursor: pointer;
-}
-
-.consulta {
-  background-color: var(--accent-color);
-  color: var(--dark-text-color);
-  font-weight: 600;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-.consulta:hover {
-  background-color: var(--secondary-color);
 }
 
 /* Painel expansÃ­vel */
@@ -742,8 +729,6 @@ td.farol-cell {
   cursor: pointer;
 }
 
-/* HELP */
-
 .helpFab {
   position: fixed;
   bottom: 36px;
@@ -751,9 +736,9 @@ td.farol-cell {
   width: 56px;
   height: 56px;
   background: var(--accent-color);
-  color: var(--dark-text-color);
+  color: var(--text-color);
   border-radius: 50%;
-  box-shadow: 0 4px 20px var(--gray-950) 2;
+  box-shadow: 0 4px 20px #0002;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -763,9 +748,36 @@ td.farol-cell {
   z-index: 2000;
   transition: background 0.2s, box-shadow 0.2s;
 }
+
 .helpFab:hover {
-  background: var(--accent-color);
-  box-shadow: 0 6px 32px var(--gray-950) 3;
+  background: #d6a100;
+  box-shadow: 0 6px 32px #0003;
+}
+
+.helpFab-close {
+  position: absolute;
+  top: -8px;
+  left: -14px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: var(--dark-accent);
+  color: var(--light-color);
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px #0003;
+  z-index: 2100;
+  transition: background 0.2s;
+}
+
+.helpFab-close:hover {
+  background: var(--primary-color);
+  color: var(--light-color);
 }
 
 .chat-popup {
@@ -864,30 +876,6 @@ th {
   line-height: 1.2;
   text-align: center;
   vertical-align: middle;
-}
-
-.helpFab {
-  position: fixed;
-  bottom: 36px;
-  right: 40px;
-  width: 56px;
-  height: 56px;
-  background: var(--accent-color);
-  color: var(--dark-text-color);
-  border-radius: 50%;
-  box-shadow: 0 4px 20px var(--gray-950) 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 2000;
-  transition: background 0.2s, box-shadow 0.2s;
-}
-.helpFab:hover {
-  background: var(--accent-color);
-  box-shadow: 0 6px 32px var(--gray-950) 3;
 }
 
 .chat-popup {

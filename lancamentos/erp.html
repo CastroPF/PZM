@@ -169,6 +169,7 @@
 
     <div class="helpFab" id="helpFab">
       <span>?</span>
+      <button class="helpFab-close" id="helpFabClose">×</button>
     </div>
 
     <div class="chat-popup" id="chat-popup">
@@ -188,7 +189,32 @@
     <script src="/dark-mode.js"></script>
     <script src="/chatbot.js"></script>
 
+    <script>
+      const helpFab = document.getElementById('helpFab');
+      const chatPopup = document.getElementById('chat-popup');
+      const helpFabClose = document.getElementById('helpFabClose');
 
+      helpFab.onclick = function (e) {
+        if (e.target.id !== 'helpFabClose') {
+          chatPopup.style.display = 'block';
+        }
+      };
+
+      helpFabClose.onclick = function (e) {
+        e.stopPropagation();
+        helpFab.style.display = 'none';
+      };
+
+      function toggleChat() {
+        chatPopup.style.display = 'none';
+      }
+
+      window.addEventListener('mousedown', function (e) {
+        if (chatPopup.style.display === 'block' && !chatPopup.contains(e.target) && e.target !== helpFab) {
+          toggleChat();
+        }
+      });
+    </script>
 </body>
 
 </html>

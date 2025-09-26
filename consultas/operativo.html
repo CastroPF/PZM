@@ -41,7 +41,16 @@
           <a href="/capaprocesso/capa-de-processo.html">Controle de Aprovação da Capa de Processo</a>
         </div>
       </div>
-      <span>Processos</span>
+      <div class="menu-item">
+        Processos
+        <div class="submenu">
+          <a href="/ProcessosImpostos/calendario/calendario.html">Gerar Calendário de Vencimento de Impostos</a>
+          <a href="/ProcessosImpostos/revisão/revisao.html">Gerar Checklist de Revisão</a>
+          <a href="/ProcessosImpostos/GerarChecklist/checklist.html">Gerar Checklist de Apuração de Impostos</a>
+          <a href="/ProcessosImpostos/ExclusaoChecklist/exclusao.html">Excluir Checklist de Apuração de Impostos</a>
+          <a href="/ProcessosImpostos/ExclusaoRevisao/index.html">Excluir Checklist de Revisão</a>
+        </div>
+      </div>
       <span>Relatórios</span>
       <span>Gráficos</span>
       <span>Configurações</span>
@@ -409,6 +418,7 @@
 
   <div class="helpFab" id="helpFab">
     <span>?</span>
+    <button class="helpFab-close" id="helpFabClose">×</button>
   </div>
 
   <div class="chat-popup" id="chat-popup">
@@ -583,6 +593,9 @@
     document.addEventListener("DOMContentLoaded", function () {
       const body = document.body;
 
+      const helpFabClose = document.getElementById('helpFabClose')
+
+
       const centerTextPlugin = {
         id: "centerText",
         afterDraw(chart) {
@@ -606,6 +619,11 @@
           ctx.fillText("Total", x, y + 15);
           ctx.restore();
         },
+      };
+
+      helpFabClose.onclick = function (e) {
+        e.stopPropagation();
+        helpFab.style.display = 'none';
       };
 
       const dataLabelPlugin = {
