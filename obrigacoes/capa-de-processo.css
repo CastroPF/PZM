@@ -742,6 +742,38 @@ th {
   display: block;
 }
 
+.submenu .menu-item {
+  position: relative;
+}
+
+.submenu-right {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: var(--light-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 2px 2px 6px var(--shadow-sm);
+  border-radius: 6px;
+  padding: 10px 0;
+  min-width: 250px;
+  z-index: 20;
+}
+
+.submenu .menu-item:hover > .submenu-right {
+  display: block;
+}
+
+.submenu .menu-item > a::after {
+  content: "›";
+  float: right;
+  color: var(--text-color);
+}
+
+.submenu-right a:hover {
+  background-color: var(--muted-color);
+}
+
 /* ---------- RESPONSIVO ---------- */
 @media (max-width: 768px) {
   .consulta-geral {

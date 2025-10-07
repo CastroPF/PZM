@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/ProcessosImpostos/revisão/revisao.css">
-  <title>PZMWEB Enterprise :: Controle de Impostos - Geração Checklist de Revisão</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style/common.css">
+  <link rel="stylesheet" href="/cadastros/auxiliares/imposto-especifico.css" />
+  <title>PZMWEB Enterprise :: Controle de Impostos</title>
 </head>
 
 <body>
@@ -51,6 +52,8 @@
           </div>
         </div>
       </div>
+
+
       <div class="menu-item">
         Operações
         <div class="submenu">
@@ -90,53 +93,109 @@
     </div>
   </nav>
 
-  <main class="container">
-    <div class="title">
-      <h1>Checklist de Revisão de Informações Fiscais</h1>
+  <div class="form-container">
+    <div class="form-header">
+      <h2>Cadastro de Imposto Específico</h2>
+      <button class="btn-consultar">Consultar</button>
     </div>
 
-    <section class="painel">
-      <div class="listas">
-        <div class="list-box">
-          <h2>Disponível</h2>
-          <select multiple class="list" id="lista-disponivel">
-            <option>CFEM - PINHEIRO MACHADO - CALCÁRIO</option>
-            <option>CFEM - APIAÍ - ARGILA QUARTZITO</option>
-            <option>CFEM - BARUERI - GRANITO</option>
-            <option>CFEM - BODOQUENA - CALCÁRIO</option>
-            <option>CFEM - BRUMADO - MINA BAIXA GRANDE - ARGILA</option>
-          </select>
-        </div>
-
-        <div class="list-actions">
-          <button class="btn outlined">Adicionar 🡲</button>
-          <button class="btn outlined">🡰 Remover</button>
-          <button class="btn outlined">Adicionar Todos 🡲</button>
-        </div>
-
-        <div class="list-box">
-          <h2>Gerar</h2>
-          <select multiple class="list" id="lista-gerar"></select>
-        </div>
-      </div>
-
-      <div class="filtros">
-        <label for="periodo">Período de Revisão:</label>
-        <select id="periodo">
-          <option>Todos os Itens</option>
-          <option>Últimos 30 dias</option>
-          <option>Últimos 90 dias</option>
+    <form class="form-body">
+      <div class="form-row">
+        <label for="esfera">Imposto Padrão:</label>
+        <select id="esfera">
+          <option>Todos os itens</option>
+          <option>ICMS</option>
+          <option>DIFAL</option>
         </select>
-
-        <div class="buttons">
-          <button class="btn primary outlined">Atualizar</button>
-          <button class="btn primary processar">Processar</button>
-        </div>
       </div>
-    </section>
-  </main>
+
+      <div class="form-row" style="width: 300px;">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" />
+      </div>
+
+      <div class="form-row">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" />
+      </div>
+
+      <div class="form-row">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" />
+      </div>
+
+      <div class="form-row" style="width: 300px;">
+        <label for="nome">Dias:</label>
+        <input type="text" id="nome" />
+      </div>
+
+      <div class="form-row" style="width: 300px;">
+        <label for="nome">Dias Úteis:</label>
+        <input type="text" id="nome" />
+      </div>
+
+      <div class="form-row" style="width: 250px;">
+        <label for="esfera">Esfera:</label>
+        <select id="esfera">
+          <option>Federal</option>
+          <option>Estadual</option>
+          <option>Municipal</option>
+        </select>
+      </div>
+
+      <div class="form-row" style="width: 250px;">
+        <label for="obrigacao">Tem Obrigação:</label>
+        <select id="obrigacao">
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+      </div>
+
+      <div class="form-row" style="width: 250px;">
+        <label for="classificacao">Classificação:</label>
+        <select id="classificacao">
+          <option>Contábil</option>
+          <option>Fiscal</option>
+        </select>
+      </div>
+
+      <div class="form-row" style="width: 250px;">
+        <label for="classificacao">Posterga Venc. SAB/DOM/FER:</label>
+        <select id="classificacao">
+          <option>Contábil</option>
+          <option>Fiscal</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="venc">Descrição do Vencimento:</label>
+        <input type="number" id="venc" min="0" />
+      </div>
+
+      <div class="form-row" style="width: 250px;">
+        <label for="classificacao">Tipo de Raio X:</label>
+        <select id="classificacao">
+          <option>Contábil</option>
+          <option>Fiscal</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="obs">Prioridade:</label>
+        <input type="text" id="obs" />
+      </div>
+
+      <div class="form-row">
+        <label for="dispositivo">Dispositivo Legal:</label>
+        <input type="text" id="dispositivo" />
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-confirmar">Confirmar</button>
+        <button type="reset" class="btn-limpar">Limpar</button>
+      </div>
+    </form>
+  </div>
 
   <script src="/dark-mode.js"></script>
 </body>
-
-</html>
