@@ -7,7 +7,7 @@ body {
 
 .form-container {
   background: #ffffff;
-  width: 550px;
+  width: 700px;
   margin: 40px auto;
   border: 1px solid #cccccc;
   border-radius: 5px;
@@ -47,7 +47,7 @@ body {
 }
 
 .form-body {
-  padding: 16px;
+  padding: 22px;
   background-color: #f9f9f9;
 }
 
@@ -66,7 +66,6 @@ label {
 
 input,
 select {
-  flex: 1;
   height: 26px;
   border: 1px solid #bdbdbd;
   border-radius: 3px;
@@ -85,7 +84,7 @@ select {
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding: 20px 0 15px 0;
+  padding: 10px 0 5px 0;
 }
 
 .btn-confirmar,

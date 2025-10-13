@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/style/common.css">
-  <link rel="stylesheet" href="/cadastros/auxiliares/imposto-padrao.css" />
+
   <link rel="stylesheet" href="/cadastros/auxiliares/commom/style.css">
   <link rel="stylesheet" href="/cadastros/auxiliares/dark-mode/style.css">
   <title>PZMWEB Enterprise :: Controle de Impostos</title>
@@ -55,7 +55,6 @@
         </div>
       </div>
 
-
       <div class="menu-item">
         Operações
         <div class="submenu">
@@ -97,7 +96,7 @@
 
   <div class="form-container">
     <div class="form-header">
-      <h2>Cadastro de Imposto Padrão</h2>
+      <h2>Cadastro de Forma de Quitação</h2>
       <button class="btn-consultar">Consultar</button>
     </div>
 
@@ -108,54 +107,21 @@
       </div>
 
       <div class="form-row">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" />
+        <label for="Nome">Nome:</label>
+        <input type="text" id="Nome" />
       </div>
 
       <div class="form-row">
-        <label for="descricao">Descrição:</label>
-        <input type="text" id="descricao" />
+        <label for="Descrição">Legenda:</label>
+        <input type="text" id="Descrição" />
       </div>
 
-      <div class="form-row" style="width: 250px;">
-        <label for="esfera">Esfera:</label>
-        <select id="esfera">
-          <option>Federal</option>
-          <option>Estadual</option>
-          <option>Municipal</option>
-        </select>
-      </div>
-
-      <div class="form-row" style="width: 250px;">
-        <label for="obrigacao">Tem Obrigação:</label>
-        <select id="obrigacao">
-          <option>Sim</option>
-          <option>Não</option>
-        </select>
-      </div>
-
-      <div class="form-row" style="width: 250px;">
-        <label for="classificacao">Classificação:</label>
-        <select id="classificacao">
-          <option>Contábil</option>
-          <option>Fiscal</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <label for="venc">Venc. Créditos:</label>
-        <input type="number" id="venc" min="0" /> <span class="inline-text">*em dias.</span>
-      </div>
-
-      <div class="form-row">
-        <label for="obs">Obs.:</label>
-        <input type="text" id="obs" />
-      </div>
 
       <div class="form-actions">
         <button type="submit" class="btn-confirmar">Confirmar</button>
         <button type="reset" class="btn-limpar">Limpar</button>
       </div>
+
     </form>
   </div>
 

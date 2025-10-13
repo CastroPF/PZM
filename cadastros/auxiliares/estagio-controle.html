@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style/common.css">
+  <link rel="stylesheet" href="/cadastros/auxiliares/estagio-controle.css">
+  <link rel="stylesheet" href="/cadastros/auxiliares/commom/style.css">
+  <link rel="stylesheet" href="/cadastros/auxiliares/dark-mode/style.css">
+  <title>PZMWEB Enterprise :: Controle de Impostos</title>
+</head>
+
+<body>
+  <header class="header-container">
+    <div class="header-left">
+      <h2>
+        <a href="/consultas/operativo.html" class="mainmenu">
+          PZMWEB Enterprise :: Controle de Impostos
+        </a>
+      </h2>
+    </div>
+    <div class="header-right">
+      <img src="/grupopzm.png" alt="logo" class="logo" />
+    </div>
+  </header>
+
+  <nav class="nav-container">
+    <div class="nav-left">
+      <div class="menu-item">
+        Controles
+        <div class="submenu">
+          <a href="/modulos/index.html">Alterar Aplicativo</a>
+          <a href="/modulos/divisão.html">Alterar Divisão</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        Cadastros
+        <div class="submenu">
+          <div class="menu-item">
+            <a href="#">Auxiliares</a>
+            <div class="submenu-right">
+              <a href="/cadastros/auxiliares/imposto-padrao.html">Imposto Padrão</a>
+              <a href="/cadastros/auxiliares/imposto-especifico.html">Imposto Específico</a>
+              <a href="/cadastros/auxiliares/cadastro-estabelecimento.html">Categoria Estabelecimento</a>
+              <a href="/cadastros/auxiliares/local-pagamento.html">Local de Pagto/Arquivo</a>
+              <a href="/cadastros/auxiliares/forma-quitacao.html">Forma de Quitação</a>
+              <a href="/cadastros/auxiliares/grupo-estagio-controle.html">Grupo de Estagio de Controle</a>
+              <a href="/cadastros/auxiliares/estagio-controle.html">Estagio de Controle</a>
+              <a href="/cadastros/auxiliares/motivo-reprovacao.html">Motivo de Reprovação</a>
+              <a href="/cadastros/auxiliares/area.html">Área</a>
+              <a href="/cadastros/auxiliares/tipo-anexo.html">Tipos de Anexo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        Operações
+        <div class="submenu">
+          <a href="/consultas/operativo.html">Checklist de Apurações de Impostos Operativo</a>
+          <a href="/consultas/supervisor.html">Checklist de Apurações de Impostos Supervisor</a>
+          <a href="/capaprocesso/capa-de-processo.html">Controle de Aprovação da Capa de Processo</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        Processos
+        <div class="submenu">
+          <a href="/ProcessosImpostos/calendario/calendario.html">Gerar Calendário de Vencimento de Impostos</a>
+          <a href="/ProcessosImpostos/revisão/revisao.html">Gerar Checklist de Revisão</a>
+          <a href="/ProcessosImpostos/GerarChecklist/checklist.html">Gerar Checklist de Apuração de Impostos</a>
+          <a href="/ProcessosImpostos/ExclusaoChecklist/exclusao.html">Excluir Checklist de Apuração de Impostos</a>
+          <a href="/ProcessosImpostos/ExclusaoRevisao/index.html">Excluir Checklist de Revisão</a>
+        </div>
+      </div>
+      <span>Relatórios</span>
+      <span>Gráficos</span>
+      <span>Configurações</span>
+      <span>Ajuda</span>
+      <span><a class="sair" href="/login/login.html">Sair</a></span>
+    </div>
+    <div class="nav-right">
+      <div class="toggle-switch">
+        <label class="switch-label">
+          <input type="checkbox" class="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="flags">
+        <img src="https://flagcdn.com/16x12/br.png" alt="Português" title="Português" />
+        <img src="https://flagcdn.com/16x12/es.png" alt="Español" title="Español" />
+        <img src="https://flagcdn.com/16x12/gb.png" alt="English" title="English" />
+      </div>
+    </div>
+  </nav>
+
+  <div class="form-container">
+    <div class="form-header">
+      <h2>Cadastro de Grupo de Estágio de Controle</h2>
+      <button class="btn-consultar">Consultar</button>
+    </div>
+
+    <form class="form-body">
+      <div class="form-row" style="width: 300px;">
+        <label for="Grupo">Grupo:</label>
+        <select name="Grupo" id="Grupo">
+          <option value="1">Todos os itens</option>
+          <option value="2">Grupo 1</option>
+          <option value="3">Grupo 2</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="Nome">Nome:</label>
+        <input type="text" id="Nome" />
+      </div>
+
+      <div class="form-row">
+        <label for="Descrição">Descrição:</label>
+        <input type="text" id="Descrição" />
+      </div>
+
+
+      <div class="form-row">
+        <label for="Tipo">Tipo:</label>
+        <select type="text" id="Tipo" />
+        <option value="1">Apuração de Impostos</option>
+        <option value="1">Obrigações Acessórias</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="Classificação">Classificação:</label>
+        <select name="Classificação" id="Classificação">
+          <option value="1">Apuração</option>
+          <option value="2">Pagamento</option>
+          <option value="3">Arquivo</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="Número-dias">Número de Dias:</label>
+        <input type="text" id="Número-dias" placeholder="0" />
+        <span class="dias">* Número de dias a + ou a - da data prevista em relação ao vencimento do imposto.</span>
+      </div>
+
+      <div class="form-row">
+        <label for="Regra">Regra:</label>
+        <select name="Regra" id="Regra">
+          <option value="1">Todos os itens</option>
+          <option value="2">Posterga</option>
+          <option value="2">Antecipa</option>
+        </select>
+      </div>
+
+      <hr>
+
+      <header class="painel-header">
+        <h4>Campos disponíveis (Apuração de Imposto)</h4>
+      </header>
+      <section class="painel-filtros fixo">
+
+
+        <div class="scroll-filtros">
+          <label><input type="checkbox"> 1 - Número da Operação</label>
+          <label><input type="checkbox"> 2 - Estágio</label>
+          <label><input type="checkbox"> 3 - Data Prevista</label>
+          <label><input type="checkbox"> 4 - Data Realizada</label>
+          <label><input type="checkbox"> 5 - Local Arquivo</label>
+          <label><input type="checkbox"> 6 - Local Pagamento</label>
+          <label><input type="checkbox"> 7 - Forma de Quitação-1</label>
+          <label><input type="checkbox"> 8 - Forma de Quitação-2</label>
+          <label><input type="checkbox"> 9 - Forma de Quitação-3</label>
+          <label><input type="checkbox"> 10 - Valor de Quitação-1</label>
+          <label><input type="checkbox"> 11 - Valor de Quitação-2</label>
+          <label><input type="checkbox"> 12 - Valor de Quitação-3</label>
+          <label><input type="checkbox"> 13 - Valor Total</label>
+          <label><input type="checkbox"> 14 - Resultado Operação</label>
+          <label><input type="checkbox"> 15 - Contabilização Automática</label>
+          <label><input type="checkbox"> 16 - Responsável</label>
+          <label><input type="checkbox"> 17 - Status</label>
+          <label><input type="checkbox"> 18 - Observação</label>
+          <label><input type="checkbox"> 19 - Gerar Capa de Processo </label>
+          <label><input type="checkbox"> 20 - Anexo(s) Obrigatório(s) para Devedora</label>
+          <label><input type="checkbox"> 21 - Voucher</label>
+          <label><input type="checkbox"> 22 - Multa</label>
+          <label><input type="checkbox"> 23 - Juros</label>
+          <label><input type="checkbox"> 24 - Taxa de Expediente</label>
+          <label><input type="checkbox"> 25 - Data de Conclusão</label>
+          <label><input type="checkbox"> 26 - Justificativa da Data de Conclusão Obrigatória</label>
+          <label><input type="checkbox"> 27 - Utiliza o campo Dias do Imposto Específico no cálculo da Data Prevista?</label>
+          <label><input type="checkbox"> 28 - Mostrar Guias</label>
+          <label><input type="checkbox"> 29 - Mostrar Campos Estágio Anterior</label>
+          <label><input type="checkbox"> 30 - Calcula vencimento do estágio por dias úteis?</label>
+          <label><input type="checkbox"> 31 - Considera feriados estaduais e municipais?</label>
+          <label><input type="checkbox"> 32 - Permitir Compartilhamento de Atividades</label>
+          <label><input type="checkbox"> 33 - Gerar Capa para Saldo Credor</label>
+          <label><input type="checkbox"> 34 - Manter data realizada ao fazer reabertura</label>
+          <label><input type="checkbox"> 35 - Gerar Capa para Saldo “Sem Débito”</label>
+          <label><input type="checkbox"> 36 - Permite Aprovação em Massa para Saldo Credor</label>
+          <label><input type="checkbox"> 37 - Permite Aprovação em Massa para Saldo “Sem Débito”</label>
+          <label><input type="checkbox"> 38 - Permite Aprovação em Massa para Saldo Devedor</label>
+          <label><input type="checkbox"> 39 - Anexo(s) Obrigatório(s) para Credora</label>
+          <label><input type="checkbox"> 40 - Anexo(s) Obrigatório(s) para Sem Débito</label>
+          <label><input type="checkbox"> 41 - Valor Mínimo para Geração de Capa de Processo Obrigatório</label>
+          <label><input type="checkbox"> 42 - Justificativa de Atraso</label>
+          <label><input type="checkbox"> 43 - Justificativa de Atraso Obrigatória</label>
+          <label><input type="checkbox"> 44 - Número de Chamado</label>
+          <label><input type="checkbox"> 45 - Número de Chamado Obrigatório</label>
+          <label><input type="checkbox"> 46 - Habilita Caminho de Rede</label>
+        </div>
+      </section>
+
+      <header class="painel-header">
+        <h4>Obrigatoriedade de anexos por operação (Apuração de Imposto):</h4>
+      </header>
+      <div class="grid-filtros anexos">
+        <div class="coluna-filtro">
+          <h4>Devedora</h4>
+          <label><input type="checkbox"> Outros</label>
+          <label><input type="checkbox"> Comprovante</label>
+          <label><input type="checkbox"> Pagamento</label>
+          <label><input type="checkbox"> Comprovante de Pagamento</label>
+          <label><input type="checkbox"> Certidão</label>
+        </div>
+
+        <div class="coluna-filtro">
+          <h4>Credora</h4>
+          <label><input type="checkbox"> Outros</label>
+          <label><input type="checkbox"> Comprovante</label>
+          <label><input type="checkbox"> Pagamento</label>
+          <label><input type="checkbox"> Comprovante de Pagamento</label>
+          <label><input type="checkbox"> Certidão</label>
+        </div>
+
+        <div class="coluna-filtro">
+          <h4>Sem Débito</h4>
+          <label><input type="checkbox"> Outros</label>
+          <label><input type="checkbox"> Comprovante</label>
+          <label><input type="checkbox"> Pagamento</label>
+          <label><input type="checkbox"> Comprovante de Pagamento</label>
+          <label><input type="checkbox"> Certidão</label>
+        </div>
+      </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn-confirmar">Confirmar</button>
+    <button type="reset" class="btn-limpar">Limpar</button>
+  </div>
+
+  </form>
+  </div>
+  <script src="/dark-mode.js"></script>
+</body>
