@@ -1,0 +1,168 @@
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.form-container {
+  background: #ffffff;
+  width: 700px;
+  margin: 40px auto;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d9d9d9;
+  padding: 8px 16px;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+.form-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.btn-consultar {
+  padding: 6px 10px;
+  background-color: var(--accent-color);
+  color: var(--dark-text-color);
+  border: none;
+  margin-top: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-consultar:hover {
+  background-color: var(--warning-color);
+  color: var(--light-color);
+}
+
+.form-body {
+  padding: 22px;
+  background-color: #f9f9f9;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+label {
+  width: 130px;
+  font-size: 14px;
+  color: #333;
+}
+
+input,
+select {
+  height: 26px;
+  border: 1px solid #bdbdbd;
+  border-radius: 3px;
+  padding: 3px 6px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.inline-text {
+  margin-left: 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0 5px 0;
+}
+
+.btn-confirmar,
+.btn-limpar {
+  background-color: #e8e8e8;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 6px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-confirmar:hover,
+.btn-limpar:hover {
+  background-color: #d5d5d5;
+}
+
+/* ---------- MENU SUSPENSO ---------- */
+.menu-item {
+  position: relative;
+  cursor: pointer;
+}
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--light-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 2px 2px 4px var(--shadow-sm);
+  border-radius: 6px;
+  padding: 10px 0;
+  z-index: 10;
+  min-width: 300px;
+}
+.submenu a {
+  display: block;
+  padding: 8px 20px;
+  color: var(--text-color);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.submenu a:hover {
+  background-color: var(--muted-color);
+}
+.menu-item:hover .submenu {
+  display: block;
+}
+
+.submenu .menu-item {
+  position: relative;
+}
+
+.submenu-right {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: var(--light-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 2px 2px 6px var(--shadow-sm);
+  border-radius: 6px;
+  padding: 10px 0;
+  min-width: 250px;
+  z-index: 20;
+}
+
+.submenu .menu-item:hover > .submenu-right {
+  display: block;
+}
+
+.submenu .menu-item > a::after {
+  content: "›";
+  float: right;
+  color: var(--text-color);
+}
+
+.submenu-right a:hover {
+  background-color: var(--muted-color);
+}
+

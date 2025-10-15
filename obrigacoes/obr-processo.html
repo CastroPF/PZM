@@ -1,99 +1,15 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/style/common.css">
-  <link rel="stylesheet" href="capa-de-processo.css" />
+  <link rel="stylesheet" href="/assets/css/base/common.css">
+  <link rel="stylesheet" href="/assets/css/pages/obrigacoes-capa-de-processo.css" />
   <title>PZMWEB Enterprise :: Controle de Obrigações Acessórias</title>
 </head>
 
-<body>
-  <header class="header-container">
-    <div class="header-left">
-      <h2>
-        <a href="/obrigacoes/obr-operativo.html" class="mainmenu">
-          PZMWEB Enterprise :: Controle de Obrigações Acessórias
-        </a>
-      </h2>
-    </div>
-    <div class="header-right">
-      <img src="/grupopzm.png" alt="logo" class="logo" />
-    </div>
-  </header>
-
-  <nav class="nav-container">
-    <div class="nav-left">
-      <div class="menu-item">
-        Controles
-        <div class="submenu">
-          <a href="/modulos/index.html">Alterar Aplicativo</a>
-          <a href="/modulos/divisão.html">Alterar Divisão</a>
-        </div>
-      </div>
-      <div class="menu-item">
-        Cadastros
-        <div class="submenu">
-          <div class="menu-item">
-            <a href="#">Auxiliares</a>
-            <div class="submenu-right">
-              <a href="/cadastros/auxiliares/imposto-padrao.html">Imposto Padrão</a>
-              <a href="/cadastros/auxiliares/imposto-especifico.html">Imposto Específico</a>
-              <a href="/cadastros/auxiliares/cadastro-estabelecimento.html">Categoria Estabelecimento</a>
-              <a href="/cadastros/auxiliares/local-pagamento.html">Local de Pagto/Arquivo</a>
-              <a href="/cadastros/auxiliares/forma-quitacao.html">Forma de Quitação</a>
-              <a href="/cadastros/auxiliares/grupo-estagio-controle.html">Grupo de Estagio de Controle</a>
-              <a href="/cadastros/auxiliares/estagio-controle.html">Estagio de Controle</a>
-              <a href="/cadastros/auxiliares/motivo-reprovacao.html">Motivo de Reprovação</a>
-              <a href="/cadastros/auxiliares/area.html">Área</a>
-              <a href="/cadastros/auxiliares/tipo-anexo.html">Tipos de Anexo</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="menu-item">
-        Operações
-        <div class="submenu">
-          <a href="/obrigacoes/obr-operativo.html">Checklist de Obrigações Acessórias Operativo</a>
-          <a href="/obrigacoes/obr-supervisor.html">Checklist de Obrigações Acessórias Supervisor</a>
-          <a href="/obrigacoes/obr-processo.html">Controle de Aprovação da Capa de Processo</a>
-        </div>
-      </div>
-      <div class="menu-item">
-        Processos
-        <div class="submenu">
-          <a href="/ProcessosObrigacoes/calendario/calendario.html">Gerar Calendário de Vencimento de Obrigações Acessórias
-          </a>
-          <a href="/ProcessosObrigacoes/revisão/revisao.html">Gerar Checklist de Revisão</a>
-          <a href="/ProcessosObrigacoes/GerarChecklist/checklist.html">Gerar Checklist de Obrigações Acessórias</a>
-          <a href="/ProcessosObrigacoes/ExclusaoChecklist/exclusao.html">Excluir Checklist de Obrigações Acessórias</a>
-          <a href="/ProcessosObrigacoes/ExclusaoRevisao/index.html">Excluir Checklist de Revisão</a>
-        </div>
-      </div>
-      <span>Relatórios</span>
-      <span>Gráficos</span>
-      <span>Configurações</span>
-      <span>Ajuda</span>
-      <span><a class="sair" href="/login/login.html">Sair</a></span>
-    </div>
-    <div class="nav-right">
-      <div class="toggle-switch">
-        <label class="switch-label">
-          <input type="checkbox" class="checkbox" />
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="flags">
-        <img src="https://flagcdn.com/16x12/br.png" alt="Português" title="Português" />
-        <img src="https://flagcdn.com/16x12/es.png" alt="Español" title="Español" />
-        <img src="https://flagcdn.com/16x12/gb.png" alt="English" title="English" />
-      </div>
-    </div>
-  </nav>
-
-
-
+<body data-layout="obrigacoes">
   <div class="form-header">
     <h3>Consulta Controle de Aprovação da Capa de Processo</h3>
   </div>
@@ -166,8 +82,8 @@
         <select>
           <option>Todos os itens</option>
           <option>Pendente</option>
-          <option>Agaurdando Aprovação - Conferente</option>
-          <option>Agaurdando Aprovação - Supervisor</option>
+          <option>Aguardando Aprovação - Conferente</option>
+          <option>Aguardando Aprovação - Supervisor</option>
         </select>
       </div>
     </div>
@@ -286,13 +202,13 @@
 
     <div class="helpFab" id="helpFab">
       <span>?</span>
-      <button class="helpFab-close" id="helpFabClose">×</button>
+      <button class="helpFab-close" id="helpFabClose">✖</button>
     </div>
 
     <div class="chat-popup" id="chat-popup">
       <div class="chat-header">
         <span>Agente PZM</span>
-        <button class="close-chat" onclick="toggleChat()">×</button>
+        <button class="close-chat" onclick="toggleChat()">✖</button>
       </div>
       <div class="chat-body" id="chat-body">
         <div class="message bot">Olá! Como posso te ajudar hoje?</div>
@@ -425,7 +341,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/dark-mode.js"></script>
+    <script src="/assets/js/layout.js"></script>
+    <script src="/assets/js/dark-mode.js"></script>
 
     <script>
       const helpFabClose = document.getElementById('helpFabClose')
@@ -514,17 +431,17 @@
           },
         };
 
-        // Gráfico em ciculo
+        // Gr�fico em ciculo
         const ctxFarol = document.getElementById("graficoFarol").getContext("2d");
         window.graficoFarol = new Chart(ctxFarol, {
           type: "doughnut",
           data: {
             labels: [
               " Complementar",
-              " Retificação",
+              " Retifica��o",
               " Dentro do Prazo",
               " Prazo no Limite",
-              " Atenção: Prazo Vencido",
+              " Aten��o: Prazo Vencido",
               " Processo Finalizado",
               " Finalizado [Fora do Prazo]"
             ],
@@ -566,7 +483,7 @@
         });
       });
     </script>
-    <script src="/chatbot.js"></script>
+    <script src="/assets/js/chatbot.js"></script>
 
 </body>
 

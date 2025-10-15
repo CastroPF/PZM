@@ -1,0 +1,135 @@
+@import url("../base/common.css");
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--gray-100);
+  font-family: "Open Sans", sans-serif;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 12px 24px;
+}
+
+.logo {
+  height: 50px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  background: var(--light-color);
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.4s ease;
+}
+
+.top-section {
+  background: var(--primary-color);
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-bottom-left-radius: 50% 25%;
+  border-bottom-right-radius: 50% 25%;
+}
+
+.form-section {
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.form-section h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.descricao {
+  font-size: 14px;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+form input {
+  flex: 1;
+  padding: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+form input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--shadow-warning);
+}
+
+form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 20px;
+  background: var(--accent-color);
+  color: var(--dark-text-color);
+  border: none;
+  border-radius: 8px;
+  max-width: 100px;
+  max-height: 45px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: normal;
+  text-align: center;
+}
+
+form button:hover {
+  background: var(--warning-color);
+}
+
+.alerta {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--status-vencido);
+  font-weight: bold;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

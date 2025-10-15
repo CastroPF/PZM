@@ -4,64 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/lancamentos/erp.css">
+  <link rel="stylesheet" href="/assets/css/pages/lancamentos-erp.css">
   <title>Consulta Status de Lançamentos</title>
 </head>
 
 
-<body>
-  <header class="header-container">
-    <div class="header-left">
-      <h2>
-        <a href="/lancamentos/operativo.html" class="mainmenu">
-          PZMWEB Enterprise :: Automação Lançamentos Manuais
-        </a>
-      </h2>
-    </div>
-    <div class="header-right">
-      <img src="/grupopzm.png" alt="logo" class="logo" />
-    </div>
-  </header>
-
-  <nav class="nav-container">
-    <div class="nav-left">
-      <div class="menu-item">
-        Controles
-        <div class="submenu">
-          <a href="/modulos/index.html">Alterar Aplicativo</a>
-          <a href="/modulos/divisão.html">Alterar Divisão</a>
-        </div>
-      </div>
-      <a class="cadastro-lanc" href="/LancCadastro/cadastro-lanc.html">Cadastrar Lançamento</a>
-      <div class="menu-item">
-        Operações
-        <div class="submenu">
-          <a href="/lancamentos/operativo.html">Consulta de Checklist Lançamento Manual - Operativo</a>
-          <a href="/lancamentos/supervisor.html">Consulta de Checklist Lançamento Manual - Supervisor</a>
-          <a href="/lancamentos/erp.html">Consulta de Status de Lançamento Manual</a>
-        </div>
-      </div>
-      <span>Relatórios</span>
-      <span>Gráficos</span>
-      <span>Configurações</span>
-      <span>Ajuda</span>
-      <span><a class="sair" href="/login/login.html">Sair</a></span>
-    </div>
-    <div class="nav-right">
-      <div class="toggle-switch">
-        <label class="switch-label">
-          <input type="checkbox" class="checkbox" />
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="flags">
-        <img src="https://flagcdn.com/16x12/br.png" alt="Português" title="Português" />
-        <img src="https://flagcdn.com/16x12/es.png" alt="Español" title="Español" />
-        <img src="https://flagcdn.com/16x12/gb.png" alt="English" title="English" />
-      </div>
-    </div>
-  </nav>
-
+<body data-layout="lancamentos">
   <div class="form-header">
     <h3>Consulta de Status dos Lançamentos Manuais</h3>
   </div>
@@ -186,8 +134,9 @@
       </div>
     </div>
 
-    <script src="/dark-mode.js"></script>
-    <script src="/chatbot.js"></script>
+    <script src="/assets/js/layout.js"></script>
+    <script src="/assets/js/dark-mode.js"></script>
+    <script src="/assets/js/chatbot.js"></script>
 
     <script>
       const helpFab = document.getElementById('helpFab');
@@ -218,3 +167,7 @@
 </body>
 
 </html>
+
+
+
+

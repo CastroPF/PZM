@@ -1,0 +1,260 @@
+@import url("../base/common.css");
+
+.flags {
+  display: flex;
+  align-items: center;
+}
+
+.flags img {
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  margin-left: -6px;
+  cursor: pointer;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.2s ease;
+}
+
+.flags img:first-child {
+  margin-left: 0;
+}
+
+.flags img:hover {
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.cadastro-lanc {
+  text-decoration: none;
+  color: var(--dark-text-color);
+  font-weight: bold;
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: -1px;
+}
+
+.tab {
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  background: var(--gray-100);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.2s;
+  border-radius: 6px 6px 0 0;
+}
+
+.tab.active {
+  background: var(--light-color);
+  color: var(--text-color);
+}
+
+.tab-content {
+  display: none;
+  background: var(--light-color);
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 0 6px 6px 6px;
+}
+
+.tab-content.active {
+  display: block;
+  background: var(--gray-50);
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.lanc-info {
+  background-color: var(--light-color);
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 6px var(--shadow-sm);
+}
+
+.lanc-info .form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.lanc-info .form-header h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.lanc-info .painel-filtros {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.filtro-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.filtro-item label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--gray-900);
+}
+
+.filtro-item input,
+.filtro-item select {
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--light-color);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.filtro-item input:focus,
+.filtro-item select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--shadow-warning);
+}
+
+.cadastrar {
+  padding: 10px 16px;
+  background-color: var(--accent-color);
+  color: var(--dark-text-color);
+  border: none;
+  margin-top: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cadastrar:hover {
+  background-color: var(--warning-color);
+}
+
+.btn-add {
+  background-color: var(--accent-color);
+  color: var(--dark-text-color);
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-add:hover {
+  background-color: var(--warning-color);
+}
+
+body.dark-mode {
+  background-color: var(--dark-1e);
+  color: var(--gray-100);
+}
+
+body.dark-mode header {
+  background-color: var(--dark-151f2b);
+  border-bottom-color: var(--secondary-color);
+  color: var(--light-color);
+}
+
+body.dark-mode .form-header h3 {
+  color: var(--light-color);
+}
+
+body.dark-mode .sair {
+  color: var(--light-color);
+}
+
+body.dark-mode .cadastro-lanc {
+  color: var(--light-color);
+}
+
+body.dark-mode .filtro-item label {
+  color: var(--gray-200);
+}
+
+body.dark-mode nav {
+  background-color: var(--dark-surface);
+  border-bottom: 1px solid var(--gray-800);
+}
+
+body.dark-mode .submenu {
+  background-color: var(--dark-surface);
+  border-color: var(--gray-700);
+}
+body.dark-mode .submenu a {
+  color: var(--gray-100);
+}
+body.dark-mode .submenu a:hover {
+  background-color: var(--gray-800);
+}
+
+body.dark-mode .lanc-info {
+  background-color: var(--dark-surface);
+  border-color: var(--gray-800);
+  color: var(--gray-100);
+}
+
+body.dark-mode .filtro-item input,
+body.dark-mode .filtro-item select {
+  background-color: var(--dark-bg);
+  color: var(--light-color);
+  border: 1px solid var(--gray-700);
+}
+
+body.dark-mode .tab {
+  background: var(--dark-gray);
+  color: var(--gray-200);
+  border-color: var(--gray-700);
+}
+body.dark-mode .tab.active {
+  background: var(--dark-surface);
+  color: var(--light-color);
+}
+
+body.dark-mode .tab-content {
+  background: var(--dark-surface);
+  border-color: var(--gray-700);
+}
+body.dark-mode .tab-content.active {
+  background: var(--dark-3030);
+}
+
+body.dark-mode .btn-add {
+  background-color: var(--accent-color);
+  color: var(--dark-text-color);
+}
+body.dark-mode .btn-add:hover {
+  background-color: var(--secondary-color);
+}
+
+body.dark-mode .cadastrar {
+  background-color: var(--accent-color);
+  color: var(--dark-text-color);
+}
+body.dark-mode .cadastrar:hover {
+  background-color: var(--secondary-color);
+}
+
+
