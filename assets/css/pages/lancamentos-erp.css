@@ -542,7 +542,6 @@ body.dark-mode {
   color: var(--muted-color);
 }
 body.dark-mode header {
-  background-color: var(--dark-151f2b);
   color: var(--light-color);
   border-bottom-color: var(--secondary-color);
 }
@@ -658,5 +657,3 @@ body.dark-mode table td {
 body.dark-mode .cadastro-lanc {
   color: var(--light-color);
 }
-
-

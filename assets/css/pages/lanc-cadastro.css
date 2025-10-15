@@ -173,7 +173,6 @@ body.dark-mode {
 }
 
 body.dark-mode header {
-  background-color: var(--dark-151f2b);
   border-bottom-color: var(--secondary-color);
   color: var(--light-color);
 }
@@ -256,5 +255,3 @@ body.dark-mode .cadastrar {
 body.dark-mode .cadastrar:hover {
   background-color: var(--secondary-color);
 }
-
-

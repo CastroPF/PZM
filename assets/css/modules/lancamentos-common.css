@@ -983,7 +983,6 @@ body.dark-mode {
 }
 
 body.dark-mode header {
-  background-color: var(--dark-151f2b);
   color: var(--light-color);
   border-bottom-color: var(--secondary-color);
 }
@@ -1128,5 +1127,3 @@ body.dark-mode .campo-pesquisa.ao-lado:focus {
 body.dark-mode .cadastro-lanc {
   color: var(--light-color);
 }
-
-
