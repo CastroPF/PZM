@@ -54,17 +54,6 @@ body.dark-mode .inline-text {
   color: var(--gray-400);
 }
 
-body.dark-mode .btn-consultar {
-  background-color: var(--accent-color);
-  color: var(--dark-text-color);
-  border: none;
-}
-
-body.dark-mode .btn-consultar:hover {
-  background-color: var(--warning-color);
-  color: var(--light-color);
-}
-
 body.dark-mode .btn-confirmar,
 body.dark-mode .btn-limpar {
   background: var(--dark-accent);
@@ -114,3 +103,86 @@ body.dark-mode .checkbox:checked ~ .slider::before {
   box-shadow: none;
 }
 
+/* ---------- CONTAINER PRINCIPAL ---------- */
+body.dark-mode .calendario-container {
+  background-color: var(--dark-alt);
+  border: 1px solid var(--gray-800);
+  box-shadow: none;
+}
+
+/* ---------- HEADER ---------- */
+body.dark-mode .form-header {
+  background-color: var(--primary-color);
+  border-bottom: 1px solid var(--gray-800);
+  color: var(--light-color);
+}
+
+body.dark-mode .form-header h2 {
+  color: var(--light-color);
+}
+
+body.dark-mode .acoes-header button {
+  box-shadow: none;
+}
+
+body.dark-mode .filtros-wrapper {
+  background-color: var(--dark-hover);
+  border-bottom: 1px solid var(--gray-800);
+}
+
+body.dark-mode .filtro-item label {
+  color: var(--light-color);
+}
+
+body.dark-mode .filtro-item input,
+body.dark-mode .filtro-item select {
+  background-color: var(--dark-border);
+  color: var(--light-color);
+  border: 1px solid var(--gray-700);
+}
+
+body.dark-mode .filtro-item input:focus,
+body.dark-mode .filtro-item select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 6px rgba(255, 193, 7, 0.5);
+}
+
+body.dark-mode .tabela-wrapper {
+  background-color: var(--dark-alt);
+  border: 1px solid var(--gray-800);
+}
+
+body.dark-mode .tabela-calendario {
+  color: var(--light-color);
+}
+
+body.dark-mode .tabela-calendario th {
+  background: var(--dark-4141);
+  color: var(--light-color);
+  border: 1px solid var(--light-color);
+}
+
+body.dark-mode .tabela-calendario th:last-child {
+  border-right: none;
+}
+
+body.dark-mode .tabela-calendario td {
+  background: var(--dark-hover);
+  color: var(--light-color);
+  border-bottom: 1px solid var(--dark-border);
+  border-right: 1px solid var(--dark-border);
+}
+
+body.dark-mode .tabela-calendario td:last-child {
+  border-right: none;
+}
+
+body.dark-mode .tabela-calendario tr:hover td {
+  background-color: rgba(255, 187, 0, 0.12) !important;
+  transition: background 0.2s ease;
+}
+
+body.dark-mode .header-calendario input[type="checkbox"],
+body.dark-mode .tabela-calendario input[type="checkbox"] {
+  accent-color: var(--accent-color);
+}

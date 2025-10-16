@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/assets/css/base/common.css">
+  <link rel="stylesheet" href="/assets/css/modules/cadastros-forms.css">
+  <link rel="stylesheet" href="/assets/css/modules/consulta-calendario.css">
+  <link rel="stylesheet" href="/assets/css/modules/cadastros-forms-dark.css">
+  <title>PZMWEB Enterprise :: Controle de Impostos</title>
+</head>
+
+<body data-layout="impostos">
+  <div class="calendario-container">
+    <header class="form-header">
+      <h2>Calendário de Vencimentos de Impostos</h2>
+      <div class="acoes-header">
+        <button class="btn-cadastro">Cadastro</button>
+        <button class="btn-historico">Ver Histórico</button>
+        <button class="btn-consultar">Consultar</button>
+      </div>
+    </header>
+
+    <section class="filtros-wrapper">
+      <form class="filtros-grid">
+        <div class="filtro-item">
+          <label for="codigo">Código</label>
+          <input type="text" id="codigo" placeholder="Ex: 123">
+        </div>
+        <div class="filtro-item">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" placeholder="Nome do imposto">
+        </div>
+        <div class="filtro-item">
+          <label for="ano">Ano</label>
+          <select id="ano">
+            <option>2025</option>
+          </select>
+        </div>
+        <div class="filtro-item">
+          <label for="mes">Mês</label>
+          <select id="mes">
+            <option>Todos os Meses</option>
+          </select>
+        </div>
+        <div class="filtro-item">
+          <label for="classificacao">Classificação</label>
+          <select id="classificacao">
+            <option>Todos os Itens</option>
+          </select>
+        </div>
+        <div class="filtro-item">
+          <label for="esfera">Esfera</label>
+          <select id="esfera">
+            <option>Todos os Itens</option>
+          </select>
+        </div>
+        <div class="filtro-item">
+          <label for="imposto">Imposto Padrão</label>
+          <select id="imposto">
+            <option>Todos os Itens</option>
+          </select>
+        </div>
+        <div class="filtro-item filtro-atualizacao">
+          <label>Atualizar Data</label>
+          <div class="linha-select">
+            <input type="text" placeholder="Dia" style="width:50px;">
+            <select>
+              <option>Selecione um item</option>
+              <option>Janeiro</option>
+              <option>Fevereiro</option>
+              <option>Março</option>
+            </select>
+            <button class="btn-atualizar">Atualizar em Massa</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section class="tabela-wrapper">
+      <table class="tabela-calendario">
+        <thead class="header-calendario">
+          <tr>
+            <th><input type="checkbox"></th>
+            <th>Descrição</th>
+            <th>Esfera</th>
+            <th>Ano</th>
+            <th>Jan</th>
+            <th>Fev</th>
+            <th>Mar</th>
+            <th>Abr</th>
+            <th>Mai</th>
+            <th>Jun</th>
+            <th>Jul</th>
+            <th>Ago</th>
+            <th>Set</th>
+            <th>Out</th>
+            <th>Nov</th>
+            <th>Dez</th>
+            <th>Venc. S/D/F</th>
+            <th>Desc. Vencimento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>CFEM - APIAÍ - ARGILA QUARTZITO</td>
+            <td>Federal</td>
+            <td>2025</td>
+            <td>28</td>
+            <td>28</td>
+            <td>28</td>
+            <td>28</td>
+            <td>20</td>
+            <td>28</td>
+            <td>26</td>
+            <td>28</td>
+            <td>25</td>
+            <td>25</td>
+            <td>25</td>
+            <td>25</td>
+            <td>Antecipa</td>
+            <td>IMPOSTO COM VENCTO. NO ÚLTIMO DIA ÚTIL DO MÊS</td>
+          </tr>
+
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>CFEM - APIAÍ - ARGILA QUARTZITO</td>
+            <td>Federal</td>
+            <td>2025</td>
+            <td>28</td>
+            <td>28</td>
+            <td>28</td>
+            <td>28</td>
+            <td>20</td>
+            <td>28</td>
+            <td>26</td>
+            <td>28</td>
+            <td>25</td>
+            <td>25</td>
+            <td>25</td>
+            <td>25</td>
+            <td>Antecipa</td>
+            <td>IMPOSTO COM VENCTO. NO ÚLTIMO DIA ÚTIL DO MÊS</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>CFEM - APIAÍ - ARGILA QUARTZITO</td>
+            <td>Federal</td>
+            <td>2025</td>
+            <td>28</td>
+            <td>28</td>
+            <td>28</td>
+            <td>28</td>
+            <td>20</td>
+            <td>28</td>
+            <td>26</td>
+            <td>28</td>
+            <td>25</td>
+            <td>25</td>
+            <td>25</td>
+            <td>25</td>
+            <td>Antecipa</td>
+            <td>IMPOSTO COM VENCTO. NO ÚLTIMO DIA ÚTIL DO MÊS</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>CFEM - APIAÍ - ARGILA QUARTZITO</td>
+            <td>Federal</td>
+            <td>2025</td>
+            <td>28</td>
+            <td>28</td>
+            <td>28</td>
+            <td>28</td>
+            <td>20</td>
+            <td>28</td>
+            <td>26</td>
+            <td>28</td>
+            <td>25</td>
+            <td>25</td>
+            <td>25</td>
+            <td>25</td>
+            <td>Antecipa</td>
+            <td>IMPOSTO COM VENCTO. NO ÚLTIMO DIA ÚTIL DO MÊS</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/dark-mode.js"></script>
+</body>

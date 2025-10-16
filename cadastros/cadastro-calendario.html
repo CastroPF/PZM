@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/assets/css/base/common.css">
+
+  <link rel="stylesheet" href="/assets/css/modules/cadastros-forms.css">
+  <link rel="stylesheet" href="/assets/css/modules/cadastros-forms-dark.css">
+  <title>PZMWEB Enterprise :: Controle de Impostos</title>
+</head>
+
+<body data-layout="impostos">
+  <div class="form-container">
+    <div class="form-header">
+      <h2>Cadastro Calendário de Vencimento</h2>
+      <button class="btn-consultar">Consultar</button>
+    </div>
+
+    <form class="form-body">
+      <div class="form-row">
+        <label for="Imposto">Imposto Padrão (Filtro):</label>
+        <select name="imposto" id="imposto">
+          <option value="1">Todos os itens</option>
+          <option value="2">ICMS</option>
+          <option value="3">ISSQN</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="Descrição">Imposto:</label>
+        <select name="imposto" id="imposto">
+          <option value="1">Todos os itens</option>
+          <option value="2">ICMS</option>
+          <option value="3">ISSQN</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="Descrição">Ano:</label>
+        <select id="ano">
+          <option>2025</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="mes">Mês:</label>
+        <select id="mes">
+          <option>Todos os Meses</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="mes">Dia do Venc.:</label>
+        <select name="dia" id="dia">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="mes">Posterga Venc. SAB/DOM/FER:</label>
+        <select id="mes">
+          <option>Todos os Meses</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="mes">Descrição do Vencimento:</label>
+        <input type="text">
+      </div>
+
+      <div class="form-row">
+        <label for="mes">Dispositivo Legal:</label>
+        <input type="text">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-confirmar">Confirmar</button>
+        <button type="reset" class="btn-limpar">Limpar</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/dark-mode.js"></script>
+</body>

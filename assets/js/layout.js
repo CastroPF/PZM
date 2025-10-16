@@ -70,6 +70,7 @@
                 <a href="/cadastros/agrupamentos/grupo-vencimento-imposto.html">Grupo de Vencimento x Imposto Específico</a>
               </div>
             </div>
+                <a href="/cadastros/cadastro-calendario.html">Cadastro Calendário de Vencimentos</a>
           </div>
         </div>
 
@@ -87,6 +88,7 @@
             <a href="/consultas/operativo.html">Checklist de Apurações de Impostos Operativo</a>
             <a href="/consultas/supervisor.html">Checklist de Apurações de Impostos Supervisor</a>
             <a href="/capaprocesso/capa-de-processo.html">Controle de Aprovação da Capa de Processo</a>
+              <a href="/cadastros/consulta-calendario.html">Consulta Calendário de Vencimentos</a>
           </div>
         </div>
 
