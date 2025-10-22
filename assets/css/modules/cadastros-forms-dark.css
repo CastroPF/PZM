@@ -162,9 +162,6 @@ body.dark-mode .tabela-calendario th {
   border: 1px solid var(--light-color);
 }
 
-body.dark-mode .tabela-calendario th:last-child {
-  border-right: none;
-}
 
 body.dark-mode .tabela-calendario td {
   background: var(--dark-hover);
