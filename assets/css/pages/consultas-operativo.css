@@ -238,7 +238,7 @@
 }
 
 .modal-conteudo {
-  background-color: var(--dark-surface);
+  background-color: var(--light-color);
   margin: 5% auto;
   padding: 24px 28px;
   border-radius: 12px;
@@ -278,7 +278,7 @@
 .modal-conteudo h2 {
   font-size: 20px;
   margin-bottom: 16px;
-  color: var(--light-color);
+  color: var(--dark-surface);
   border-bottom: 1px solid var(--light-color);
   padding-bottom: 8px;
 }
@@ -335,11 +335,12 @@
 .tabela-anexos .linha span {
   display: flex;
   align-items: center;
+  color: var(--dark-surface);
 }
 
 .tabela-anexos .cabecalho span {
   font-weight: bold;
-  color: var(--light-color);
+  color: var(--dark-surface);
 }
 
 .tabela-anexos .linha {
@@ -1157,5 +1158,3 @@ body.dark-mode .fitros-consulta input::placeholder {
     min-width: unset;
   }
 }
-
-
